@@ -16,8 +16,10 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import Logo from "../assets/images/mbuyers_curves_final.svg";
+import Image from "next/image";
 
-const Links = ["Dashboard", "Projects", "Team"];
+const Links = ["Home", "About", "Contact", "FAQs", "Trade Portal"];
 
 const NavLink = ({ children }) => (
   <Link
@@ -39,17 +41,20 @@ const NavBar = () => {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+      <Box bg={useColorModeValue("white.100", "gray.900")} px={4}>
+        <Flex h="100px" alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={"Open Menu"}
+            variant={"outline"}
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
+            <Box>
+              <Image src={Logo} display="block" alt="" />
+            </Box>
             <HStack
               as={"nav"}
               spacing={4}
@@ -96,8 +101,6 @@ const NavBar = () => {
           </Box>
         ) : null}
       </Box>
-
-      <Box p={4}>Main Content Here</Box>
     </>
   );
 };
