@@ -25,10 +25,11 @@ const NavLink = ({ children }) => (
   <Link
     px={2}
     py={1}
+    whiteSpace="nowrap"
     rounded={"md"}
     _hover={{
       textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
+      bg: useColorModeValue("blue.200", "gray.700"),
     }}
     href={"#"}
   >
@@ -53,7 +54,7 @@ const NavBar = () => {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box>
-              <Image src={Logo} display="block" alt="" />
+              <Image src={Logo} display="block" alt="Motorbike buyers" />
             </Box>
             <HStack
               as={"nav"}
@@ -82,10 +83,10 @@ const NavBar = () => {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
+                <MenuItem>Account</MenuItem>
+                <MenuItem>Dashboard</MenuItem>
                 <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
+                <MenuItem>Logout</MenuItem>
               </MenuList>
             </Menu>
           </Flex>

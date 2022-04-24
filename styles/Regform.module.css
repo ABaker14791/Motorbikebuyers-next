@@ -1,0 +1,48 @@
+.regwrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  text-align: center;
+  margin: auto;
+}
+
+.regform {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.regforminput {
+  margin-bottom: 20px;
+  font-family: UKNumberPlate;
+  color: #000;
+  width: 500px;
+  font-size: 4em;
+  text-align: center;
+  background-color: #ffd307;
+  border: 4px solid;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 678px) {
+  .regforminput {
+    max-width: 90%;
+    font-size: 3rem;
+  }
+}
+
+.regButton {
+  padding: 10px 50px;
+  background: #0271ba;
+  color: #fff;
+  border: 1px solid;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: opacity 0.2s ease-in;
+}

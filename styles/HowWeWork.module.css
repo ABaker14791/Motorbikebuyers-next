@@ -1,0 +1,38 @@
+.HowWeWork {
+  margin-top: 5rem;
+}
+
+.title {
+  text-align: center;
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.IconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.IconItem {
+  display: inline-block;
+  width: 24%;
+}
+
+.IconItem h3 {
+  font-weight: 600;
+}
+
+@media (max-width: 678px) {
+  .IconContainer {
+    flex-direction: column;
+  }
+
+  .IconItem {
+    padding: 10px 0;
+  }
+}
