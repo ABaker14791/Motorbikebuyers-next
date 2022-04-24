@@ -19,19 +19,20 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Logo from "../assets/images/mbuyers_curves_final.svg";
 import Image from "next/image";
 
-const Links = ["Home", "About", "Contact", "FAQs", "Trade Portal"];
+const Links = ["home", "about", "contact", "faqs", "trade portal"];
 
 const NavLink = ({ children }) => (
   <Link
     px={2}
     py={1}
     whiteSpace="nowrap"
+    textTransform="capitalize"
     rounded={"md"}
     _hover={{
       textDecoration: "none",
       bg: useColorModeValue("blue.200", "gray.700"),
     }}
-    href={"#"}
+    href={`/${children}`}
   >
     {children}
   </Link>

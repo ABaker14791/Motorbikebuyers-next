@@ -10,8 +10,8 @@ import Triumph from "../assets/icons/triumph.svg";
 const Brands = () => {
   return (
     <div className={Styles.Container}>
-      <h2>Bike Brands We Have Collected Recently</h2>
-      <h4>
+      <h2 className={Styles.Heading}>Bike Brands We Have Collected Recently</h2>
+      <h4 className={Styles.SubHeading}>
         Below you will find some of the most popular brands that we have
         collected through our online valuation system.
       </h4>
