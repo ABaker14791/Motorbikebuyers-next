@@ -1,7 +1,32 @@
+.Container {
+  width: 90%;
+}
+
 .Title {
   text-align: center;
+  margin-top: 40px;
   color: #000;
   font-size: 1.6rem;
   font-weight: 600;
   padding-bottom: 20px;
+}
+
+.Content {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.AboutImg {
+  width: 50%;
+  padding-right: 20px;
+}
+
+.AboutText {
+  width: 50%;
+  padding-left: 20px;
+}
+
+.AboutText li {
+  margin-left: 15px;
 }

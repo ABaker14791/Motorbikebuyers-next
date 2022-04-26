@@ -19,7 +19,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Logo from "../assets/images/mbuyers_curves_final.svg";
 import Image from "next/image";
 
-const Links = ["home", "about", "contact", "faqs", "trade portal"];
+const Links = ["home", "about", "contact", "faq", "tradeportal"];
 
 const NavLink = ({ children }) => (
   <Link
