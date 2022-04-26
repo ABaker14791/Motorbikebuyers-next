@@ -5,7 +5,6 @@ import Styles from "../styles/Regform.module.css";
 const RegForm = () => {
   return (
     <div className={Styles.regwrapper}>
-      {/* <Center> */}
       <Text fontSize="3xl" mt="8">
         Enter your reg here for your free bike valuation.
       </Text>
@@ -18,7 +17,6 @@ const RegForm = () => {
         />
         <button className={Styles.regButton}>Continue</button>
       </form>
-      {/* </Center> */}
     </div>
   );
 };

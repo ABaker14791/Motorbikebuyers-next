@@ -43,6 +43,10 @@
   color: #fff;
   border: 1px solid;
   text-transform: uppercase;
-  border-radius: 3px;
-  transition: opacity 0.2s ease-in;
+  border-radius: 4px;
+  transition: 0.2s ease-in;
+}
+
+.regButton:hover {
+  background-color: #0099ff;
 }

@@ -1,12 +1,14 @@
 import Head from "next/head";
+import Contact from "../components/Contact";
 import NavBar from "../components/NavBar";
+import RegForm from "../components/RegForm";
 
 const contact = () => {
   return (
     <div>
       <Head>
-        <title>Motorbike Buyers About Us</title>
-        <meta name="description" content="Sell your motorbike online" />
+        <title>Motorbike Buyers Contact Us</title>
+        <meta name="description" content="Contact Motorbike Buyers" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -17,7 +19,8 @@ const contact = () => {
         />
       </Head>
       <NavBar />
-      <h1>Contact</h1>
+      <Contact />
+      <RegForm />
     </div>
   );
 };
