@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   width: 90%;
+  max-width: 1200px;
   margin: 60px auto;
 }
 
@@ -58,5 +59,5 @@
 }
 
 .contactButton:hover {
-  background-color: #0099ff;
+  background-color: #0188e2;
 }
