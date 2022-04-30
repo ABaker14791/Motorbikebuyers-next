@@ -1,12 +1,17 @@
+.intro {
+  padding: 6rem 0;
+  background-color: rgba(210, 233, 255, 0.781);
+}
+
 .Container {
   width: 90%;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 0px auto;
 }
 
 .Heading {
   text-align: center;
-
+  justify-content: center;
   color: #000;
   font-size: 1.6rem;
   font-weight: 600;

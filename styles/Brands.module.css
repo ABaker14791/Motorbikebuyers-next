@@ -1,7 +1,8 @@
 .Container {
   width: 90%;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 0px auto;
+  padding: 6rem 0px;
 }
 
 .Heading {
@@ -20,7 +21,7 @@
   padding-bottom: 20px;
 }
 
-.IconContainer {
+.iconContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +30,11 @@
 }
 
 @media (max-width: 678px) {
-  .IconContainer {
+  .iconContainer {
     flex-direction: column;
+  }
+
+  .iconItem {
+    margin: 1em 0;
   }
 }

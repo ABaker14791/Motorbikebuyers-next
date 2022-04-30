@@ -38,7 +38,14 @@
   width: 50%;
   max-width: 500px;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 60px auto 0 auto;
+}
+
+@media (max-width: 768px) {
+  .contactForm {
+    width: 90%;
+    margin: 20px auto 0 auto;
+  }
 }
 
 .contactForm input {

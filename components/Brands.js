@@ -15,20 +15,20 @@ const Brands = () => {
         Below you will find some of the most popular brands that we have
         collected through our online valuation system.
       </h4>
-      <div className={Styles.IconContainer}>
-        <div className={Styles.IconItem}>
+      <div className={Styles.iconContainer}>
+        <div className={Styles.iconItem}>
           <Image src={Honda} />
         </div>
-        <div className={Styles.IconItem}>
+        <div className={Styles.iconItem}>
           <Image src={Ducati} />
         </div>
-        <div className={Styles.IconItem}>
+        <div className={Styles.iconItem}>
           <Image src={Triumph} />
         </div>
-        <div className={Styles.IconItem}>
+        <div className={Styles.iconItem}>
           <Image src={Husqvarna} />
         </div>
-        <div className={Styles.IconItem}>
+        <div className={Styles.iconItem}>
           <Image src={Ktm} />
         </div>
       </div>

@@ -1,5 +1,5 @@
 .HowWeWork {
-  margin-top: 5rem;
+  padding: 6em 0;
 }
 
 .title {
@@ -23,6 +23,12 @@
 .IconItem {
   display: inline-block;
   width: 24%;
+}
+
+@media (max-width: 678px) {
+  .IconItem {
+    width: 90%;
+  }
 }
 
 .IconItem h3 {
