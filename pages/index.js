@@ -6,6 +6,7 @@ import RegForm from "../components/RegForm";
 import HowWeWork from "../components/HowWeWork";
 import Intro from "../components/Intro";
 import Brands from "../components/Brands";
+import Footer from "../components/Footer";
 
 export default function index() {
   return (
@@ -31,6 +32,7 @@ export default function index() {
         <Intro />
         <Brands />
       </Layout>
+      <Footer />
     </div>
   );
 }

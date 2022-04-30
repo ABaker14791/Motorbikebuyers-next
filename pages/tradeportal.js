@@ -1,11 +1,31 @@
 import React from "react";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
+import BikeCard from "../components/BikeCard";
 import Styles from "../styles/Tradeportal.module.css";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Button } from "@aws-amplify/ui-react";
+import { createClient } from "contentful";
 
-const tradeportal = () => {
+// Get trade bikes from contentful API
+export async function getStaticProps() {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  });
+
+  const res = await client.getEntries({ content_type: "tradeBikes" });
+
+  return {
+    props: {
+      tradeBikes: res.items,
+    },
+  };
+}
+
+const tradeportal = ({ tradeBikes }) => {
+  console.log(tradeBikes);
+
   return (
     <div>
       <Head>
@@ -25,11 +45,9 @@ const tradeportal = () => {
         {({ user, signOut }) => (
           <main className={Styles.container}>
             <div className={Styles.bikesContainer}>
-              <div className={Styles.bikeItem}>
-                <h1>Ducati 999</h1>
-                <p>2000 miles, red</p>
-                <p>£9762</p>
-              </div>
+              {tradeBikes.map((tradeBike) => (
+                <BikeCard key={tradeBike.sys.id} tradeBike={tradeBike} />
+              ))}
             </div>
             <h1 className={Styles.signOutText}>
               You are signed in as {user.username}

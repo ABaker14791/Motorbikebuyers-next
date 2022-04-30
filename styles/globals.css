@@ -15,6 +15,10 @@ body {
     sans-serif;
 }
 
+p {
+  font-size: 1.2rem;
+}
+
 .amplify-button[data-variation="primary"] {
   background: #0171bd !important;
 }

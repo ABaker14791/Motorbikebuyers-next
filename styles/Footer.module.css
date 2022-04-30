@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 0 0;
+  background-color: rgb(75, 75, 75);
+  color: #fff;
+}
+
+.links {
+  padding: 4px 10px;
+}
+
+.links a {
+  padding: 2px 8px;
+}
+
+.links a:hover {
+  color: #afdaf6;
+}
