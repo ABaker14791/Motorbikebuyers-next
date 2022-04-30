@@ -1,0 +1,19 @@
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.bikesContainer {
+  margin-top: 60px;
+}
+
+.bikeItem {
+  border: 1px solid #000;
+  border-radius: 4px;
+  width: 400px;
+}
+
+.signOutText {
+  margin: 60px 0 20px 0;
+}

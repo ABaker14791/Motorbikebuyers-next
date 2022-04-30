@@ -7,7 +7,7 @@ import HowWeWork from "../components/HowWeWork";
 import Intro from "../components/Intro";
 import Brands from "../components/Brands";
 
-export default function home() {
+export default function index() {
   return (
     <div>
       <Head>
