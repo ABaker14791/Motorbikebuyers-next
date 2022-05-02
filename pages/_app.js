@@ -6,8 +6,6 @@ import "../styles/globals.css";
 import "@aws-amplify/ui-react/styles.css"; // default theme
 import awsExports from "../src/aws-exports";
 
-// var contentful = require("contentful");
-
 Amplify.configure({ ...awsExports, ssr: true });
 
 export default function App({ Component, pageProps }) {
