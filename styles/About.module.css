@@ -18,6 +18,20 @@
   margin: auto;
 }
 
+@media (max-width: 768px) {
+  .Content {
+    flex-direction: column;
+  }
+  .AboutImg {
+    width: 100%;
+  }
+
+  .AboutText {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+}
+
 .AboutImg {
   width: 50%;
   padding-right: 20px;

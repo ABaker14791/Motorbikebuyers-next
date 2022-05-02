@@ -6,6 +6,7 @@ import Styles from "../styles/Tradeportal.module.css";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Button } from "@aws-amplify/ui-react";
 import { createClient } from "contentful";
+import Footer from "../components/Footer";
 
 // Get trade bikes from contentful API
 export async function getStaticProps() {
@@ -54,6 +55,7 @@ const tradeportal = ({ tradeBikes }) => {
           </main>
         )}
       </Authenticator>
+      <Footer />
     </div>
   );
 };

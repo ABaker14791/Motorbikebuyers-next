@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar";
 import { createClient } from "contentful";
 import Styles from "../../styles/Slug.module.css";
 import Image from "next/image";
+import Footer from "../../components/Footer";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -65,6 +66,7 @@ const bikeDetails = ({ tradeBikes }) => {
           <div className={Styles.actions}></div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

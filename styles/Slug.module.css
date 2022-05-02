@@ -3,6 +3,8 @@
   max-width: 1200px;
   margin: 60px auto 0px auto;
   display: flex;
+  min-width: 100vh;
+  min-height: calc(100vh - 68px);
 }
 
 @media (max-width: 768px) {
@@ -40,7 +42,4 @@
 .price {
   font-size: 1.1rem;
   margin-bottom: 15px;
-}
-
-.description {
 }

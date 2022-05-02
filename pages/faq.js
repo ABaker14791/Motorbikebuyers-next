@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
 import Faq from "../components/Faq";
+import Footer from "../components/Footer";
 
 const faq = () => {
   return (
@@ -20,6 +21,7 @@ const faq = () => {
       </Head>
       <NavBar />
       <Faq />
+      <Footer />
     </div>
   );
 };

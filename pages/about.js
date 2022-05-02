@@ -6,6 +6,7 @@ import NavBar from "../components/NavBar";
 import HowWeWork from "../components/HowWeWork";
 import RegForm from "../components/RegForm";
 import RidingPhoto from "../assets/images/ridingphoto1.png";
+import Footer from "../components/Footer";
 
 const about = () => {
   return (
@@ -61,6 +62,7 @@ const about = () => {
       </div>
       <HowWeWork />
       <RegForm />
+      <Footer />
     </div>
   );
 };
