@@ -24,8 +24,6 @@ export async function getStaticProps() {
 }
 
 const tradeportal = ({ tradeBikes }) => {
-  console.log(tradeBikes);
-
   return (
     <div>
       <Head>

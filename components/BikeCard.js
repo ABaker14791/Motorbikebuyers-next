@@ -10,7 +10,6 @@ const BikeCard = ({ tradeBike }) => {
       <div className={Styles.image}>
         <Image
           src={"https:" + image.fields.file.url}
-          //   layout="fill"
           width={image.fields.file.details.image.width}
           height={image.fields.file.details.image.height}
         />
@@ -18,7 +17,7 @@ const BikeCard = ({ tradeBike }) => {
       <div className={Styles.content}>
         <div className={Styles.info}>
           <h4>{title}</h4>
-          <p>{price}</p>
+          <p>£{price}</p>
         </div>
         <div className={Styles.actions}>
           <Link href={"/bikes/" + slug}>

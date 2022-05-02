@@ -1,0 +1,46 @@
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto 0px auto;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.info {
+  margin: 0 20px;
+  width: 50%;
+}
+
+.image {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .info {
+    margin: 20px 0;
+    width: 100%;
+  }
+
+  .image {
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.description {
+}
