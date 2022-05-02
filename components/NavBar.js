@@ -17,7 +17,7 @@ const NavBar = () => {
 
   return (
     <>
-      <Box bg={useColorModeValue("white.100", "gray.900")} px={4}>
+      <Box bg={"white.100"} px={4}>
         <Flex h="100px" alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -44,7 +44,7 @@ const NavBar = () => {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "none",
-                  bg: useColorModeValue("blue.200", "gray.700"),
+                  bg: "blue.200",
                 }}
                 href="/"
               >
@@ -58,7 +58,7 @@ const NavBar = () => {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "none",
-                  bg: useColorModeValue("blue.200", "gray.700"),
+                  bg: "blue.200",
                 }}
                 href="/about"
               >
@@ -72,7 +72,7 @@ const NavBar = () => {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "none",
-                  bg: useColorModeValue("blue.200", "gray.700"),
+                  bg: "blue.200",
                 }}
                 href="/contact"
               >
@@ -86,7 +86,7 @@ const NavBar = () => {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "none",
-                  bg: useColorModeValue("blue.200", "gray.700"),
+                  bg: "blue.200",
                 }}
                 href="faq"
               >
@@ -100,7 +100,7 @@ const NavBar = () => {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "none",
-                  bg: useColorModeValue("blue.200", "gray.700"),
+                  bg: "blue.200",
                 }}
                 href="/tradeportal"
               >
