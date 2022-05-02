@@ -17,19 +17,19 @@ const Brands = () => {
       </h4>
       <div className={Styles.iconContainer}>
         <div className={Styles.iconItem}>
-          <Image src={Honda} />
+          <Image src={Honda} alt="honda logo" />
         </div>
         <div className={Styles.iconItem}>
-          <Image src={Ducati} />
+          <Image src={Ducati} alt="ducati logo" />
         </div>
         <div className={Styles.iconItem}>
-          <Image src={Triumph} />
+          <Image src={Triumph} alt="triumph logo" />
         </div>
         <div className={Styles.iconItem}>
-          <Image src={Husqvarna} />
+          <Image src={Husqvarna} alt="husqvarna logo" />
         </div>
         <div className={Styles.iconItem}>
-          <Image src={Ktm} />
+          <Image src={Ktm} alt="ktm logo" />
         </div>
       </div>
     </div>

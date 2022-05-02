@@ -16,11 +16,6 @@ body {
     sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  position: relative;
-}
-
 p {
   font-size: 1.2rem;
 }
