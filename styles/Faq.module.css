@@ -2,6 +2,7 @@
   width: 90%;
   max-width: 1200px;
   margin: 60px auto;
+  min-height: calc(100vh - 200px);
 }
 
 .faqText {
