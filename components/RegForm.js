@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Center, Button } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import Styles from "../styles/Regform.module.css";
 
 const RegForm = () => {
