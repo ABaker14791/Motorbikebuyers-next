@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -18,4 +19,8 @@
 
 .links a:hover {
   color: #afdaf6;
+}
+
+.copyright {
+  text-align: center;
 }

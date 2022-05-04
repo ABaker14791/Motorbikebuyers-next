@@ -1,3 +1,7 @@
+.authContainer {
+  min-height: calc(100vh - 166px) !important;
+}
+
 .container {
   width: 90%;
   max-width: 1200px;

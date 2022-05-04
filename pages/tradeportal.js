@@ -40,21 +40,23 @@ const tradeportal = ({ tradeBikes }) => {
         />
       </Head>
       <NavBar />
-      <Authenticator>
-        {({ user, signOut }) => (
-          <main className={Styles.container}>
-            <div className={Styles.bikesContainer}>
-              {tradeBikes.map((tradeBike) => (
-                <BikeCard key={tradeBike.sys.id} tradeBike={tradeBike} />
-              ))}
-            </div>
-            <h1 className={Styles.signOutText}>
-              You are signed in as {user.username}
-            </h1>
-            <Button onClick={signOut}>Sign out</Button>
-          </main>
-        )}
-      </Authenticator>
+      <div className={Styles.authContainer}>
+        <Authenticator>
+          {({ user, signOut }) => (
+            <main className={Styles.container}>
+              <div className={Styles.bikesContainer}>
+                {tradeBikes.map((tradeBike) => (
+                  <BikeCard key={tradeBike.sys.id} tradeBike={tradeBike} />
+                ))}
+              </div>
+              <h1 className={Styles.signOutText}>
+                You are signed in as {user.username}
+              </h1>
+              <Button onClick={signOut}>Sign out</Button>
+            </main>
+          )}
+        </Authenticator>
+      </div>
       <Footer />
     </div>
   );
