@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider
       options={{
-        useSystsemColorMode: false,
+        useSystemColorMode: false,
       }}
     >
       <AmplifyProvider>
