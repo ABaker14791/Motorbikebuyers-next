@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
     <ChakraProvider>
       <ColorModeProvider
         options={{
-          useSystsemColorMode: false,
+          useSystsemColorMode: true,
         }}
       >
         <AmplifyProvider>
