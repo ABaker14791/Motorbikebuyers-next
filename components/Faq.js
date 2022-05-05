@@ -14,7 +14,7 @@ const Faq = () => {
         <Link href="/Contact">Contact Us.</Link>
       </p>
 
-      <Accordion allowToggle maxW="1200px" mx="auto" mt="60px">
+      {/* <Accordion allowToggle maxW="1200px" mx="auto" mt="60px">
         <AccordionItem>
           <h2>
             <AccordionButton>
@@ -88,7 +88,7 @@ const Faq = () => {
             this with you once you have agreed a price!
           </AccordionPanel>
         </AccordionItem>
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };
