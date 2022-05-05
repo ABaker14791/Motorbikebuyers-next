@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Contact from "../components/Contact";
-import NavBar from "../components/NavBar";
 import RegForm from "../components/RegForm";
-import Footer from "../components/Footer";
 
 const contact = () => {
   return (
@@ -19,10 +17,8 @@ const contact = () => {
           crossOrigin=""
         />
       </Head>
-      <NavBar />
       <Contact />
       <RegForm />
-      <Footer />
     </div>
   );
 };

@@ -1,12 +1,10 @@
 import React from "react";
 import Head from "next/head";
-import NavBar from "../components/NavBar";
 import BikeCard from "../components/BikeCard";
 import Styles from "../styles/Tradeportal.module.css";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Button } from "@aws-amplify/ui-react";
 import { createClient } from "contentful";
-import Footer from "../components/Footer";
 
 // Get trade bikes from contentful API
 export async function getStaticProps() {
@@ -39,7 +37,6 @@ const tradeportal = ({ tradeBikes }) => {
           crossOrigin=""
         />
       </Head>
-      <NavBar />
       <div className={Styles.authContainer}>
         <Authenticator>
           {({ user, signOut }) => (
@@ -57,7 +54,6 @@ const tradeportal = ({ tradeBikes }) => {
           )}
         </Authenticator>
       </div>
-      <Footer />
     </div>
   );
 };

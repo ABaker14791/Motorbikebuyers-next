@@ -2,11 +2,9 @@ import React from "react";
 import Head from "next/head";
 import Styles from "../styles/About.module.css";
 import Image from "next/image";
-import NavBar from "../components/NavBar";
 import HowWeWork from "../components/HowWeWork";
 import RegForm from "../components/RegForm";
 import RidingPhoto from "../assets/images/ridingphoto1.png";
-import Footer from "../components/Footer";
 
 const about = () => {
   return (
@@ -23,7 +21,6 @@ const about = () => {
           crossOrigin=""
         />
       </Head>
-      <NavBar />
       <div className={Styles.Title}>About Us</div>
       <div className={Styles.Content}>
         <Image
@@ -66,7 +63,6 @@ const about = () => {
       </div>
       <HowWeWork />
       <RegForm />
-      <Footer />
     </div>
   );
 };
