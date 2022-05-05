@@ -5,7 +5,7 @@ import Styles from "../styles/Faq.module.css";
 const Faq = () => {
   return (
     <div className={Styles.container}>
-      <Heading mb={4}>Frequestly Asked Questions</Heading>
+      <h1>Frequestly Asked Questions</h1>
       <p className={Styles.faqText}>
         Here you will find our most frequently asked questions
       </p>
