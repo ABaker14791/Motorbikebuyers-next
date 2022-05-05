@@ -1,30 +1,31 @@
 import React from "react";
 import Styles from "../styles/Contact.module.css";
 import Link from "next/link";
+import { FaPhone, FaEnvelope, FaExternalLinkAlt } from "react-icons/fa";
 
 const Contact = () => {
   return (
     <div className={Styles.container}>
       <div className={Styles.contactInfo}>
-        <Heading>Get in touch</Heading>
+        <h1>Get in touch</h1>
         <p className={Styles.contactText}>
           For any queries not answered in our FAQ page please let us know you
           requirements and we will respond as soon as possible.
         </p>
         <div className={Styles.contactLink}>
-          <PhoneIcon mr={4} />
+          <FaPhone />
           <Link href="#">
             <a>+44 7770 444569</a>
           </Link>
         </div>
         <div className={Styles.contactLink}>
-          <EmailIcon mr={4} />
+          <FaEnvelope />
           <Link href="#">
             <a>sales@themotorbikebuyers.co.uk</a>
           </Link>
         </div>
         <div className={Styles.contactLink}>
-          <ExternalLinkIcon mr={4} />
+          <FaExternalLinkAlt />
           <Link href="#">
             <a>Follow and contact us directly on facebook</a>
           </Link>
