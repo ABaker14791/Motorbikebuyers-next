@@ -1,15 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Styles from "../styles/Faq.module.css";
-import { Heading } from "@chakra-ui/react";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Box,
-} from "@chakra-ui/react";
 
 const Faq = () => {
   return (

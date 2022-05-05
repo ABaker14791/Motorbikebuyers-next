@@ -1,12 +1,9 @@
 import Head from "next/head";
-import Layout from "../components/Layout";
-import NavBar from "../components/NavBar";
 import MastHead from "../components/MastHead";
 import RegForm from "../components/RegForm";
 import HowWeWork from "../components/HowWeWork";
 import Intro from "../components/Intro";
 import Brands from "../components/Brands";
-import Footer from "../components/Footer";
 
 export default function index() {
   return (
@@ -24,16 +21,11 @@ export default function index() {
           crossOrigin=""
         />
       </Head>
-
-      <NavBar />
       <MastHead />
-      <Layout>
-        <RegForm />
-        <HowWeWork />
-        <Intro />
-        <Brands />
-      </Layout>
-      <Footer />
+      <RegForm />
+      <HowWeWork />
+      <Intro />
+      <Brands />
     </div>
   );
 }

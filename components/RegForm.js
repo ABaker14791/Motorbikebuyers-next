@@ -1,13 +1,10 @@
 import React from "react";
-import { Text } from "@chakra-ui/react";
 import Styles from "../styles/Regform.module.css";
 
 const RegForm = () => {
   return (
     <div className={Styles.regwrapper}>
-      <Text fontSize="3xl" mt="8">
-        Enter your reg here for your free bike valuation.
-      </Text>
+      <h2>Enter your reg here for your free bike valuation.</h2>
 
       <form className={Styles.regform}>
         <input

@@ -1,8 +1,6 @@
 import React from "react";
-import { Heading } from "@chakra-ui/react";
 import Styles from "../styles/Contact.module.css";
 import Link from "next/link";
-import { PhoneIcon, EmailIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 
 const Contact = () => {
   return (

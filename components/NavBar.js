@@ -1,128 +1,51 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  Link,
-  IconButton,
-  useDisclosure,
-  Stack,
-} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Logo from "../assets/images/mbuyers_curves_final.svg";
+import Styles from "../styles/NavBar.module.css";
 import Image from "next/image";
+import Link from "next/link";
+import { FaBars } from "react-icons/fa";
 
-const NavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+const NavBar = ({ toggle }) => {
   return (
     <>
-      <Box bg={"white.100"} px={4}>
-        <Flex h="100px" alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            variant={"outline"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={8} alignItems={"center"}>
-            <Box>
+      <nav className={Styles.navbar}>
+        <div className={Styles.navbarContainer}>
+          <Link href="/">
+            <a>
               <Image src={Logo} display="block" alt="Motorbike buyers" />
-            </Box>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
-              <Link
-                px={2}
-                py={1}
-                whiteSpace="nowrap"
-                textTransform="capitalize"
-                rounded={"md"}
-                _hover={{
-                  textDecoration: "none",
-                  bg: "blue.200",
-                }}
-                href="/"
-              >
-                Home
+            </a>
+          </Link>
+          <div onClick={toggle} className={Styles.navIcon}>
+            <FaBars />
+          </div>
+          <ul className={Styles.navMenu}>
+            <li className={Styles.navItem}>
+              <Link href="/">
+                <a>Home</a>
               </Link>
-              <Link
-                px={2}
-                py={1}
-                whiteSpace="nowrap"
-                textTransform="capitalize"
-                rounded={"md"}
-                _hover={{
-                  textDecoration: "none",
-                  bg: "blue.200",
-                }}
-                href="/about"
-              >
-                About
+            </li>
+            <li className={Styles.navItem}>
+              <Link href="/about">
+                <a>About</a>
               </Link>
-              <Link
-                px={2}
-                py={1}
-                whiteSpace="nowrap"
-                textTransform="capitalize"
-                rounded={"md"}
-                _hover={{
-                  textDecoration: "none",
-                  bg: "blue.200",
-                }}
-                href="/contact"
-              >
-                Contact
+            </li>
+            <li className={Styles.navItem}>
+              <Link href="/contact">
+                <a>Contact</a>
               </Link>
-              <Link
-                px={2}
-                py={1}
-                whiteSpace="nowrap"
-                textTransform="capitalize"
-                rounded={"md"}
-                _hover={{
-                  textDecoration: "none",
-                  bg: "blue.200",
-                }}
-                href="faq"
-              >
-                FAQs
+            </li>
+            <li className={Styles.navItem}>
+              <Link href="/faq">
+                <a>FAQs</a>
               </Link>
-              <Link
-                px={2}
-                py={1}
-                whiteSpace="nowrap"
-                textTransform="capitalize"
-                rounded={"md"}
-                _hover={{
-                  textDecoration: "none",
-                  bg: "blue.200",
-                }}
-                href="/tradeportal"
-              >
-                Trade Portal
+            </li>
+            <li className={Styles.navItem}>
+              <Link href="/tradeportal">
+                <a>Trade Portal</a>
               </Link>
-              ))
-            </HStack>
-          </HStack>
-        </Flex>
-
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              <Link href="/">Home</Link>
-              <Link href="/about">About</Link>
-              <Link href="/contact">Contact</Link>
-              <Link href="/faq">FAQs</Link>
-              <Link href="/tradeportal">Trade Portal</Link>
-              ))
-            </Stack>
-          </Box>
-        ) : null}
-      </Box>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </>
   );
 };
