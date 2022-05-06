@@ -4,7 +4,9 @@ import Styles from "../styles/Regform.module.css";
 const RegForm = () => {
   return (
     <div className={Styles.regwrapper}>
-      <h2>Enter your reg here for your free bike valuation.</h2>
+      <h2 className={Styles.regTitle}>
+        Enter your reg here for your free bike valuation.
+      </h2>
 
       <form className={Styles.regform}>
         <input
