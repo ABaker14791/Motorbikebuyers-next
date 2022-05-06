@@ -35,6 +35,11 @@
   font-weight: 600;
 }
 
+.IconItem p {
+  font-size: 1rem;
+  color: rgb(70, 70, 70);
+}
+
 @media (max-width: 678px) {
   .IconContainer {
     flex-direction: column;

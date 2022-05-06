@@ -46,9 +46,9 @@ const tradeportal = ({ tradeBikes }) => {
                   <BikeCard key={tradeBike.sys.id} tradeBike={tradeBike} />
                 ))}
               </div>
-              <h1 className={Styles.signOutText}>
+              <p className={Styles.signOutText}>
                 You are signed in as {user.username}
-              </h1>
+              </p>
               <Button onClick={signOut}>Sign out</Button>
             </main>
           )}

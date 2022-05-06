@@ -7,7 +7,6 @@ const MobileNav = ({ isOpen, toggle }) => {
   return (
     <div
       className={isOpen ? Styles.containerOpen : Styles.container}
-      // isOpen={isOpen}
       onClick={toggle}
     >
       <div onClick={toggle} className={Styles.icon}>

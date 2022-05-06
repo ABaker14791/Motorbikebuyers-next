@@ -14,7 +14,7 @@ const HowWeWork = () => {
         <div className={Styles.IconItem}>
           <Image src={Handshake} alt="" />
           <span>
-            <h3>SUPER FAST VALUATION</h3>
+            <h4>SUPER FAST VALUATION</h4>
             <p>Whats App, Phone or Email</p>
           </span>
         </div>

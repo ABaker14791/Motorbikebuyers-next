@@ -1,14 +1,13 @@
 .navbar {
   background: #fff;
   height: 100px;
-  /* margin-top: -80px; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  /* position: sticky; */
   top: 0;
   z-index: 10;
+  width: 100%;
 }
 
 .navbarContainer {
@@ -16,9 +15,8 @@
   justify-content: space-between;
   z-index: 1;
   height: 100px;
-  /* width: 100%; */
-  /* padding: 0 24px; */
-  /* max-width: 1100px; */
+  width: 90%;
+  max-width: 1200px;
 }
 
 .navIcon {
@@ -31,17 +29,23 @@
   list-style: none;
   text-align: center;
   height: 100px;
+  margin: 0;
 }
 
 .navItem {
   height: 100px;
   color: #000;
   display: flex;
+  white-space: nowrap;
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
+}
+
+.navItem a:hover {
+  color: #0171bd;
 }
 
 @media (max-width: 768px) {
@@ -58,5 +62,22 @@
 
   .navMenu {
     display: none;
+  }
+
+  .navbar {
+    height: 89px;
+  }
+
+  .navbarContainer {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbarContainer {
+    width: 60%;
   }
 }
