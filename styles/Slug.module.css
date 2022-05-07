@@ -3,14 +3,8 @@
   max-width: 1200px;
   margin: 60px auto 0px auto;
   display: flex;
-  min-width: 100vh;
+  /* min-width: 100vh; */
   min-height: calc(100vh - 202px) !important;
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
 }
 
 .info {
@@ -20,9 +14,16 @@
 
 .image {
   width: 50%;
+  height: auto;
 }
 
 @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+    margin: 3rem auto;
+  }
+
   .info {
     margin: 20px 0;
     width: 100%;
@@ -30,6 +31,8 @@
 
   .image {
     width: 100%;
+    /* min-width: 200px; */
+    height: auto;
   }
 }
 

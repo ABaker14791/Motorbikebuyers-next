@@ -1,9 +1,7 @@
 import Head from "next/head";
-import NavBar from "../../components/NavBar";
 import { createClient } from "contentful";
 import Styles from "../../styles/Slug.module.css";
 import Image from "next/image";
-import Footer from "../../components/Footer";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -50,7 +48,6 @@ const bikeDetails = ({ tradeBikes }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
       <div className={Styles.container}>
         <div className={Styles.image}>
           <Image
@@ -67,7 +64,6 @@ const bikeDetails = ({ tradeBikes }) => {
           <div className={Styles.actions}></div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
