@@ -1,7 +1,9 @@
 .intro {
   padding: 6rem 0;
-  background-color: #539ef5;
-  color: #fff;
+  background-color: #fafafa;
+  color: #000;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .Container {

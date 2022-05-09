@@ -49,6 +49,7 @@
   background: #0271ba;
   color: #fff;
   border: 1px solid;
+  cursor: pointer;
   text-transform: uppercase;
   border-radius: 4px;
   transition: 0.2s ease-in;

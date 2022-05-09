@@ -65,7 +65,7 @@ const bikeDetails = ({ tradeBikes }) => {
           <div className={Styles.actions}>
             <div className={Styles.actions}>
               <Link href="#">
-                <a>Buy Now</a>
+                <a>Enquire Now</a>
               </Link>
             </div>
           </div>
