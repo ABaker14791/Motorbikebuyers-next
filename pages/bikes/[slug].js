@@ -2,6 +2,7 @@ import Head from "next/head";
 import { createClient } from "contentful";
 import Styles from "../../styles/Slug.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -61,7 +62,13 @@ const bikeDetails = ({ tradeBikes }) => {
           <h2 className={Styles.title}>{title}</h2>
           <div className={Styles.price}>£{price}</div>
           <div className={Styles.description}>{description}</div>
-          <div className={Styles.actions}></div>
+          <div className={Styles.actions}>
+            <div className={Styles.actions}>
+              <Link href="#">
+                <a>Buy Now</a>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import MastHead from "../components/MastHead";
+import HeroV2 from "../components/HeroV2";
 import RegForm from "../components/RegForm";
 import HowWeWork from "../components/HowWeWork";
 import Intro from "../components/Intro";
@@ -22,6 +23,7 @@ export default function index() {
         />
       </Head>
       <MastHead />
+      {/* <HeroV2 /> */}
       <RegForm />
       <HowWeWork />
       <Intro />

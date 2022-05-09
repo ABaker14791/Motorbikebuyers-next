@@ -1,8 +1,20 @@
-import React from "react";
+import { useState } from "react";
+import { FaqData } from "./FaqData.js";
 import Link from "next/link";
 import Styles from "../styles/Faq.module.css";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
-const Faq = () => {
+const Faq = (index) => {
+  const [clicked, setClicked] = useState(false);
+
+  const toggle = (index) => {
+    if (clicked === index) {
+      return setClicked(null);
+    }
+    setClicked(index);
+  };
+
+  console.log(index);
   return (
     <div className={Styles.container}>
       <h1>Frequestly Asked Questions</h1>
@@ -11,84 +23,30 @@ const Faq = () => {
       </p>
       <p className={Styles.faqText}>
         For any questions not answered here please feel free to{" "}
-        <Link href="/Contact">Contact Us.</Link>
+        <Link href="/contact">Contact Us.</Link>
       </p>
 
-      {/* <Accordion allowToggle maxW="1200px" mx="auto" mt="60px">
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box flex="1" textAlign="left" py={2}>
-                When will I get my offer?
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
-            Within 24 hours of your enquiry, use the whats app value for a super
-            fast valuation!
-          </AccordionPanel>
-        </AccordionItem>
-
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box flex="1" textAlign="left" py={2}>
-                Can you settle my finance?
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
-            Yes, subject to you providing a full settlement letter. We can help
-            with this also!
-          </AccordionPanel>
-        </AccordionItem>
-
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box flex="1" textAlign="left" py={2}>
-                What if I owe more than my bike is worth?
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
-            Just pay us the difference. Call us on +44 7770 444569 for a
-            detailed explanation
-          </AccordionPanel>
-        </AccordionItem>
-
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box flex="1" textAlign="left" py={2}>
-                What documents do I need?
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
-            V5c Logbook, Service History, Keys, ID, Proof of Bank Details
-          </AccordionPanel>
-        </AccordionItem>
-
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box flex="1" textAlign="left" py={2}>
-                What happens to my private plate?
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
-            You can either relinquish the plate or retail it, we can discuss
-            this with you once you have agreed a price!
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion> */}
+      <div className={Styles.accordion}>
+        {FaqData.map((item, index) => {
+          return (
+            <div
+              className={Styles.accordItem}
+              onClick={() => toggle(index)}
+              key={index}
+            >
+              <h2>{item.question}</h2>
+              {clicked === index ? <FaAngleUp /> : <FaAngleDown />}
+              <span
+                className={
+                  clicked === index ? Styles.accordAnsOpen : Styles.accordAns
+                }
+              >
+                <p>{item.answer}</p>
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -8,3 +8,48 @@
 .faqText {
   margin-bottom: 10px;
 }
+
+.accordion {
+  font-weight: 200;
+  margin-top: 60px;
+}
+
+.accordItem {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: center;
+  /* padding-right: 20px; */
+  border-top: 1px solid rgb(111, 111, 111);
+}
+
+.accordItem svg {
+  margin-right: 20px;
+}
+
+.accordItem:last-of-type {
+  border-bottom: 1px solid rgb(111, 111, 111);
+}
+
+.accordItem h2 {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.accordItem p {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.accordAns {
+  display: none;
+  transition: 0.2s ease-in;
+}
+
+.accordAnsOpen {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid rgb(111, 111, 111);
+  padding-left: 20px;
+}
