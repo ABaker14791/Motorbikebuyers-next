@@ -44,7 +44,7 @@
   }
 }
 
-.regButton {
+.regform a {
   padding: 10px 50px;
   background: #0271ba;
   color: #fff;
@@ -55,6 +55,6 @@
   transition: 0.2s ease-in;
 }
 
-.regButton:hover {
+.regform a:hover {
   background-color: #0188e2;
 }

@@ -27,6 +27,10 @@ p {
   border-color: #0171bd !important;
 }
 
+.amplify-tabs {
+  display: none !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;

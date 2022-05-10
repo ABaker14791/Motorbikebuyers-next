@@ -7,6 +7,7 @@ const Footer = () => {
     <div className={Styles.container}>
       <div className={Styles.footer}>
         <div className={Styles.links}>
+          <h4>Quick links</h4>
           <Link className={Styles.link} href="/">
             Home
           </Link>
@@ -24,7 +25,22 @@ const Footer = () => {
           </Link>
         </div>
         <div className={Styles.copyright}>
-          © Copyright 2021, The Motorbike Buyers.
+          © Copyright 2022, The Motorbike Buyers.
+        </div>
+        <div className={Styles.blog}>
+          <h4>Tips and guides</h4>
+          <Link className={Styles.link} href="#">
+            Valuation guide
+          </Link>
+          <Link className={Styles.link} href="#">
+            Maintainance guide
+          </Link>
+          <Link className={Styles.link} href="#">
+            Ownership guide
+          </Link>
+          <Link className={Styles.link} href="#">
+            Motorcycle buying tips
+          </Link>
         </div>
       </div>
     </div>

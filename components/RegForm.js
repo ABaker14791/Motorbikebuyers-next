@@ -1,5 +1,6 @@
 import React from "react";
 import Styles from "../styles/Regform.module.css";
+import Link from "next/link";
 
 const RegForm = () => {
   return (
@@ -14,7 +15,9 @@ const RegForm = () => {
           type="text"
           placeholder="ENTER REG"
         />
-        <button className={Styles.regButton}>Continue</button>
+        <Link href="/vehicleDetails" className={Styles.regButton}>
+          Continue
+        </Link>
       </form>
     </div>
   );
