@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Logo from "../assets/images/mbuyers_curves_final.svg";
+import Image from "next/image";
 import React from "react";
 import Styles from "../styles/Footer.module.css";
 
@@ -24,8 +26,11 @@ const Footer = () => {
             Trade Portal
           </Link>
         </div>
-        <div className={Styles.copyright}>
-          © Copyright 2022, The Motorbike Buyers.
+        <div className={Styles.centerWrap}>
+          <Image src={Logo} display="block" alt="Motorbike buyers" />
+          <div className={Styles.copyright}>
+            <p>© Copyright 2022, The Motorbike Buyers.</p>
+          </div>
         </div>
         <div className={Styles.blog}>
           <h4>Tips and guides</h4>

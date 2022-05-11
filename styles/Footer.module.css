@@ -21,6 +21,13 @@
   font-size: 1.1rem;
 }
 
+.centerWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
 /* links section */
 .links {
   padding: 6px 10px;
@@ -44,10 +51,14 @@
 .copyright {
   text-align: center;
   display: flex;
-  align-items: flex-end;
+  justify-content: center;
+  /* align-items: flex-end; */
   margin-bottom: 10px;
-  font-size: smaller;
   color: rgb(191, 190, 190);
+}
+
+.copyright p {
+  font-size: 0.8rem;
 }
 
 /* Blog section */
@@ -86,7 +97,7 @@
     font-size: 1rem;
   }
 
-  .copyright {
+  .centerWrap {
     order: 2;
     align-self: center;
   }
