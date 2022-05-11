@@ -16,9 +16,7 @@ const VehicleForm = () => {
         <input className={Styles.textBox} placeholder="Mileage" />
         <input className={Styles.textBox} placeholder="Service history" />
         <div className={Styles.formGroup}>
-          <label for="subject">
-            Are you the registered owner and keeper of the vehicle?
-          </label>
+          <label>Are you the registered owner and keeper of the vehicle?</label>
           <br />
           <input
             type="radio"
@@ -27,7 +25,7 @@ const VehicleForm = () => {
             value="Yes"
             checked
           />
-          <label for="selector">Yes</label>
+          <label>Yes</label>
           <br />
           <input
             type="radio"
@@ -35,13 +33,11 @@ const VehicleForm = () => {
             id="selector"
             value="No"
           />
-          <label for="slector">No</label>
+          <label>No</label>
           <br />
         </div>
         <div className={Styles.formGroup}>
-          <label for="subject">
-            Does the vehicle have any outstanding finance?
-          </label>
+          <label>Does the vehicle have any outstanding finance?</label>
           <br />
           <input
             type="radio"
@@ -49,7 +45,7 @@ const VehicleForm = () => {
             id="selector"
             value="Yes"
           />
-          <label for="selector">Yes</label>
+          <label>Yes</label>
           <br />
           <input
             type="radio"
@@ -58,13 +54,11 @@ const VehicleForm = () => {
             value="No"
             checked
           />
-          <label for="slector">No</label>
+          <label>No</label>
           <br />
         </div>
         <div className={Styles.formGroup}>
-          <label for="subject" className={Styles.dropdownLabel}>
-            Condition
-          </label>
+          <label className={Styles.dropdownLabel}>Condition</label>
           <select name="condition" id="selector" className={Styles.formControl}>
             <option value="0" disabled="" selected="">
               Please select
