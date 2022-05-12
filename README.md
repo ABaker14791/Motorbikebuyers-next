@@ -1,19 +1,13 @@
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3005](http://localhost:3005) with your browser to see the result.
-
-## About
-
-I created the site as a proof of cencept for the trade portal page. It uses AWS amplify for authentication and contentful to publish the motorcycle stock on the trade portal page.
-
 ## Live
 
 https://motorbikebuyers-next.vercel.app/
+
+Tradeportal login
+user: test
+pass: testtest
+
+## Description
+
+The aim of the website is for users to submit their motorcycle details and contact details and get a valuation for their bike.
+
+I created this project as a proof of concept for some features, such has the authentication and content management. The website is created using Next JS, uses AWS Amplify for authentication and Contentful to publish the motorcycle stock on the trade portal page. Future improvements will be added including using the DVLA vehicle enquiry API for the registration form and also a database to store the customer information.
