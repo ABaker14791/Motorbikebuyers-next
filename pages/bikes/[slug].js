@@ -3,6 +3,7 @@ import { createClient } from "contentful";
 import Styles from "../../styles/Slug.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { Authenticator } from "@aws-amplify/ui-react";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -50,26 +51,28 @@ const bikeDetails = ({ tradeBikes }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={Styles.container}>
-        <div className={Styles.image}>
-          <Image
-            src={"https:" + image.fields.file.url}
-            width={image.fields.file.details.image.width}
-            height={image.fields.file.details.image.height}
-            alt="bike for sale"
-          />
-        </div>
-        <div className={Styles.info}>
-          <h2 className={Styles.title}>{title}</h2>
-          <div className={Styles.price}>£{price}</div>
-          <div className={Styles.description}>{description}</div>
-          <div className={Styles.actions}>
+        <Authenticator>
+          <div className={Styles.image}>
+            <Image
+              src={"https:" + image.fields.file.url}
+              width={image.fields.file.details.image.width}
+              height={image.fields.file.details.image.height}
+              alt="bike for sale"
+            />
+          </div>
+          <div className={Styles.info}>
+            <h2 className={Styles.title}>{title}</h2>
+            <div className={Styles.price}>£{price}</div>
+            <div className={Styles.description}>{description}</div>
             <div className={Styles.actions}>
-              <Link href="#">
-                <a>Enquire Now</a>
-              </Link>
+              <div className={Styles.actions}>
+                <Link href="#">
+                  <a>Enquire Now</a>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </Authenticator>
       </div>
     </div>
   );
