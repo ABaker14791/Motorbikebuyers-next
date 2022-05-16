@@ -36,7 +36,7 @@ const VehicleForm = () => {
         Submit your motorcycle details and your contact information below to get
         your free online valuation.
       </p>
-      <form onSubmit={submitReg} className={Styles.form}>
+      <form className={Styles.form}>
         <input className={Styles.textBox} placeholder="Reg" />
         <input className={Styles.textBox} placeholder="Manufacturer" />
         <input className={Styles.textBox} placeholder="Year" />
