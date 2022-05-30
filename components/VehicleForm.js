@@ -4,6 +4,8 @@ import Styles from "../styles/VehicleForm.module.css";
 // const reg = useRef(null);
 
 const VehicleForm = () => {
+  ////// Vehicle enquiry api needs translating ///////
+
   // function submitReg(e) {
   //   e.preventDefault();
 
