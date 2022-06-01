@@ -7,7 +7,7 @@ import { Button } from "@aws-amplify/ui-react";
 import { createClient } from "contentful";
 
 // Get trade bikes from contentful API
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
