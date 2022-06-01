@@ -1,0 +1,16 @@
+.returnWrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto 0px auto;
+}
+
+.returnBtn {
+  display: flex;
+  color: rgb(78, 78, 78);
+}
+
+.returnBtn svg {
+  align-self: center;
+  margin-right: 8px;
+  color: rgb(78, 78, 78);
+}

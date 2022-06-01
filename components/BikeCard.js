@@ -8,21 +8,29 @@ const BikeCard = ({ tradeBike }) => {
   return (
     <div className={Styles.card}>
       <div className={Styles.image}>
-        <Image
-          src={"https:" + image.fields.file.url}
-          width={image.fields.file.details.image.width}
-          height={image.fields.file.details.image.height}
-          alt="bike for sale"
-        />
+        <Link href={"/bikes/" + slug}>
+          <a>
+            <Image
+              src={"https:" + image.fields.file.url}
+              width={image.fields.file.details.image.width}
+              height={image.fields.file.details.image.height}
+              alt="bike for sale"
+            />
+          </a>
+        </Link>
       </div>
       <div className={Styles.content}>
         <div className={Styles.info}>
-          <h4>{title}</h4>
+          <Link href={"/bikes/" + slug}>
+            <a>
+              <h4>{title}</h4>
+            </a>
+          </Link>
           <p>£{price}</p>
         </div>
         <div className={Styles.actions}>
           <Link href={"/bikes/" + slug}>
-            <a>View Bike</a>
+            <a>More Details</a>
           </Link>
         </div>
       </div>

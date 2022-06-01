@@ -5,6 +5,7 @@ import Image from "next/image";
 import HowWeWork from "../components/HowWeWork";
 import RegForm from "../components/RegForm";
 import RidingPhoto from "../assets/images/ridingphoto1.png";
+import ReturnBar from "../components/ReturnBar";
 
 const about = () => {
   return (

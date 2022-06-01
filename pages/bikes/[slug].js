@@ -4,28 +4,12 @@ import Styles from "../../styles/Slug.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { Authenticator } from "@aws-amplify/ui-react";
+import ReturnBar from "../../components/ReturnBar";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 });
-
-// export const getStaticPaths = async () => {
-//   const res = await client.getEntries({
-//     content_type: "tradeBikes",
-//   });
-
-//   const paths = res.items.map((item) => {
-//     return {
-//       params: { slug: item.fields.slug },
-//     };
-//   });
-
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
 
 export const getServerSideProps = async ({ params }) => {
   const { items } = await client.getEntries({
@@ -50,6 +34,7 @@ const bikeDetails = ({ tradeBikes }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ReturnBar />
       <div className={Styles.container}>
         <Authenticator>
           <div className={Styles.image}>

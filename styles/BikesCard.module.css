@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+.image a {
+  cursor: pointer;
+}
+
 .info {
   padding: 16px;
 }
@@ -19,7 +23,7 @@
 
 .info p {
   margin: 0;
-  color: #777;
+  color: #77a464;
 }
 
 .actions {
