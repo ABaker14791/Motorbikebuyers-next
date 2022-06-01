@@ -10,24 +10,24 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 });
 
-export const getStaticPaths = async () => {
-  const res = await client.getEntries({
-    content_type: "tradeBikes",
-  });
+// export const getStaticPaths = async () => {
+//   const res = await client.getEntries({
+//     content_type: "tradeBikes",
+//   });
 
-  const paths = res.items.map((item) => {
-    return {
-      params: { slug: item.fields.slug },
-    };
-  });
+//   const paths = res.items.map((item) => {
+//     return {
+//       params: { slug: item.fields.slug },
+//     };
+//   });
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   const { items } = await client.getEntries({
     content_type: "tradeBikes",
     "fields.slug": params.slug,
