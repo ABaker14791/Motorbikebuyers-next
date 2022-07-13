@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
+    "dev": "next dev -p 3001",
+    "build": "next build -p 3000",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^2.15.8",
@@ -15,6 +17,7 @@
     "@emotion/styled": "^11.8.1",
     "aws-amplify": "^4.3.20",
     "contentful": "^9.1.27",
+    "cypress": "^10.3.0",
     "framer-motion": "^6.3.3",
     "next": "12.1.5",
     "react": "18.0.0",
