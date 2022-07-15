@@ -10,11 +10,10 @@ describe("login", () => {
     // Submit login form
     cy.get("form").submit();
     // click view bike
-    // cy.get(
-    //   ".BikesCard_card__h1deA:nth-child(2) .BikesCard_actions__e2r4J > a"
-    // ).click();
+    cy.get(".BikesCard_actions__e2r4J > a").first().click();
     // submit enquiry
-    // cy.get(".Slug_actions__yv8N_ > a").click();
+    cy.get("div").contains("Enquire Now").click();
     // verify submittion
+    // ToDo: Once enquiry form is in place, add test to check for sent message.
   });
 });
