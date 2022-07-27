@@ -1,7 +1,7 @@
 describe("login", () => {
   it("user can login", () => {
     // navigate to trade portal
-    cy.visit("http://localhost:3000/tradeportal");
+    cy.visit("http://localhost:3001/tradeportal");
     // login
     cy.get("input[placeholder=Username]").click();
     cy.get("input[placeholder=Username]").type("test");

@@ -4,8 +4,29 @@ import RegForm from "../components/RegForm";
 import HowWeWork from "../components/HowWeWork";
 import Intro from "../components/Intro";
 import Brands from "../components/Brands";
+import Axios from "axios";
 
 export default function index() {
+  // var axios = require("Axios");
+  var data = JSON.stringify({ registrationNumber: "RE15DWF" });
+  var config = {
+    method: "POST",
+    url: "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
+    headers: {
+      "x-api-key": process.env.DVLA_ENQUIRY_KEY,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  Axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   return (
     <div>
       <Head>

@@ -1,4 +1,5 @@
 import React from "react";
+
 import Styles from "../styles/Regform.module.css";
 import Link from "next/link";
 
