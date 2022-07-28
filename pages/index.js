@@ -7,7 +7,7 @@ import Brands from "../components/Brands";
 import Axios from "axios";
 
 export default function index() {
-  // var axios = require("Axios");
+  var axios = require("axios");
   var data = JSON.stringify({ registrationNumber: "RE15DWF" });
   var config = {
     method: "POST",
@@ -19,7 +19,7 @@ export default function index() {
     data: data,
   };
 
-  Axios(config)
+  axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
     })
