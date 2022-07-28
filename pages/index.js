@@ -8,10 +8,10 @@ import Axios from "axios";
 
 export default function index() {
   let axios = require("axios");
-  let data = JSON.stringify({ registrationNumber: "RE15DWF" });
+  let data = JSON.stringify({ registrationNumber: "ER19BAD" });
   let config = {
     method: "POST",
-    url: "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
+    url: "https://uat.driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
     headers: {
       "x-api-key": process.env.DVLA_ENQUIRY_KEY,
       "Content-Type": "application/json",
