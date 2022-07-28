@@ -7,9 +7,9 @@ import Brands from "../components/Brands";
 import Axios from "axios";
 
 export default function index() {
-  var axios = require("axios");
-  var data = JSON.stringify({ registrationNumber: "RE15DWF" });
-  var config = {
+  let axios = require("axios");
+  let data = JSON.stringify({ registrationNumber: "RE15DWF" });
+  let config = {
     method: "POST",
     url: "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
     headers: {
@@ -21,7 +21,8 @@ export default function index() {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
+      console.log(response);
     })
     .catch(function (error) {
       console.log(error);
