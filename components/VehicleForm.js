@@ -1,36 +1,6 @@
-import React from "react";
 import Styles from "../styles/VehicleForm.module.css";
 
-// const reg = useRef(null);
-
 const VehicleForm = () => {
-  ////// Vehicle enquiry api needs translating ///////
-
-  // function submitReg(e) {
-  //   e.preventDefault();
-
-  //   console.log("You clicked submit.");
-  //   const url =
-  //     "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles";
-  //   const xhr = new XMLHttpRequest();
-  //   xhr.open("POST", url);
-  //   xhr.setRequestHeader(
-  //     "x-api-key",
-  //     "apikey here"
-  //   );
-  //   xhr.setRequestHeader("content-type", "application/json");
-  //   xhr.onreadystatechange = function () {
-  //     if (xhr.readystate === 4) {
-  //       console.log(xhr.responseText);
-  //       const obj = JSON.parse(xhr.responseTest);
-  //       console.log(obj.make);
-  //     }
-  //   };
-
-  //   const data = JSON.stringify({ registrationNumber: reg.value });
-  //   xhr.send(data);
-  // }
-
   return (
     <div className={Styles.container}>
       <h1>Enter Your Motorbike Details</h1>
