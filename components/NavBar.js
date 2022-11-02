@@ -1,7 +1,10 @@
 import Logo from "../assets/images/mbuyers_curves_final.svg";
+// Styles
 import Styles from "../styles/NavBar.module.css";
+// Next imports
 import Image from "next/image";
 import Link from "next/link";
+//  Icons
 import { FaBars } from "react-icons/fa";
 
 const NavBar = ({ toggle }) => {
