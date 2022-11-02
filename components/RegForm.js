@@ -14,7 +14,7 @@ const RegForm = () => {
 
     try {
       const response = await fetch(
-        "http://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
+        "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
         {
           method: "POST",
           body: JSON.stringify({
