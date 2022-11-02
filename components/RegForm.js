@@ -25,7 +25,6 @@ const RegForm = () => {
             "x-api-key": "QvRdRSChk540ubGHaItvy5ANmcQxbuyYa3CkWqm4",
             "Content-Type": "application/json",
             Accept: "application/json",
-            Origin: "http://localhost:3001",
           },
         }
       );
