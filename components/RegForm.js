@@ -23,8 +23,6 @@ const RegForm = () => {
           headers: {
             "x-api-key": "QvRdRSChk540ubGHaItvy5ANmcQxbuyYa3CkWqm4",
             "Content-Type": "application/json",
-            referrerPolicy: "origin-when-cross-origin",
-            Referer: "https://www.themotorbikebuyers.co.uk/",
           },
         }
       );
