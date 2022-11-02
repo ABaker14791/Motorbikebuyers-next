@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import Styles from "../styles/Regform.module.css";
 // import Link from "next/link";
 
@@ -15,7 +14,7 @@ const RegForm = () => {
 
     try {
       const response = await fetch(
-        "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
+        "http://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
         {
           method: "POST",
           body: JSON.stringify({
