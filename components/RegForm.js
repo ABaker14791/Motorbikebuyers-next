@@ -23,7 +23,6 @@ const RegForm = () => {
           headers: {
             "x-api-key": "QvRdRSChk540ubGHaItvy5ANmcQxbuyYa3CkWqm4",
             "Content-Type": "application/json",
-            Accept: "application/json",
           },
         }
       );
