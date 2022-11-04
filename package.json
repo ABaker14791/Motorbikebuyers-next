@@ -20,7 +20,10 @@
     "contentful": "^9.1.27",
     "cypress": "^10.3.0",
     "framer-motion": "^6.3.3",
+    "i": "^0.3.7",
     "next": "12.1.5",
+    "node-fetch": "^2.6.7",
+    "npm": "^8.19.3",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1"

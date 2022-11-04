@@ -2,47 +2,26 @@ import { useState } from "react";
 import Styles from "../styles/Regform.module.css";
 // import Link from "next/link";
 
-const RegForm = () => {
+export function passRegistration() {
+  let registration = "re15dwf";
+  return registration;
+}
+
+const RegForm = (data) => {
   const [regInput, setRegInput] = useState("");
   const [regDetails, setRegDetails] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
 
-  const fetchVehicleDetails = async (e) => {
+  function onSubmitHandler(e) {
+    // Prevent form from submitting
     e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const response = await fetch(
-        "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            registrationNumber: "TE57VRN",
-          }),
-          headers: {
-            "x-api-key": "QvRdRSChk540ubGHaItvy5ANmcQxbuyYa3CkWqm4",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-
-      console.log("result is: ", JSON.stringify(result, null, 4));
-
-      setRegDetails(result);
-    } catch (err) {
-      setErr(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  console.log(regDetails);
+    // setRegDetails(regInput);
+    // console.log(regInput);
+    const handleReg = passRegistration("re15dwf");
+    console.log(handleReg);
+    return handleReg;
+  }
 
   return (
     <div className={Styles.regwrapper}>
@@ -50,7 +29,7 @@ const RegForm = () => {
         Enter your reg here for your free bike valuation.
       </h2>
 
-      <form className={Styles.regform}>
+      <form className={Styles.regform} onSubmit={onSubmitHandler}>
         <input
           className={Styles.regforminput}
           type="text"
@@ -59,16 +38,19 @@ const RegForm = () => {
             setRegInput(e.target.value);
           }}
         />
-        <button onClick={fetchVehicleDetails}>Continue</button>
-        {isLoading && <h2>Loading...</h2>}
+        {isLoading ? <h2>Loading...</h2> : null}
         {/* <Link
           href="/vehicleDetails"
           className={Styles.regButton}
           onClick={fetchVehicleDetails}
-        >
+          >
           Continue
         </Link> */}
+        <button>Continue</button>
       </form>
+      <p>
+        {data.data.details.make} {data.data.details.registrationNumber}
+      </p>
     </div>
   );
 };
