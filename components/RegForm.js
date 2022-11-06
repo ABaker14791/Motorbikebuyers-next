@@ -2,54 +2,51 @@ import { useState } from "react";
 import Styles from "../styles/Regform.module.css";
 // import Link from "next/link";
 
-export function passRegistration() {
-  let registration = "re15dwf";
-  return registration;
-}
+const RegForm = () => {
+  const [registration, setRegistration] = useState("");
+  const [returnedData, setReturnedData] = useState("");
+  console.log(registration);
 
-const RegForm = (data) => {
-  const [regInput, setRegInput] = useState("");
-  const [regDetails, setRegDetails] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState("");
+  // const fetchRegistration = async () => {
+  //   const response = await fetch("/api/vehicleEnquiry");
+  //   const data = await response.json();
+  //   setRegistration(data);
+  // };
 
-  function onSubmitHandler(e) {
-    // Prevent form from submitting
+  const submitRegistration = async (e) => {
     e.preventDefault();
-    // setRegDetails(regInput);
-    // console.log(regInput);
-    const handleReg = passRegistration("re15dwf");
-    console.log(handleReg);
-    return handleReg;
-  }
-
+    const response = await fetch("http://localhost:3001/api/vehicleEnquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ registration }),
+    });
+    const data = await response.json();
+    console.log(data);
+    setReturnedData(data);
+  };
   return (
     <div className={Styles.regwrapper}>
       <h2 className={Styles.regTitle}>
         Enter your reg here for your free bike valuation.
       </h2>
 
-      <form className={Styles.regform} onSubmit={onSubmitHandler}>
+      <form className={Styles.regform} onSubmit={submitRegistration}>
         <input
           className={Styles.regforminput}
           type="text"
           placeholder="ENTER REG"
+          // value={registration}
           onChange={(e) => {
-            setRegInput(e.target.value);
+            setRegistration(e.target.value);
           }}
         />
-        {isLoading ? <h2>Loading...</h2> : null}
-        {/* <Link
-          href="/vehicleDetails"
-          className={Styles.regButton}
-          onClick={fetchVehicleDetails}
-          >
-          Continue
-        </Link> */}
         <button>Continue</button>
       </form>
+      <p>{returnedData}</p>
       <p>
-        {data.data.details.make} {data.data.details.registrationNumber}
+        {/* {data.data.details.make} {data.data.details.registrationNumber} */}
       </p>
     </div>
   );

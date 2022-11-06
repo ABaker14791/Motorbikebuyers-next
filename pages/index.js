@@ -4,8 +4,6 @@ import RegForm from "../components/RegForm";
 import HowWeWork from "../components/HowWeWork";
 import Intro from "../components/Intro";
 import Brands from "../components/Brands";
-import { fetchDetails } from "./api/vehicleEnquiry";
-import { passRegistration } from "../components/RegForm";
 
 export default function index(details) {
   return (
@@ -32,19 +30,19 @@ export default function index(details) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const registration = passRegistration();
-  const bikeDetails = await fetchDetails(registration).catch((error) =>
-    console.error(error)
-  );
+// export async function getServerSideProps(context) {
+//   // const registration = passRegistration();  replace this with a post request to our endpoint
+//   const bikeDetails = await fetchDetails(req).catch((error) =>
+//     console.error(error)
+//   );
 
-  if (!bikeDetails) {
-    return {
-      notFound: true,
-    };
-  }
+//   if (!bikeDetails) {
+//     return {
+//       notFound: true,
+//     };
+//   }
 
-  return {
-    props: { details: bikeDetails }, // will be passed to the page component as props
-  };
-}
+//   return {
+//     props: { details: bikeDetails }, // will be passed to the page component as props
+//   };
+// }
