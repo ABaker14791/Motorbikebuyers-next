@@ -1,23 +1,22 @@
-import fetch from "node-fetch";
-
 export default async function handler(req, res) {
-  const body = {
-    registrationNumber: req,
-  };
+  const registrationNumber = req.body.registration;
+
   try {
     const response = await fetch(
       "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
       {
         method: "POST",
-        body: JSON.stringify(body),
         headers: {
+          "x-api-key": process.env.DVLA_ENQUIRY_KEY,
           "Content-Type": "application/json",
-          "x-api-key": "QvRdRSChk540ubGHaItvy5ANmcQxbuyYa3CkWqm4",
         },
+        body: JSON.stringify({ registrationNumber }),
       }
     );
-    res = await response.json();
-  } catch (error) {
-    throw new Error(error);
+    data = await response.json();
+
+    return res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json({ error: "failed to load data" });
   }
 }
