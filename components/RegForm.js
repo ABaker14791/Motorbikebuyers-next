@@ -8,7 +8,7 @@ const RegForm = () => {
   const submitRegistration = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("/api/vehicleEnquiry", {
+    const response = await fetch("/api/ves/details", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,6 +37,7 @@ const RegForm = () => {
         />
         <button>Continue</button>
       </form>
+      {returnedData ? <p>{returnedData.make}</p> : null}
     </div>
   );
 };
