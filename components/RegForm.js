@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Styles from "../styles/Regform.module.css";
+import DetailsForm from "./DetailsForm";
 
 const RegForm = () => {
   const [registration, setRegistration] = useState();
@@ -22,22 +23,26 @@ const RegForm = () => {
 
   return (
     <div className={Styles.regwrapper}>
-      <h2 className={Styles.regTitle}>
-        Enter your reg here for your free bike valuation.
-      </h2>
-
-      <form className={Styles.regform} onSubmit={submitRegistration}>
-        <input
-          className={Styles.regforminput}
-          type="text"
-          placeholder="ENTER REG"
-          onChange={(e) => {
-            setRegistration(e.target.value);
-          }}
-        />
-        <button>Continue</button>
-      </form>
-      {returnedData ? <p>{returnedData.make}</p> : null}
+      {returnedData ? (
+        <DetailsForm bikeData={returnedData} />
+      ) : (
+        <>
+          <h2 className={Styles.regTitle}>
+            Enter your reg here for your free bike valuation.
+          </h2>
+          <form className={Styles.regform} onSubmit={submitRegistration}>
+            <input
+              className={Styles.regforminput}
+              type="text"
+              placeholder="ENTER REG"
+              onChange={(e) => {
+                setRegistration(e.target.value);
+              }}
+            />
+            <button>Continue</button>
+          </form>
+        </>
+      )}
     </div>
   );
 };
