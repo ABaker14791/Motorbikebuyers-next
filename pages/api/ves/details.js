@@ -2,9 +2,6 @@ import fetch from "node-fetch";
 
 export default async function (req, res) {
   const registrationNumber = req.body;
-  // const sure = {
-  //   registrationNumber: "re15dwf",
-  // };
 
   try {
     const response = await fetch(

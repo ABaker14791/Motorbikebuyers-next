@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Styles from "../styles/VehicleForm.module.css";
 
 const DetailsForm = ({ bikeData }) => {
