@@ -2,6 +2,33 @@ import { useState } from "react";
 import Styles from "../styles/VehicleForm.module.css";
 
 const DetailsForm = ({ bikeData }) => {
+  const [data, setData] = useState({
+    regNumber: "",
+    manufacturer: "",
+    year: "",
+    mileage: "",
+    serviceHistory: "",
+    keeper: "",
+    finance: "",
+    condition: "",
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(JSON.stringify(data));
+  };
+
+  const handleChange = (e) => {
+    const type = e.target.type;
+    const name = e.target.name;
+    const value = type === "checkbox" ? e.target.checked : e.target.value;
+
+    setData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
   return (
     <div className={Styles.container}>
       <h1>Enter Your Motorbike Details</h1>
@@ -9,41 +36,66 @@ const DetailsForm = ({ bikeData }) => {
         Submit your motorcycle details and your contact information below to get
         your free online valuation.
       </p>
-      <form className={Styles.form}>
+      <form className={Styles.form} onSubmit={handleSubmit}>
         <input
           className={Styles.textBox}
           value={bikeData.registrationNumber}
+          onChange={handleChange}
           placeholder="Reg"
+          name="regNumber"
+          type="text"
         />
         <input
           className={Styles.textBox}
           value={bikeData.make}
+          onChange={handleChange}
           placeholder="Manufacturer"
+          name="manufacturer"
+          type="text"
         />
         <input
           className={Styles.textBox}
           value={bikeData.yearOfManufacture}
+          onChange={handleChange}
           placeholder="Year"
+          name="year"
+          type="text"
         />
-        <input className={Styles.textBox} placeholder="Mileage" />
-        <input className={Styles.textBox} placeholder="Service history" />
+        <input
+          className={Styles.textBox}
+          onChange={handleChange}
+          placeholder="Mileage"
+          name="mileage"
+          type="text"
+        />
+        <input
+          className={Styles.textBox}
+          onChange={handleChange}
+          placeholder="Service history"
+          name="serviceHistory"
+          type="text"
+        />
         <div className={Styles.formGroup}>
           <label>Are you the registered owner and keeper of the vehicle?</label>
           <br />
           <input
             type="radio"
             className={Styles.selector}
+            onChange={handleChange}
             id="selector"
             value="Yes"
             checked
+            name="keeper"
           />
           <label>Yes</label>
           <br />
           <input
             type="radio"
             className={Styles.selector}
+            onChange={handleChange}
             id="selector"
             value="No"
+            name="keeper"
           />
           <label>No</label>
           <br />
@@ -54,25 +106,34 @@ const DetailsForm = ({ bikeData }) => {
           <input
             type="radio"
             className={Styles.selector}
+            onChange={handleChange}
             id="selector"
             value="Yes"
+            name="finance"
           />
           <label>Yes</label>
           <br />
           <input
             type="radio"
             className={Styles.selector}
+            onChange={handleChange}
             id="selector"
             value="No"
             checked
+            name="finance"
           />
           <label>No</label>
           <br />
         </div>
         <div className={Styles.formGroup}>
           <label className={Styles.dropdownLabel}>Condition</label>
-          <select name="condition" id="selector" className={Styles.formControl}>
-            <option value="0" disabled="" selected="">
+          <select
+            name="condition"
+            id="selector"
+            className={Styles.formControl}
+            onChange={handleChange}
+          >
+            <option value="0" disabled="">
               Please select
             </option>
             <option value="1">1 - Very poor</option>
@@ -87,9 +148,27 @@ const DetailsForm = ({ bikeData }) => {
             <option value="10">10 - Very good</option>
           </select>
         </div>
-        <input className={Styles.textBox} placeholder="Name" />
-        <input className={Styles.textBox} placeholder="Email" />
-        <input className={Styles.textBox} placeholder="Phone number" />
+        <input
+          className={Styles.textBox}
+          onChange={handleChange}
+          placeholder="Name"
+          name="name"
+          type="text"
+        />
+        <input
+          className={Styles.textBox}
+          onChange={handleChange}
+          placeholder="Email"
+          name="email"
+          type="text"
+        />
+        <input
+          className={Styles.textBox}
+          onChange={handleChange}
+          placeholder="Phone number"
+          name="phone"
+          type="text"
+        />
         <button type="submit" className={Styles.submitButton}>
           Submit
         </button>
