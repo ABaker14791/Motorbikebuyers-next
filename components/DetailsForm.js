@@ -1,5 +1,30 @@
 import { useState } from "react";
 import Styles from "../styles/VehicleForm.module.css";
+// FireStore
+import { initializeApp } from "firebase/app";
+import { getFirestore, addDoc, collection } from "firebase/firestore";
+
+// Your web app's Firebase configuration
+const firebaseConfig = initializeApp({
+  apiKey: "AIzaSyBpJCBr2PeSbi8SA7fBpshgnAuHtuQfZ7I",
+  authDomain: "motorbikebuyers-2fdbb.firebaseapp.com",
+  projectId: "motorbikebuyers-2fdbb",
+  storageBucket: "motorbikebuyers-2fdbb.appspot.com",
+  messagingSenderId: "419445289298",
+  appId: "1:419445289298:web:ab44ab4b48db8241be0a8b",
+});
+
+const db = getFirestore();
+const buyersCollection = collection(db, "bikes");
+
+async function writeBuyersBikes(data) {
+  const addBike = await addDoc(buyersCollection, {
+    first: data.name,
+    year: data.year,
+    manufacturer: data.manufacturer,
+    model: data.model,
+  });
+}
 
 const DetailsForm = ({ bikeData }) => {
   const [data, setData] = useState({
@@ -19,7 +44,8 @@ const DetailsForm = ({ bikeData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(data.model));
+    writeBuyersBikes(data);
   };
 
   const handleChange = (e) => {
