@@ -9,7 +9,7 @@ const Contact = () => {
       <div className={Styles.contactInfo}>
         <h1>Get in touch</h1>
         <p className={Styles.contactText}>
-          For any queries not answered in our FAQ page please let us know you
+          For any queries not answered in our FAQ page please let us know your
           requirements and we will respond as soon as possible.
         </p>
         <div className={Styles.contactLink}>

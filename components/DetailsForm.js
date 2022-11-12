@@ -3,9 +3,10 @@ import Styles from "../styles/VehicleForm.module.css";
 
 const DetailsForm = ({ bikeData }) => {
   const [data, setData] = useState({
-    regNumber: "",
-    manufacturer: "",
-    year: "",
+    regNumber: bikeData.registrationNumber || "",
+    manufacturer: bikeData.make || "",
+    model: "",
+    year: bikeData.yearOfManufacture || "",
     mileage: "",
     serviceHistory: "",
     keeper: "",
@@ -51,6 +52,13 @@ const DetailsForm = ({ bikeData }) => {
           onChange={handleChange}
           placeholder="Manufacturer"
           name="manufacturer"
+          type="text"
+        />
+        <input
+          className={Styles.textBox}
+          onChange={handleChange}
+          placeholder="Model"
+          name="model"
           type="text"
         />
         <input
