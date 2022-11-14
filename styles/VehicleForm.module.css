@@ -54,3 +54,8 @@
   border: 1px solid;
   border-radius: 4px;
 }
+
+.confirmationNotice {
+  font-size: 1.6em;
+  margin: 3em 0;
+}

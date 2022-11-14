@@ -5,9 +5,11 @@ import DetailsForm from "./DetailsForm";
 const RegForm = () => {
   const [registration, setRegistration] = useState();
   const [returnedData, setReturnedData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const submitRegistration = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const response = await fetch("/api/ves/details", {
       method: "POST",
@@ -18,6 +20,7 @@ const RegForm = () => {
     });
     const data = await response.json();
     console.log(data);
+    setLoading(false);
     setReturnedData(data);
   };
 
@@ -39,10 +42,11 @@ const RegForm = () => {
                 setRegistration(e.target.value);
               }}
             />
-            <button>Continue</button>
+            <button className={Styles.submitButton}>Continue</button>
           </form>
         </>
       )}
+      {loading ? <div className={Styles.loading}>Loading...</div> : null}
     </div>
   );
 };
