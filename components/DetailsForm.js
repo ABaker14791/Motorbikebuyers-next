@@ -35,7 +35,7 @@ async function writeBuyersBikes(data) {
 }
 
 const DetailsForm = ({ bikeData }) => {
-  // Hide form & show success message once submitted
+  // Hide form & show success message once submitted.
   const [submitted, setSubmitted] = useState(false);
   // Form State
   const [data, setData] = useState({
