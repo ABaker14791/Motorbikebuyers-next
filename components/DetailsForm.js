@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Styles from "../styles/VehicleForm.module.css";
 // FireStore
 import { initializeApp } from "firebase/app";
@@ -37,6 +37,7 @@ async function writeBuyersBikes(data) {
 const DetailsForm = ({ bikeData }) => {
   // Hide form & show success message once submitted.
   const [submitted, setSubmitted] = useState(false);
+  const ref = useRef(null);
   // Form State
   const [data, setData] = useState({
     regNumber: bikeData.registrationNumber || "",
@@ -59,18 +60,21 @@ const DetailsForm = ({ bikeData }) => {
     setSubmitted(true);
   };
 
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [submitted]);
+
   const handleChange = (e) => {
     const type = e.target.type;
     const name = e.target.name;
     const value = type === "checkbox" ? e.target.checked : e.target.value;
-
     setData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   return (
     <>
       {submitted ? (
-        <div className={Styles.confirmationNotice}>
+        <div className={Styles.confirmationNotice} ref={ref}>
           Thank you for submitting your details, we will be in touch shortly.
         </div>
       ) : (
