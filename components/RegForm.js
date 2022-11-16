@@ -11,19 +11,24 @@ const RegForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    const response = await fetch("/api/ves/details", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registration),
-    });
-    const data = await response.json();
-    console.log(data);
-    setLoading(false);
-    setReturnedData(data);
+    if (registration) {
+      const response = await fetch("/api/ves/details", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registration),
+      });
+      const data = await response.json();
+      console.log(data);
+      setLoading(false);
+      setReturnedData(data);
+    } else {
+      setReturnedData("No registration supplied.");
+      setLoading(false);
+    }
   };
-
+  console.log(returnedData);
   return (
     <div className={Styles.regwrapper}>
       {returnedData ? (

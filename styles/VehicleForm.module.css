@@ -46,6 +46,9 @@
 
 .dropdownLabel {
   width: 100%;
+  text-align: left;
+  display: flex;
+  align-self: flex-start;
 }
 
 .formControl {

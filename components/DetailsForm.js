@@ -27,6 +27,7 @@ async function writeBuyersBikes(data) {
     serviceHistory: data.serviceHistory,
     keeper: data.keeper,
     finance: data.finance,
+    stolen: data.stolen,
     condition: data.condition,
     name: data.name,
     email: data.email,
@@ -37,7 +38,6 @@ async function writeBuyersBikes(data) {
 const DetailsForm = ({ bikeData }) => {
   // Hide form & show success message once submitted.
   const [submitted, setSubmitted] = useState(false);
-  const ref = useRef(null);
   // Form State
   const [data, setData] = useState({
     regNumber: bikeData.registrationNumber || "",
@@ -45,9 +45,10 @@ const DetailsForm = ({ bikeData }) => {
     model: "",
     year: bikeData.yearOfManufacture || "",
     mileage: "",
-    serviceHistory: "",
-    keeper: "",
-    finance: "",
+    serviceHistory: "Select sevice history",
+    keeper: "Yes",
+    finance: "No",
+    stolen: "No",
     condition: "",
     name: "",
     email: "",
@@ -60,6 +61,8 @@ const DetailsForm = ({ bikeData }) => {
     setSubmitted(true);
   };
 
+  // After form submit scroll up to center the success message
+  const ref = useRef(null);
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   }, [submitted]);
@@ -67,7 +70,7 @@ const DetailsForm = ({ bikeData }) => {
   const handleChange = (e) => {
     const type = e.target.type;
     const name = e.target.name;
-    const value = type === "checkbox" ? e.target.checked : e.target.value;
+    const value = type === "radio" ? e.target.checked : e.target.value;
     setData((prevData) => ({ ...prevData, [name]: value }));
   };
 
@@ -123,13 +126,23 @@ const DetailsForm = ({ bikeData }) => {
               name="mileage"
               type="text"
             />
-            <input
-              className={Styles.textBox}
-              onChange={handleChange}
-              placeholder="Service history"
+
+            <select
               name="serviceHistory"
-              type="text"
-            />
+              id="selector"
+              className={Styles.formControl}
+              onChange={handleChange}
+              defaultValue={0}
+            >
+              <option disabled={true} value="0">
+                --Select service history--
+              </option>
+              <option value="Full Manufacturer">Full Manufacturer</option>
+              <option value="Full Mixed">Full Mixed</option>
+              <option value="Part">Part</option>
+              <option value="None">None</option>
+            </select>
+
             <div className={Styles.formGroup}>
               <label>
                 Are you the registered owner and keeper of the vehicle?
@@ -141,7 +154,7 @@ const DetailsForm = ({ bikeData }) => {
                 onChange={handleChange}
                 id="selector"
                 value="Yes"
-                checked
+                defaultChecked={true}
                 name="keeper"
               />
               <label>Yes</label>
@@ -176,12 +189,40 @@ const DetailsForm = ({ bikeData }) => {
                 onChange={handleChange}
                 id="selector"
                 value="No"
-                checked
+                defaultChecked={true}
                 name="finance"
               />
               <label>No</label>
               <br />
             </div>
+            <div className={Styles.formGroup}>
+              <label>
+                Has the vehicle ever been a registered write off or stolen?
+              </label>
+              <br />
+              <input
+                type="radio"
+                className={Styles.selector}
+                onChange={handleChange}
+                id="selector"
+                value="Yes"
+                name="stolen"
+              />
+              <label>Yes</label>
+              <br />
+              <input
+                type="radio"
+                className={Styles.selector}
+                onChange={handleChange}
+                id="selector"
+                value="No"
+                defaultChecked={true}
+                name="stolen"
+              />
+              <label>No</label>
+              <br />
+            </div>
+
             <div className={Styles.formGroup}>
               <label className={Styles.dropdownLabel}>Condition</label>
               <select
@@ -189,9 +230,10 @@ const DetailsForm = ({ bikeData }) => {
                 id="selector"
                 className={Styles.formControl}
                 onChange={handleChange}
+                defaultValue={0}
               >
-                <option value="0" disabled="">
-                  Please select
+                <option disabled={true} value="0">
+                  --Select condition--
                 </option>
                 <option value="1">1 - Very poor</option>
                 <option value="2">2</option>
