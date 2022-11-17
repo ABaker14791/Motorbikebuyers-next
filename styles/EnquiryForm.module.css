@@ -1,0 +1,38 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.496);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 60vw;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2em 2em;
+  position: relative;
+}
+
+.form textarea {
+  width: 100%;
+}
+
+.enquiryMessage {
+  color: #000;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}

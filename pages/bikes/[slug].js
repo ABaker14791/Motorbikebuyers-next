@@ -1,10 +1,16 @@
+import { useState } from "react";
+// next imports
 import Head from "next/head";
-import { createClient } from "contentful";
-import Styles from "../../styles/Slug.module.css";
 import Image from "next/image";
-import Link from "next/link";
+// CMS imports
+import { createClient } from "contentful";
+// Styles
+import Styles from "../../styles/Slug.module.css";
+// AWS
 import { Authenticator } from "@aws-amplify/ui-react";
+// Components
 import ReturnBar from "../../components/ReturnBar";
+import EnquiryForm from "../../components/EnquiryForm";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -25,6 +31,8 @@ export const getServerSideProps = async ({ params }) => {
 const bikeDetails = ({ tradeBikes }) => {
   console.log(tradeBikes);
   const { title, price, image, description } = tradeBikes.fields;
+  const [formOpen, setFormOpen] = useState(false);
+  console.log(formOpen);
 
   return (
     <div>
@@ -51,12 +59,19 @@ const bikeDetails = ({ tradeBikes }) => {
             <div className={Styles.description}>{description}</div>
             <div className={Styles.actions}>
               <div className={Styles.actions}>
-                <Link href="#">
-                  <a>Enquire Now</a>
-                </Link>
+                <button
+                  onClick={() => {
+                    setFormOpen(!formOpen);
+                  }}
+                >
+                  Enquire Now
+                </button>
               </div>
             </div>
           </div>
+          {formOpen ? (
+            <EnquiryForm formOpen={formOpen} setFormOpen={setFormOpen} />
+          ) : null}
         </Authenticator>
       </div>
     </div>

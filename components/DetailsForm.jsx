@@ -144,7 +144,7 @@ const DetailsForm = ({ bikeData }) => {
             </select>
 
             <div className={Styles.formGroup}>
-              <label>
+              <label htmlFor="keeper">
                 Are you the registered owner and keeper of the vehicle?
               </label>
               <br />
@@ -171,7 +171,9 @@ const DetailsForm = ({ bikeData }) => {
               <br />
             </div>
             <div className={Styles.formGroup}>
-              <label>Does the vehicle have any outstanding finance?</label>
+              <label htmlFor="finance">
+                Does the vehicle have any outstanding finance?
+              </label>
               <br />
               <input
                 type="radio"
@@ -196,7 +198,7 @@ const DetailsForm = ({ bikeData }) => {
               <br />
             </div>
             <div className={Styles.formGroup}>
-              <label>
+              <label htmlFor="stolen">
                 Has the vehicle ever been a registered write off or stolen?
               </label>
               <br />
@@ -223,36 +225,34 @@ const DetailsForm = ({ bikeData }) => {
               <br />
             </div>
 
-            <div className={Styles.formGroup}>
-              <label className={Styles.dropdownLabel}>Condition</label>
-              <select
-                name="condition"
-                id="selector"
-                className={Styles.formControl}
-                onChange={handleChange}
-                defaultValue={0}
-              >
-                <option disabled={true} value="0">
-                  --Select condition--
-                </option>
-                <option value="1">1 - Very poor</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Average</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10 - Very good</option>
-              </select>
-            </div>
+            <select
+              name="condition"
+              id="selector"
+              className={Styles.formControl}
+              onChange={handleChange}
+              defaultValue={0}
+            >
+              <option disabled={true} value="0">
+                --Select condition--
+              </option>
+              <option value="1">1 - Very poor</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 - Average</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10 - Very good</option>
+            </select>
             <input
               className={Styles.textBox}
               onChange={handleChange}
               placeholder="Name"
               name="name"
               type="text"
+              required
             />
             <input
               className={Styles.textBox}
@@ -260,6 +260,7 @@ const DetailsForm = ({ bikeData }) => {
               placeholder="Email"
               name="email"
               type="text"
+              required
             />
             <input
               className={Styles.textBox}

@@ -28,7 +28,6 @@ const RegForm = () => {
       setLoading(false);
     }
   };
-  console.log(returnedData);
   return (
     <div className={Styles.regwrapper}>
       {returnedData ? (
