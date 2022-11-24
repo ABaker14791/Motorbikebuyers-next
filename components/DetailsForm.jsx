@@ -269,6 +269,22 @@ const DetailsForm = ({ bikeData }) => {
               name="phone"
               type="text"
             />
+            <div className={Styles.disclaimer}>
+              <span>
+                We will use your personal information to provide you with your
+                valuation. View full terms and conditions and privacy policy
+              </span>
+              <br />
+              <div className={Styles.disclaimer__checkControl}>
+                <input type="checkbox" name="confirm" required />
+                <label htmlFor="confirm">
+                  Please select the checkbox if you consent to WeBuyAnyBike.com
+                  using the information you have given us here to value your
+                  motorbike and communicate with you by email and phone about
+                  that valuation.
+                </label>
+              </div>
+            </div>
             <button type="submit" className={Styles.submitButton}>
               Submit
             </button>

@@ -64,3 +64,16 @@
   font-size: 1.6em;
   margin: 3em 0;
 }
+
+.disclaimer {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1em;
+  align-items: flex-start;
+}
+
+.disclaimer__checkControl {
+  display: flex;
+  gap: 1em;
+}
