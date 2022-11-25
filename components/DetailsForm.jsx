@@ -278,10 +278,10 @@ const DetailsForm = ({ bikeData }) => {
               <div className={Styles.disclaimer__checkControl}>
                 <input type="checkbox" name="confirm" required />
                 <label htmlFor="confirm">
-                  Please select the checkbox if you consent to WeBuyAnyBike.com
-                  using the information you have given us here to value your
-                  motorbike and communicate with you by email and phone about
-                  that valuation.
+                  Please select the checkbox if you consent to
+                  themotorbikebuyers.co.uk using the information you have given
+                  us here to value your motorbike and communicate with you by
+                  email and phone about that valuation.
                 </label>
               </div>
             </div>
