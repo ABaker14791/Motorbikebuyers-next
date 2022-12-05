@@ -4,11 +4,11 @@ import HeroImg from "../assets/images/hero-img.jpg";
 import Styles from "../styles/MastHead.module.css";
 
 const MastHead = () => {
-  return (
-    <div>
-      <Image src={HeroImg} />
-    </div>
-  );
+	return (
+		<div>
+			<Image src={HeroImg} alt="" />
+		</div>
+	);
 };
 
 export default MastHead;

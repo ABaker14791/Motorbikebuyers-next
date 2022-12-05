@@ -24,16 +24,16 @@ export const getServerSideProps = async (context) => {
 	};
 };
 
-const bikeDetails = (props) => {
-	const bikeDetails = props.bike;
-	console.log(bikeDetails);
+const BikeDetails = (props) => {
+	const bike = props.bike;
+
 	const [formOpen, setFormOpen] = useState(false);
 	console.log(formOpen);
 
 	return (
 		<div>
 			<Head>
-				<title>{bikeDetails.title}</title>
+				<title>{bike.title}</title>
 				<meta name="description" content="Sell your motorbike online" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
@@ -43,20 +43,17 @@ const bikeDetails = (props) => {
 				<Authenticator>
 					<div className={Styles.image}>
 						<Image
-							src={bikeDetails.images[0].src}
+							src={bike.images[0].src}
 							width={902}
 							height={677}
 							alt="bike for sale"
 						/>
 					</div>
 					<div className={Styles.info}>
-						<h2 className={Styles.title}>{bikeDetails.title}</h2>
-						<div className={Styles.price}>£{bikeDetails.price}</div>
+						<h2 className={Styles.title}>{bike.title}</h2>
+						<div className={Styles.price}>£{bike.price}</div>
 						<div className={Styles.description}>
-							{bikeDetails.description.replace(
-								/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
-								""
-							)}
+							{bike.description.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, "")}
 						</div>
 						<div className={Styles.actions}>
 							<div className={Styles.actions}>
