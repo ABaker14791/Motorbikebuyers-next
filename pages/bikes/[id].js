@@ -2,9 +2,8 @@ import { useState } from "react";
 // next imports
 import Head from "next/head";
 import Image from "next/image";
-import { GetStaticProps } from "next";
 // Woocommerce data
-import { fetchWooCommerceProducts } from "../../utils/wooCommerceApi";
+import { fetchWooCommerceSingle } from "../../utils/wooCommerceApi";
 // Styles
 import Styles from "../../styles/Slug.module.css";
 // AWS
@@ -13,36 +12,28 @@ import { Authenticator } from "@aws-amplify/ui-react";
 import ReturnBar from "../../components/ReturnBar";
 import EnquiryForm from "../../components/EnquiryForm";
 
-export const getStaticProps = async () => {
-	const wooCommerceProducts = await fetchWooCommerceProducts().catch((error) =>
-		console.error(error)
-	);
-
-	if (!wooCommerceProducts) {
-		return {
-			notFound: true,
-		};
-	}
+export const getServerSideProps = async (context) => {
+	const { id } = context.params;
+	const items = await fetchWooCommerceSingle(`${id}`);
+	const data = await items.data;
 
 	return {
 		props: {
-			products: wooCommerceProducts.data,
+			bike: data,
 		},
-		// revalidate: 60 // regenerate page with new data fetch after 60 seconds
 	};
 };
 
 const bikeDetails = (props) => {
-	const products = props;
-	console.log(products);
-	const { title, price, image, description } = products.fields;
+	const bikeDetails = props.bike;
+	console.log(bikeDetails);
 	const [formOpen, setFormOpen] = useState(false);
 	console.log(formOpen);
 
 	return (
 		<div>
 			<Head>
-				<title>{title}</title>
+				<title>{bikeDetails.title}</title>
 				<meta name="description" content="Sell your motorbike online" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
@@ -52,16 +43,21 @@ const bikeDetails = (props) => {
 				<Authenticator>
 					<div className={Styles.image}>
 						<Image
-							src={"https:" + image.fields.file.url}
-							width={image.fields.file.details.image.width}
-							height={image.fields.file.details.image.height}
+							src={bikeDetails.images[0].src}
+							width={902}
+							height={677}
 							alt="bike for sale"
 						/>
 					</div>
 					<div className={Styles.info}>
-						<h2 className={Styles.title}>{title}</h2>
-						<div className={Styles.price}>£{price}</div>
-						<div className={Styles.description}>{description}</div>
+						<h2 className={Styles.title}>{bikeDetails.title}</h2>
+						<div className={Styles.price}>£{bikeDetails.price}</div>
+						<div className={Styles.description}>
+							{bikeDetails.description.replace(
+								/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+								""
+							)}
+						</div>
 						<div className={Styles.actions}>
 							<div className={Styles.actions}>
 								<button

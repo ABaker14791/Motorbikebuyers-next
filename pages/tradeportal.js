@@ -11,7 +11,7 @@ const tradeportal = (props) => {
 	const { products } = props;
 	console.log(products);
 	return (
-		<div>
+		<div className={Styles.pageBG}>
 			<Head>
 				<title>Motorbike Buyers</title>
 				<meta name="description" content="Sell your motorbike online" />
