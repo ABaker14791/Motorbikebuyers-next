@@ -76,4 +76,4 @@ const BikeDetails = (props) => {
 	);
 };
 
-export default bikeDetails;
+export default BikeDetails;
