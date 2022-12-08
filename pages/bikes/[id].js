@@ -28,12 +28,11 @@ const BikeDetails = (props) => {
 	const bike = props.bike;
 
 	const [formOpen, setFormOpen] = useState(false);
-	console.log(formOpen);
 
 	return (
 		<div>
 			<Head>
-				<title>{bike.title}</title>
+				<title>{bike.name}</title>
 				<meta name="description" content="Sell your motorbike online" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
@@ -50,7 +49,7 @@ const BikeDetails = (props) => {
 						/>
 					</div>
 					<div className={Styles.info}>
-						<h2 className={Styles.title}>{bike.title}</h2>
+						<h2 className={Styles.title}>{bike.name}</h2>
 						<div className={Styles.price}>£{bike.price}</div>
 						<div className={Styles.description}>
 							{bike.description.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, "")}
