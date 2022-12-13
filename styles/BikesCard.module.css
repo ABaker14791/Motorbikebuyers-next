@@ -21,7 +21,7 @@
 	border-radius: 0 0 4px 4px;
 	display: flex;
 	flex-direction: column;
-	justify-content: start;
+	justify-content: flex-start;
 	flex-grow: 1;
 }
 
@@ -37,7 +37,6 @@
 .info {
 	padding: 16px;
 	align-self: flex-start;
-
 	height: 100%;
 }
 
@@ -55,7 +54,6 @@
 }
 
 .actions {
-	/* margin-top: 15px; */
 	display: flex;
 	padding: 16px;
 	justify-content: space-between;

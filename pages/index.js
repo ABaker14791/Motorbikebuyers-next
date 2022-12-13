@@ -15,10 +15,10 @@ export default function index() {
 				<link rel="icon" href="/favicon.ico" />
 
 				<link
-					rel="preload"
+					as="style"
+					rel="stylesheet preload prefetch"
 					href="/fonts/UKNumberPlate.ttf"
-					as="font"
-					crossOrigin=""
+					crossorigin="anonymous"
 				/>
 			</Head>
 			<MastHead />
