@@ -31,7 +31,8 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1",
-    "sib-api-v3-sdk": "^8.4.2"
+    "sib-api-v3-sdk": "^8.4.2",
+    "superagent": "^8.0.6"
   },
   "devDependencies": {
     "eslint": "8.13.0",

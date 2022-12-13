@@ -1,4 +1,3 @@
-const { bindKey } = require("cypress/types/lodash");
 var SibApiV3Sdk = require("sib-api-v3-sdk");
 var defaultClient = SibApiV3Sdk.ApiClient.instance;
 
