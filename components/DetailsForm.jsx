@@ -1,38 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import Styles from "../styles/VehicleForm.module.css";
-// FireStore
-import { initializeApp } from "firebase/app";
-import { getFirestore, addDoc, collection } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-const firebaseConfig = initializeApp({
-	apiKey: "AIzaSyBpJCBr2PeSbi8SA7fBpshgnAuHtuQfZ7I",
-	authDomain: "motorbikebuyers-2fdbb.firebaseapp.com",
-	projectId: "motorbikebuyers-2fdbb",
-	storageBucket: "motorbikebuyers-2fdbb.appspot.com",
-	messagingSenderId: "419445289298",
-	appId: "1:419445289298:web:ab44ab4b48db8241be0a8b",
-});
-
-const db = getFirestore();
-const buyersCollection = collection(db, "bikes");
-
-async function writeBuyersBikes(data) {
-	const addBike = await addDoc(buyersCollection, {
-		registration: data.regNumber,
-		Manufacturer: data.manufacturer,
-		model: data.model,
-		year: data.year,
-		mileage: data.mileage,
-		serviceHistory: data.serviceHistory,
-		keeper: data.keeper,
-		finance: data.finance,
-		stolen: data.stolen,
-		condition: data.condition,
-		name: data.name,
-		email: data.email,
-		phone: data.phone,
+// MongoDB insert data
+async function insertBikeData(bikeData) {
+	const response = await fetch("/api/mongo/bikes", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(bikeData),
 	});
+	const data = await response.json();
+	console.log(data);
 }
 
 async function sendConfirmationEmail(data) {
@@ -44,6 +23,17 @@ async function sendConfirmationEmail(data) {
 		body: JSON.stringify(data),
 	});
 	const emailConfirmation = await response.json();
+}
+
+async function sendDetailsEmail(data) {
+	const response = await fetch("/api/mail/bikeDetails", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	});
+	const detailsEmailConfirmation = await response.json();
 }
 
 const DetailsForm = ({ bikeData }) => {
@@ -68,8 +58,9 @@ const DetailsForm = ({ bikeData }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		writeBuyersBikes(data);
-		sendConfirmationEmail(data);
+		insertBikeData(data);
+		// sendConfirmationEmail(data);
+		// sendDetailsEmail(data);
 		setSubmitted(true);
 	};
 

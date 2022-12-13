@@ -6,6 +6,13 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	cursor: pointer;
+}
+
+.card:hover {
+	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
+		0px 5px 7px 0px rgb(0 0 0 / 14%), 0px 2px 9px 0px rgb(0 0 0 / 12%);
 }
 
 .content {
@@ -14,7 +21,7 @@
 	border-radius: 0 0 4px 4px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: start;
 	flex-grow: 1;
 }
 
@@ -23,21 +30,20 @@
 	position: relative;
 }
 
-.image a {
-	cursor: pointer;
-}
-
 .image span {
 	border-radius: 4px 4px 0 0;
 }
 
 .info {
 	padding: 16px;
-	/* height: max-content; */
+	align-self: flex-start;
+
+	height: 100%;
 }
 
 .info h4 {
 	margin: 4px 0;
+	color: rgb(38, 38, 38);
 	font-weight: 500;
 	text-transform: uppercase;
 }
@@ -45,22 +51,42 @@
 .info p {
 	margin: 0;
 	color: #77a464;
+	font-size: 1.3em;
 }
 
 .actions {
-	margin-top: 15px;
+	/* margin-top: 15px; */
 	display: flex;
 	padding: 16px;
+	justify-content: space-between;
 }
 
-.actions a {
-	color: #fff;
-	background: #0171bd;
-	padding: 12px 24px;
-	text-decoration: none;
-	border-radius: 4px;
+.year {
+	color: rgb(82, 82, 82);
 }
 
-.actions a:hover {
-	background-color: #0188e2;
+.mileage {
+	color: rgb(82, 82, 82);
+}
+
+.sellerInfo {
+	display: flex;
+	margin: 0 16px 16px 16px;
+	padding: 16px 0 0 0;
+	justify-content: space-between;
+	color: rgb(82, 82, 82);
+	border-top: 1px rgb(145, 145, 145) solid;
+	justify-self: flex-end;
+}
+.location {
+	display: flex;
+}
+
+.location svg {
+	transform: translateY(20%);
+	color: rgb(145, 145, 145);
+}
+
+.locationText {
+	margin-left: 0.2em;
 }
