@@ -9,13 +9,13 @@ import awsExports from "../src/aws-exports";
 Amplify.configure({ ...awsExports, ssr: true });
 
 export default function App({ Component, pageProps }) {
-  return (
-    <AmplifyProvider>
-      <Authenticator.Provider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Authenticator.Provider>
-    </AmplifyProvider>
-  );
+	return (
+		<AmplifyProvider>
+			<Authenticator.Provider>
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</Authenticator.Provider>
+		</AmplifyProvider>
+	);
 }

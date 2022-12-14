@@ -1,69 +1,113 @@
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 60px auto 0px auto;
-  display: flex;
-  /* min-width: 100vh; */
-  min-height: calc(100vh - 202px) !important;
+	width: 90%;
+	max-width: 1200px;
+	margin: 60px auto 0px auto;
+	display: flex;
+	/* min-width: 100vh; */
+	min-height: calc(100vh - 202px) !important;
 }
 
 .info {
-  margin: 0 20px;
-  width: 50%;
+	margin: 0 20px;
+	width: 50%;
 }
 
 .image {
-  width: 50%;
-  height: auto;
+	width: 50%;
+	height: auto;
 }
 
 .actions {
-  margin-top: 15px;
-  display: flex;
-  padding: 0px;
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+	padding: 0px;
+}
+
+.contactButton {
+	color: #fff;
+	padding: 12px 24px;
+	background: #0171bd;
+	border: none;
+}
+
+.contactButton:hover {
+	background-color: #0188e2;
+}
+
+.secondaryContacts {
+	margin-bottom: 1em;
+}
+
+.whatsAppButton {
+	border: none;
+	padding: 0;
+	color: #1c2527;
+	background-color: #fff;
+}
+
+.whatsAppButton:hover {
+	color: #25d366;
+}
+
+.whatsAppButton span {
+	margin-left: 0.4em;
+}
+
+.phoneButton {
+	margin-left: 2em;
+	padding: 0;
+	color: #1c2527;
+	background-color: #fff;
+	border: none;
+}
+
+.phoneButton span {
+	margin-left: 0.4em;
+}
+
+.phoneButton:hover {
+	color: #0171bd;
 }
 
 .actions button {
-  color: #fff;
-  background: #0171bd;
-  padding: 12px 24px;
-  text-decoration: none;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
+	text-decoration: none;
+	width: max-content;
+	border-radius: 4px;
+	cursor: pointer;
 }
 
-.actions button:hover {
-  background-color: #0188e2;
+.actions button svg {
+	transform: translateY(20%);
 }
 
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    padding: 0;
-    margin: 3rem auto;
-  }
+	.container {
+		flex-direction: column;
+		padding: 0;
+		margin: 3rem auto;
+	}
 
-  .info {
-    margin: 20px 0;
-    width: 100%;
-  }
+	.info {
+		margin: 20px 0;
+		width: 100%;
+	}
 
-  .image {
-    width: 100%;
-    /* min-width: 200px; */
-    height: auto;
-  }
+	.image {
+		width: 100%;
+		/* min-width: 200px; */
+		height: auto;
+	}
 }
 
 .title {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 15px;
+	font-size: 1.3rem;
+	font-weight: 500;
+	margin-bottom: 15px;
 }
 
 .price {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  color: #77a464;
+	font-size: 1.1rem;
+	margin-bottom: 15px;
+	color: #77a464;
 }

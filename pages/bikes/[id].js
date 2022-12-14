@@ -6,6 +6,8 @@ import Image from "next/image";
 import { fetchWooCommerceSingle } from "../../utils/wooCommerceApi";
 // Styles
 import Styles from "../../styles/Slug.module.css";
+// Icons
+import { FaWhatsapp, FaPhone } from "react-icons/fa";
 // AWS
 import { Authenticator } from "@aws-amplify/ui-react";
 // Components
@@ -56,12 +58,33 @@ const BikeDetails = (props) => {
 						</div>
 						<div className={Styles.actions}>
 							<div className={Styles.actions}>
+								<div className={Styles.secondaryContacts}>
+									<button
+										// onClick={() => {
+										// 	setFormOpen(!formOpen);
+										// }}
+										className={Styles.whatsAppButton}
+									>
+										<FaWhatsapp />
+										<span>WhatsApp</span>
+									</button>
+									<button
+										// onClick={() => {
+										// 	setFormOpen(!formOpen);
+										// }}
+										className={Styles.phoneButton}
+									>
+										<FaPhone />
+										<span>01274 583903</span>
+									</button>
+								</div>
 								<button
 									onClick={() => {
 										setFormOpen(!formOpen);
 									}}
+									className={Styles.contactButton}
 								>
-									Enquire Now
+									<span>Enquire Now</span>
 								</button>
 							</div>
 						</div>
