@@ -18,7 +18,7 @@ export default function index() {
 					as="style"
 					rel="stylesheet preload prefetch"
 					href="/fonts/UKNumberPlate.ttf"
-					crossorigin
+					crossOrigin
 				/>
 			</Head>
 			<MastHead />
