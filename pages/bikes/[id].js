@@ -7,7 +7,12 @@ import { fetchWooCommerceSingle } from "../../utils/wooCommerceApi";
 // Styles
 import Styles from "../../styles/Slug.module.css";
 // Icons
-import { FaWhatsapp, FaPhone, FaCalendarAlt } from "react-icons/fa";
+import {
+	FaWhatsapp,
+	FaPhone,
+	FaCalendarAlt,
+	FaTachometerAlt,
+} from "react-icons/fa";
 // AWS
 import { Authenticator } from "@aws-amplify/ui-react";
 // Components
@@ -28,6 +33,8 @@ export const getServerSideProps = async (context) => {
 
 const BikeDetails = (props) => {
 	const bike = props.bike;
+	const galleryImages = props.bike.images;
+	console.log(bike);
 
 	const [formOpen, setFormOpen] = useState(false);
 
@@ -42,60 +49,76 @@ const BikeDetails = (props) => {
 			<ReturnBar />
 			<div className={Styles.container}>
 				<Authenticator>
-					<div className={Styles.image}>
-						<Image
-							src={bike.images[0].src}
-							width={902}
-							height={677}
-							alt="bike for sale"
-						/>
-					</div>
-					<div className={Styles.info}>
-						<h2 className={Styles.title}>{bike.name}</h2>
-						<div className={Styles.price}>£{bike.price}</div>
-						<div className={Styles.year}>
-							<span>
-								<FaCalendarAlt />
-								&nbsp;
-								{bike.attributes[1].options}
-							</span>
-							<span>{bike.attributes[0].options} miles</span>
+					<div className={Styles.rowContainer}>
+						<div className={Styles.image}>
+							<Image
+								src={bike.images[0].src}
+								width={902}
+								height={677}
+								alt="bike for sale"
+							/>
 						</div>
-						<div className={Styles.description}>
-							{bike.description.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, "")}
-						</div>
-						<div className={Styles.actions}>
+						<div className={Styles.info}>
+							<h2 className={Styles.title}>{bike.name}</h2>
+							<div className={Styles.price}>£{bike.price}</div>
+							<div className={Styles.year}>
+								<span>
+									<FaCalendarAlt />
+									&nbsp;
+									{bike.attributes[1].options}
+								</span>
+								<span>
+									<FaTachometerAlt />
+									&nbsp;
+									{bike.attributes[0].options} miles
+								</span>
+							</div>
+							<div className={Styles.description}>
+								{bike.description.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, "")}
+							</div>
 							<div className={Styles.actions}>
-								<div className={Styles.secondaryContacts}>
+								<div className={Styles.actions}>
+									<div className={Styles.secondaryContacts}>
+										<button
+											// onClick={() => {
+											// 	setFormOpen(!formOpen);
+											// }}
+											className={Styles.whatsAppButton}
+										>
+											<FaWhatsapp />
+											<span>WhatsApp</span>
+										</button>
+										<button
+											// onClick={() => {
+											// 	setFormOpen(!formOpen);
+											// }}
+											className={Styles.phoneButton}
+										>
+											<FaPhone />
+											<span>01274 583903</span>
+										</button>
+									</div>
 									<button
-										// onClick={() => {
-										// 	setFormOpen(!formOpen);
-										// }}
-										className={Styles.whatsAppButton}
+										onClick={() => {
+											setFormOpen(!formOpen);
+										}}
+										className={Styles.contactButton}
 									>
-										<FaWhatsapp />
-										<span>WhatsApp</span>
-									</button>
-									<button
-										// onClick={() => {
-										// 	setFormOpen(!formOpen);
-										// }}
-										className={Styles.phoneButton}
-									>
-										<FaPhone />
-										<span>01274 583903</span>
+										<span>Enquire Now</span>
 									</button>
 								</div>
-								<button
-									onClick={() => {
-										setFormOpen(!formOpen);
-									}}
-									className={Styles.contactButton}
-								>
-									<span>Enquire Now</span>
-								</button>
 							</div>
 						</div>
+					</div>
+					<div className={Styles.gallery}>
+						{galleryImages.map((galleryImg) => (
+							<Image
+								src={galleryImg.src}
+								width={225}
+								height={169}
+								alt="bike gallery image"
+							/>
+						))}
 					</div>
 					{formOpen ? (
 						<EnquiryForm formOpen={formOpen} setFormOpen={setFormOpen} />

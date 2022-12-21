@@ -3,8 +3,14 @@
 	max-width: 1200px;
 	margin: 60px auto 0px auto;
 	display: flex;
+	flex-direction: column;
 	/* min-width: 100vh; */
 	min-height: calc(100vh - 202px) !important;
+}
+
+.rowContainer {
+	display: flex;
+	flex-direction: row;
 }
 
 .info {
@@ -118,4 +124,12 @@
 	font-size: 1.2rem;
 	margin-bottom: 15px;
 	color: #77a464;
+}
+
+.gallery {
+	width: 100%;
+	flex-basis: 100%;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
 }
