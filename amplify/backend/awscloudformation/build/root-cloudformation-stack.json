@@ -152,15 +152,15 @@
         }
       }
     },
-    "authmbbuyers10ed2cec": {
+    "authmotorbikebuyers9c00b0a3": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-mbbuyers-dev-215033-deployment/amplify-cfn-templates/auth/mbbuyers10ed2cec-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-motorbikebuyers-dev-221040-deployment/amplify-cfn-templates/auth/motorbikebuyers9c00b0a3-cloudformation-template.json",
         "Parameters": {
-          "identityPoolName": "mbbuyers10ed2cec_identitypool_10ed2cec",
+          "identityPoolName": "motorbikebuyers9c00b0a3_identitypool_9c00b0a3",
           "allowUnauthenticatedIdentities": false,
-          "resourceNameTruncated": "mbbuye10ed2cec",
-          "userPoolName": "mbbuyers10ed2cec_userpool_10ed2cec",
+          "resourceNameTruncated": "motorb9c00b0a3",
+          "userPoolName": "motorbikebuyers9c00b0a3_userpool_9c00b0a3",
           "autoVerifiedAttributes": "email",
           "mfaConfiguration": "OFF",
           "mfaTypes": "SMS Text Message",
@@ -177,12 +177,13 @@
           "userpoolClientRefreshTokenValidity": 30,
           "userpoolClientWriteAttributes": "email",
           "userpoolClientReadAttributes": "email",
-          "userpoolClientLambdaRole": "mbbuye10ed2cec_userpoolclient_lambda_role",
+          "userpoolClientLambdaRole": "motorb9c00b0a3_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
-          "sharedId": "10ed2cec",
-          "resourceName": "mbbuyers10ed2cec",
+          "sharedId": "9c00b0a3",
+          "resourceName": "motorbikebuyers9c00b0a3",
           "authSelections": "identityPoolAndUserPool",
           "useDefault": "default",
+          "usernameAttributes": "email",
           "userPoolGroupList": "",
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,
@@ -209,7 +210,7 @@
       "DependsOn": [
         "AuthRole",
         "UnauthRole",
-        "authmbbuyers10ed2cec"
+        "authmotorbikebuyers9c00b0a3"
       ],
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -280,7 +281,7 @@
           }
         },
         "Handler": "index.handler",
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs14.x",
         "Timeout": 300,
         "Role": {
           "Fn::GetAtt": [
@@ -304,7 +305,7 @@
         },
         "idpId": {
           "Fn::GetAtt": [
-            "authmbbuyers10ed2cec",
+            "authmotorbikebuyers9c00b0a3",
             "Outputs.IdentityPoolId"
           ]
         },

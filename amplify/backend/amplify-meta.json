@@ -1,26 +1,28 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-mbbuyers-dev-215033-authRole",
-      "UnauthRoleArn": "arn:aws:iam::527048408011:role/amplify-mbbuyers-dev-215033-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::527048408011:role/amplify-mbbuyers-dev-215033-authRole",
+      "AuthRoleName": "amplify-motorbikebuyers-dev-221040-authRole",
+      "UnauthRoleArn": "arn:aws:iam::527048408011:role/amplify-motorbikebuyers-dev-221040-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::527048408011:role/amplify-motorbikebuyers-dev-221040-authRole",
       "Region": "eu-west-2",
-      "DeploymentBucketName": "amplify-mbbuyers-dev-215033-deployment",
-      "UnauthRoleName": "amplify-mbbuyers-dev-215033-unauthRole",
-      "StackName": "amplify-mbbuyers-dev-215033",
-      "StackId": "arn:aws:cloudformation:eu-west-2:527048408011:stack/amplify-mbbuyers-dev-215033/af8d0de0-c66b-11ec-b042-02ef4d90ba86",
-      "AmplifyAppId": "d218hvue3zctwa"
+      "DeploymentBucketName": "amplify-motorbikebuyers-dev-221040-deployment",
+      "UnauthRoleName": "amplify-motorbikebuyers-dev-221040-unauthRole",
+      "StackName": "amplify-motorbikebuyers-dev-221040",
+      "StackId": "arn:aws:cloudformation:eu-west-2:527048408011:stack/amplify-motorbikebuyers-dev-221040/247fa5c0-80b3-11ed-9291-067ff629d0a6",
+      "AmplifyAppId": "djiu0xeu3u1ig"
     }
   },
   "auth": {
-    "mbbuyers10ed2cec": {
+    "motorbikebuyers9c00b0a3": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "signupAttributes": [
           "EMAIL"
         ],
@@ -37,20 +39,20 @@
         ]
       },
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mbbuyers-dev-215033-deployment/amplify-cfn-templates/auth/mbbuyers10ed2cec-cloudformation-template.json",
-        "logicalId": "authmbbuyers10ed2cec"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-motorbikebuyers-dev-221040-deployment/amplify-cfn-templates/auth/motorbikebuyers9c00b0a3-cloudformation-template.json",
+        "logicalId": "authmotorbikebuyers9c00b0a3"
       },
-      "lastPushTimeStamp": "2022-04-27T21:57:30.867Z",
+      "lastPushTimeStamp": "2022-12-20T23:31:17.677Z",
       "output": {
-        "UserPoolId": "eu-west-2_m5ohEuJpq",
-        "AppClientIDWeb": "46ks71f8a2l3vi5jme908fih6u",
-        "AppClientID": "5lkv3n72ps456k7b4h6d8j7lk9",
-        "IdentityPoolId": "eu-west-2:6422fb8b-7998-4304-a2f2-afec998ff87b",
-        "UserPoolArn": "arn:aws:cognito-idp:eu-west-2:527048408011:userpool/eu-west-2_m5ohEuJpq",
-        "IdentityPoolName": "mbbuyers10ed2cec_identitypool_10ed2cec__dev",
-        "UserPoolName": "mbbuyers10ed2cec_userpool_10ed2cec"
+        "UserPoolId": "eu-west-2_Z3TG42Mgw",
+        "AppClientIDWeb": "3622pfssfj2mi0qcrbgdr5tr04",
+        "AppClientID": "1fhvruhbkf1njqo34almvsch11",
+        "IdentityPoolId": "eu-west-2:1c08a46e-0ad9-4e42-9fbe-81ae7a3a558a",
+        "UserPoolArn": "arn:aws:cognito-idp:eu-west-2:527048408011:userpool/eu-west-2_Z3TG42Mgw",
+        "IdentityPoolName": "motorbikebuyers9c00b0a3_identitypool_9c00b0a3__dev",
+        "UserPoolName": "motorbikebuyers9c00b0a3_userpool_9c00b0a3"
       },
-      "lastPushDirHash": "Ao8Mtz7jVLkM2xRvC+GxHOUUDC0="
+      "lastPushDirHash": "rabo5Sfth4sH9pjVJzT7Psghvy8="
     }
   }
 }

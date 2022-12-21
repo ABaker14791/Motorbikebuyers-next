@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "mbbuyers10ed2cec_identitypool_10ed2cec",
+    "identityPoolName": "motorbikebuyers9c00b0a3_identitypool_9c00b0a3",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mbbuye10ed2cec",
-    "userPoolName": "mbbuyers10ed2cec_userpool_10ed2cec",
+    "resourceNameTruncated": "motorb9c00b0a3",
+    "userPoolName": "motorbikebuyers9c00b0a3_userpool_9c00b0a3",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,15 +31,18 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "mbbuye10ed2cec_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "motorb9c00b0a3_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "10ed2cec",
-    "resourceName": "mbbuyers10ed2cec",
+    "sharedId": "9c00b0a3",
+    "resourceName": "motorbikebuyers9c00b0a3",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
+    "usernameAttributes": [
+      "email"
+    ],
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }
-}
+} 

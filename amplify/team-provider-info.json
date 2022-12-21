@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-motorbikebuyers-dev-221040-authRole",
+      "UnauthRoleArn": "arn:aws:iam::527048408011:role/amplify-motorbikebuyers-dev-221040-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::527048408011:role/amplify-motorbikebuyers-dev-221040-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-motorbikebuyers-dev-221040-deployment",
+      "UnauthRoleName": "amplify-motorbikebuyers-dev-221040-unauthRole",
+      "StackName": "amplify-motorbikebuyers-dev-221040",
+      "StackId": "arn:aws:cloudformation:eu-west-2:527048408011:stack/amplify-motorbikebuyers-dev-221040/247fa5c0-80b3-11ed-9291-067ff629d0a6",
+      "AmplifyAppId": "djiu0xeu3u1ig"
+    },
+    "categories": {
+      "auth": {
+        "motorbikebuyers7729cfa7": {},
+        "motorbikebuyers9c00b0a3": {}
+      }
+    }
+  }
+}

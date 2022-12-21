@@ -4,7 +4,8 @@ import Image from "next/image";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const BikeCard = ({ tradeBike }) => {
-	const { name, slug, price, images, id } = tradeBike;
+	const { name, attributes, price, images, id } = tradeBike;
+	console.log(attributes);
 
 	return (
 		<Link href={"/bikes/" + id}>
@@ -27,10 +28,10 @@ const BikeCard = ({ tradeBike }) => {
 					</div>
 					<div className={Styles.actions}>
 						<div className={Styles.year}>
-							<span>2021</span>
+							<span>{attributes[1].options}</span>
 						</div>
 						<div className={Styles.mileage}>
-							<span>2,600 miles</span>
+							<span>{attributes[0].options} miles</span>
 						</div>
 					</div>
 
