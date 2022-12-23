@@ -102,6 +102,10 @@
 		margin: 3rem auto;
 	}
 
+	.rowContainer {
+		flex-direction: column;
+	}
+
 	.info {
 		margin: 20px 0;
 		width: 100%;

@@ -37,6 +37,9 @@ const BikeDetails = (props) => {
 	console.log(bike);
 
 	const [formOpen, setFormOpen] = useState(false);
+	const [featureImage, setFeatureImage] = useState(bike.images[0].src);
+	const [galleryScroll, setGalleryScroll] = useState(); // maintain the scroll position when user clicks a gallery image && maybe center the scroll to the active image
+	const [activeImage, setActiveImage] = useState(); // set a border around the active image (could this be done with a class on click?)
 
 	return (
 		<div>
@@ -52,7 +55,7 @@ const BikeDetails = (props) => {
 					<div className={Styles.rowContainer}>
 						<div className={Styles.image}>
 							<Image
-								src={bike.images[0].src}
+								src={featureImage}
 								width={902}
 								height={677}
 								alt="bike for sale"
@@ -117,6 +120,10 @@ const BikeDetails = (props) => {
 								width={225}
 								height={169}
 								alt="bike gallery image"
+								key={galleryImg.id}
+								onClick={() => {
+									setFeatureImage(galleryImg.src);
+								}}
 							/>
 						))}
 					</div>
