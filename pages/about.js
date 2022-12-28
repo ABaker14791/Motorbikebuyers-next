@@ -16,10 +16,10 @@ const about = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
 				<link
-					rel="preload"
+					rel="stylesheet preload prefetch"
 					href="/fonts/UKNumberPlate.ttf"
-					as="font"
-					crossOrigin=""
+					as="style"
+					crossOrigin
 				/>
 			</Head>
 			<div className={Styles.Title}>About Us</div>

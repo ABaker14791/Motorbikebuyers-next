@@ -5,7 +5,6 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const BikeCard = ({ tradeBike }) => {
 	const { name, attributes, price, images, id } = tradeBike;
-	console.log(attributes);
 
 	return (
 		<Link href={"/bikes/" + id}>

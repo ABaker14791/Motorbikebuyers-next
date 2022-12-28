@@ -13,8 +13,6 @@ const Faq = (index) => {
 		}
 		setClicked(index);
 	};
-
-	console.log(index);
 	return (
 		<div className={Styles.container}>
 			<h1>Frequestly Asked Questions</h1>

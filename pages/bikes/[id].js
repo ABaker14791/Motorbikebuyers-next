@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 // next imports
 import Head from "next/head";
 import Image from "next/image";
@@ -40,7 +40,16 @@ const BikeDetails = (props) => {
 	const [featureImage, setFeatureImage] = useState(bike.images[0].src);
 	const [galleryScroll, setGalleryScroll] = useState(); // maintain the scroll position when user clicks a gallery image && maybe center the scroll to the active image
 	const [activeImage, setActiveImage] = useState(); // set a border around the active image (could this be done with a class on click?)
+	const gallery = useRef(null);
 
+	// useEffect(() => {
+	// 	gallery.scrollLeft += 400;
+	// console.log(galleryScroll);
+	// }, []);
+
+	const setScrollPosition = () => {
+		console.log(galleryScroll);
+	};
 	return (
 		<div>
 			<Head>
@@ -113,7 +122,11 @@ const BikeDetails = (props) => {
 							</div>
 						</div>
 					</div>
-					<div className={Styles.gallery}>
+					<div
+						className={Styles.gallery}
+						ref={gallery}
+						// onScroll={setScrollPosition}
+					>
 						{galleryImages.map((galleryImg) => (
 							<Image
 								src={galleryImg.src}
@@ -123,6 +136,8 @@ const BikeDetails = (props) => {
 								key={galleryImg.id}
 								onClick={() => {
 									setFeatureImage(galleryImg.src);
+									setGalleryScroll(gallery.current?.scrollLeft);
+									gallery.scrollLeft += 1200;
 								}}
 							/>
 						))}
