@@ -14,7 +14,8 @@ export default async function (req, res) {
 	sendSmtpEmail = {
 		to: [
 			{
-				email: "sales@themotorbikebuyers.co.uk",
+				// email: "sales@themotorbikebuyers.co.uk",
+				email: "adam_baker@live.co.uk",
 				name: "Charlie Hopkins",
 			},
 		],
@@ -31,7 +32,8 @@ export default async function (req, res) {
 			finance: bike.finance,
 			stolen: bike.stolen,
 			condition: bike.condition,
-			name: bike.name,
+			firstName: bike.firstName,
+			lastName: bike.lastName,
 			email: bike.email,
 			phone: bike.phone,
 		},

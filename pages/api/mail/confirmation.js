@@ -15,18 +15,10 @@ export default async function (req, res) {
 		to: [
 			{
 				email: user.email,
-				name: user.name,
+				name: user.firstName,
 			},
 		],
 		templateId: 8,
-		// params: {
-		// 	name: "John",
-		// 	surname: "Doe",
-		// },
-		// headers: {
-		// 	"X-Mailin-custom":
-		// 		"custom_header_1:custom_value_1|custom_header_2:custom_value_2",
-		// },
 	};
 	try {
 		apiInstance.sendTransacEmail(sendSmtpEmail).then(

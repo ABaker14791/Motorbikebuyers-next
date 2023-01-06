@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Styles from "../styles/VehicleForm.module.css";
 
-// MongoDB insert data
+// MongoDB insert motorcycle data
 async function insertBikeData(bikeData) {
 	const response = await fetch("/api/mongo/bikes", {
 		method: "POST",
@@ -25,6 +25,7 @@ async function sendConfirmationEmail(data) {
 	const emailConfirmation = await response.json();
 }
 
+// Send email to ourself with details of motorcycle and customer
 async function sendDetailsEmail(data) {
 	const response = await fetch("/api/mail/bikeDetails", {
 		method: "POST",
@@ -34,6 +35,17 @@ async function sendDetailsEmail(data) {
 		body: JSON.stringify(data),
 	});
 	const detailsEmailConfirmation = await response.json();
+}
+
+async function addEmailContact(data) {
+	const response = await fetch("/api/mail/emailAddContact", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	});
+	const contactEmailConfirmation = await response.json();
 }
 
 const DetailsForm = ({ bikeData }) => {
@@ -51,16 +63,19 @@ const DetailsForm = ({ bikeData }) => {
 		finance: "No",
 		stolen: "No",
 		condition: "",
-		name: "",
+		firstName: "",
+		lastName: "",
 		email: "",
 		phone: "",
+		dateSubmitted: new Date(),
 	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		insertBikeData(data);
+		// insertBikeData(data);
 		// sendConfirmationEmail(data);
-		// sendDetailsEmail(data);
+		sendDetailsEmail(data);
+		addEmailContact(data);
 		setSubmitted(true);
 	};
 
@@ -252,8 +267,16 @@ const DetailsForm = ({ bikeData }) => {
 						<input
 							className={Styles.textBox}
 							onChange={handleChange}
-							placeholder="Name"
-							name="name"
+							placeholder="First Name"
+							name="firstName"
+							type="text"
+							required
+						/>
+						<input
+							className={Styles.textBox}
+							onChange={handleChange}
+							placeholder="Last Name"
+							name="lastName"
 							type="text"
 							required
 						/>
