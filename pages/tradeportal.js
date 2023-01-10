@@ -1,39 +1,37 @@
-import React from "react";
+import { useState } from "react";
 import Head from "next/head";
 import BikeCard from "../components/BikeCard";
 import Styles from "../styles/Tradeportal.module.css";
-import { Authenticator } from "@aws-amplify/ui-react";
-import { Button } from "@aws-amplify/ui-react";
+import Login from "../components/auth/Login";
 // Woocommerce data
 import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 
 const tradeportal = (props) => {
+	const [user, setUser] = useState(false);
 	const { products } = props;
 	return (
 		<div className={Styles.pageBG}>
 			<Head>
-				<title>Motorbike Buyers</title>
+				<title>Motorbike Buyers Trade Portal</title>
 				<meta name="description" content="Sell your motorbike online" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className={Styles.authContainer}>
-				<Authenticator>
-					{({ user, signOut }) => (
-						<main className={Styles.container}>
-							<div className={Styles.bikesContainer}>
-								{products.map((tradeBike) => (
-									<BikeCard key={tradeBike.id} tradeBike={tradeBike} />
-								))}
-							</div>
-							<p className={Styles.signOutText}>
-								You are signed in as {user.username}
-							</p>
-							<Button onClick={signOut}>Sign out</Button>
-						</main>
-					)}
-				</Authenticator>
-			</div>
+			{user ? (
+				<div className={Styles.authContainer}>
+					<main className={Styles.container}>
+						<div className={Styles.bikesContainer}>
+							{products.map((tradeBike) => (
+								<BikeCard key={tradeBike.id} tradeBike={tradeBike} />
+							))}
+						</div>
+						<p className={Styles.signOutText}>You are signed in as ...</p>
+						<button>Sign out</button>
+					</main>
+				</div>
+			) : (
+				<Login />
+			)}
 		</div>
 	);
 };
