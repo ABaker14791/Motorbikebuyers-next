@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyDGHZHUb-_LI9uQif4M7DxLvyGHMN77aE0",
-	authDomain: "mbb-trade-portal-auth.firebaseapp.com",
-	projectId: "mbb-trade-portal-auth",
-	storageBucket: "mbb-trade-portal-auth.appspot.com",
-	messagingSenderId: "463287173664",
-	appId: "1:463287173664:web:d248e73f42a01c24183245",
+	apiKey: process.env.FIREBASE_API_KEY,
+	authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+	projectId: process.env.FIREBASE_PROJECT_ID,
+	storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+	messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+	appId: process.env.FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
