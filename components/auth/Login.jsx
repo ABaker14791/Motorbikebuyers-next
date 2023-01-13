@@ -1,16 +1,13 @@
 import { useState } from "react";
 import Styles from "../../styles/Login.module.css";
 import {
-	getAuth,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getFirestore, setDoc, doc } from "firebase/firestore";
-import app from "../../utils/firebase";
+import { setDoc, doc } from "firebase/firestore";
+import { auth, db } from "../../utils/firebase";
 
 const login = () => {
-	const auth = getAuth(app);
-	const db = getFirestore(app);
 	const [loginState, setLoginState] = useState(true);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -24,7 +21,7 @@ const login = () => {
 				password
 			);
 			console.log(account.user.uid);
-			const data = { Company: company, Email: email };
+			const data = { Company: company, Email: email, Trade_Member: false };
 			await setDoc(doc(db, "users", account.user.uid), data);
 		} catch (error) {
 			console.log("Something went wrong with added user to firestore: ", error);
