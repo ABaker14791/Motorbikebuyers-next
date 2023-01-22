@@ -7,9 +7,10 @@ import {
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
 
-const login = () => {
+const login = ({ setUser }) => {
 	const [loginState, setLoginState] = useState(true);
 	const [email, setEmail] = useState("");
+	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const [company, setCompany] = useState("");
 
@@ -21,7 +22,12 @@ const login = () => {
 				password
 			);
 			console.log(account.user.uid);
-			const data = { Company: company, Email: email, Trade_Member: false };
+			const data = {
+				Company: company,
+				Name: name,
+				Email: email,
+				Trade_Member: false,
+			};
 			await setDoc(doc(db, "users", account.user.uid), data);
 		} catch (error) {
 			console.log("Something went wrong with added user to firestore: ", error);
@@ -34,6 +40,7 @@ const login = () => {
 				// Signed in
 				const user = userCredential.user;
 				console.log(user);
+				setUser(user);
 				// ...
 			})
 			.catch((error) => {
@@ -71,7 +78,7 @@ const login = () => {
 						/>
 						<label htmlFor="password">Password</label>
 						<input
-							type="text"
+							type="password"
 							name="password"
 							placeholder="Password"
 							onChange={(e) => setPassword(e.target.value)}
@@ -89,6 +96,14 @@ const login = () => {
 							name="email"
 							placeholder="Email"
 							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+						<label htmlFor="name">Name</label>
+						<input
+							type="text"
+							name="name"
+							placeholder="Name"
+							onChange={(e) => setName(e.target.value)}
 							required
 						/>
 						<label htmlFor="company">Company Name</label>

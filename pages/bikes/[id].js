@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 // next imports
 import Head from "next/head";
 import Image from "next/image";
@@ -13,8 +13,9 @@ import {
 	FaCalendarAlt,
 	FaTachometerAlt,
 } from "react-icons/fa";
-// AWS
-import { Authenticator } from "@aws-amplify/ui-react";
+// Firebase auth
+import withAuth from "../../utils/withAuth";
+
 // Components
 import ReturnBar from "../../components/ReturnBar";
 import EnquiryForm from "../../components/EnquiryForm";
@@ -42,14 +43,6 @@ const BikeDetails = (props) => {
 	const [activeImage, setActiveImage] = useState(); // set a border around the active image (could this be done with a class on click?)
 	const gallery = useRef(null);
 
-	// useEffect(() => {
-	// 	gallery.scrollLeft += 400;
-	// console.log(galleryScroll);
-	// }, []);
-
-	const setScrollPosition = () => {
-		console.log(galleryScroll);
-	};
 	return (
 		<div>
 			<Head>
@@ -60,95 +53,93 @@ const BikeDetails = (props) => {
 			</Head>
 			<ReturnBar />
 			<div className={Styles.container}>
-				<Authenticator>
-					<div className={Styles.rowContainer}>
-						<div className={Styles.image}>
-							<Image
-								src={featureImage}
-								width={902}
-								height={677}
-								alt="bike for sale"
-							/>
+				<div className={Styles.rowContainer}>
+					<div className={Styles.image}>
+						<Image
+							src={featureImage}
+							width={902}
+							height={677}
+							alt="bike for sale"
+						/>
+					</div>
+					<div className={Styles.info}>
+						<h2 className={Styles.title}>{bike.name}</h2>
+						<div className={Styles.price}>£{bike.price}</div>
+						<div className={Styles.year}>
+							<span>
+								<FaCalendarAlt />
+								&nbsp;
+								{bike.attributes[1].options}
+							</span>
+							<span>
+								<FaTachometerAlt />
+								&nbsp;
+								{bike.attributes[0].options} miles
+							</span>
 						</div>
-						<div className={Styles.info}>
-							<h2 className={Styles.title}>{bike.name}</h2>
-							<div className={Styles.price}>£{bike.price}</div>
-							<div className={Styles.year}>
-								<span>
-									<FaCalendarAlt />
-									&nbsp;
-									{bike.attributes[1].options}
-								</span>
-								<span>
-									<FaTachometerAlt />
-									&nbsp;
-									{bike.attributes[0].options} miles
-								</span>
-							</div>
-							<div className={Styles.description}>
-								{bike.description.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, "")}
-							</div>
+						<div className={Styles.description}>
+							{bike.description.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, "")}
+						</div>
+						<div className={Styles.actions}>
 							<div className={Styles.actions}>
-								<div className={Styles.actions}>
-									<div className={Styles.secondaryContacts}>
-										<button
-											// onClick={() => {
-											// 	setFormOpen(!formOpen);
-											// }}
-											className={Styles.whatsAppButton}
-										>
-											<FaWhatsapp />
-											<span>WhatsApp</span>
-										</button>
-										<button
-											// onClick={() => {
-											// 	setFormOpen(!formOpen);
-											// }}
-											className={Styles.phoneButton}
-										>
-											<FaPhone />
-											<span>01274 583903</span>
-										</button>
-									</div>
+								<div className={Styles.secondaryContacts}>
 									<button
-										onClick={() => {
-											setFormOpen(!formOpen);
-										}}
-										className={Styles.contactButton}
+										// onClick={() => {
+										// 	setFormOpen(!formOpen);
+										// }}
+										className={Styles.whatsAppButton}
 									>
-										<span>Enquire Now</span>
+										<FaWhatsapp />
+										<span>WhatsApp</span>
+									</button>
+									<button
+										// onClick={() => {
+										// 	setFormOpen(!formOpen);
+										// }}
+										className={Styles.phoneButton}
+									>
+										<FaPhone />
+										<span>01274 583903</span>
 									</button>
 								</div>
+								<button
+									onClick={() => {
+										setFormOpen(!formOpen);
+									}}
+									className={Styles.contactButton}
+								>
+									<span>Enquire Now</span>
+								</button>
 							</div>
 						</div>
 					</div>
-					<div
-						className={Styles.gallery}
-						ref={gallery}
-						// onScroll={setScrollPosition}
-					>
-						{galleryImages.map((galleryImg) => (
-							<Image
-								src={galleryImg.src}
-								width={225}
-								height={169}
-								alt="bike gallery image"
-								key={galleryImg.id}
-								onClick={() => {
-									setFeatureImage(galleryImg.src);
-									setGalleryScroll(gallery.current?.scrollLeft);
-									gallery.scrollLeft += 1200;
-								}}
-							/>
-						))}
-					</div>
-					{formOpen ? (
-						<EnquiryForm formOpen={formOpen} setFormOpen={setFormOpen} />
-					) : null}
-				</Authenticator>
+				</div>
+				<div
+					className={Styles.gallery}
+					ref={gallery}
+					// onScroll={setScrollPosition}
+				>
+					{galleryImages.map((galleryImg) => (
+						<Image
+							src={galleryImg.src}
+							width={225}
+							height={169}
+							alt="bike gallery image"
+							key={galleryImg.id}
+							onClick={() => {
+								setFeatureImage(galleryImg.src);
+								setGalleryScroll(gallery.current?.scrollLeft);
+								gallery.scrollLeft += 1200;
+							}}
+						/>
+					))}
+				</div>
+				{formOpen ? (
+					<EnquiryForm formOpen={formOpen} setFormOpen={setFormOpen} />
+				) : null}
 			</div>
 		</div>
 	);
 };
 
-export default BikeDetails;
+export default withAuth(BikeDetails);

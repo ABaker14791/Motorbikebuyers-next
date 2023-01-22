@@ -2,13 +2,34 @@ import { useState } from "react";
 import Head from "next/head";
 import BikeCard from "../components/BikeCard";
 import Styles from "../styles/Tradeportal.module.css";
-import Login from "../components/auth/Login";
+import Signin from "../components/auth/Signin";
 // Woocommerce data
 import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
+// Firebase
+import { auth, db } from "../utils/firebase";
+import { signOut } from "firebase/auth";
 
 const tradeportal = (props) => {
-	const [user, setUser] = useState(false);
+	const [user, setUser] = useState({});
 	const { products } = props;
+
+	// TODO: Get firestore doc somehow?
+
+	const userIsTradeMember = () => {
+		// TODO: if user is a member we set state to allow access to trade portal.
+	};
+
+	const logOut = () => {
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+				console.log("Sign out successfull.");
+				setUser(null);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 	return (
 		<div className={Styles.pageBG}>
 			<Head>
@@ -25,12 +46,14 @@ const tradeportal = (props) => {
 								<BikeCard key={tradeBike.id} tradeBike={tradeBike} />
 							))}
 						</div>
-						<p className={Styles.signOutText}>You are signed in as ...</p>
-						<button>Sign out</button>
+						<p className={Styles.signOutText}>
+							You are signed in as {user.name}
+						</p>
+						<button onClick={logOut}>Sign out</button>
 					</main>
 				</div>
 			) : (
-				<Login />
+				<Signin setUser={setUser} />
 			)}
 		</div>
 	);
