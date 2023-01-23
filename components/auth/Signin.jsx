@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Styles from "../../styles/Login.module.css";
 import {
 	createUserWithEmailAndPassword,
@@ -7,12 +8,13 @@ import {
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
 
-const login = ({ setUser }) => {
+const Signin = ({ setUser }) => {
 	const [loginState, setLoginState] = useState(true);
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const [company, setCompany] = useState("");
+	const router = useRouter();
 
 	const register = async () => {
 		try {
@@ -39,14 +41,15 @@ const login = ({ setUser }) => {
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
-				console.log(user);
 				setUser(user);
-				// ...
+				// TODO: redirect once signed in
+				console.log(user);
+				router.push("/tradeportal");
 			})
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				alert(errorCode);
+				console.log(errorCode + " " + errorMessage);
 			});
 	};
 
@@ -139,4 +142,4 @@ const login = ({ setUser }) => {
 	);
 };
 
-export default login;
+export default Signin;
