@@ -7,14 +7,20 @@ import {
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../store/authSlice";
 
-const Signin = ({ setUser }) => {
+const Signin = () => {
 	const [loginState, setLoginState] = useState(true);
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const [company, setCompany] = useState("");
 	const router = useRouter();
+
+	// redux
+	const authUser = useSelector((state) => state.auth.user);
+	const dispatch = useDispatch();
 
 	const register = async () => {
 		try {
@@ -41,8 +47,8 @@ const Signin = ({ setUser }) => {
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
-				setUser(user);
-				// TODO: redirect once signed in
+				dispatch(setUser(user));
+				// TODO: redirect once signed in, user is not getting set
 				console.log(user);
 				router.push("/tradeportal");
 			})
@@ -130,6 +136,7 @@ const Signin = ({ setUser }) => {
 							type="text"
 							name="confirmPassword"
 							placeholder="Confirm Password"
+							// TODO: create a function to check if passwords match
 						/>
 
 						<button onClick={register} className={Styles.loginButton}>
