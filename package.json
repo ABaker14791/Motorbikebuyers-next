@@ -36,6 +36,11 @@
 		"eslint": "8.13.0",
 		"eslint-config-next": "12.1.5"
 	},
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": true
+		}
+	},
 	"resolutions": {
 		"@chakra-ui/color-mode": "<1.2.0"
 	}

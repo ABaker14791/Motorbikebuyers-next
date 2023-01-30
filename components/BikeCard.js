@@ -7,7 +7,7 @@ const BikeCard = ({ tradeBike }) => {
 	const { name, attributes, price, images, id } = tradeBike;
 
 	return (
-		<Link href={"/bikes/" + id}>
+		<Link href={"/bikes/" + id} passHref>
 			<div className={Styles.card}>
 				<div className={Styles.image}>
 					<Image

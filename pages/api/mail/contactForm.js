@@ -7,7 +7,7 @@ apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
 
 var apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
-export default async function (req, res) {
+export default async function contactForm(req, res) {
 	const contactData = req.body;
 	var sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); // SendSmtpEmail | Values to send a transactional email
 

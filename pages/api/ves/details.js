@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export default async function (req, res) {
+export default async function details(req, res) {
 	const registrationNumber = req.body;
 
 	try {

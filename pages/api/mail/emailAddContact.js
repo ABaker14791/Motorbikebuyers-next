@@ -4,7 +4,7 @@ let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
 
-export default async function (req, res) {
+export default async function emailAddContact(req, res) {
 	let contact = req.body;
 	let apiInstance = new SibApiV3Sdk.ContactsApi();
 	let createContact = new SibApiV3Sdk.CreateContact();
