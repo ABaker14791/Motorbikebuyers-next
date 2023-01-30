@@ -13,7 +13,7 @@ import { signOut } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, logout } from "../store/authSlice";
 
-const tradeportal = (props) => {
+const Tradeportal = (props) => {
 	// redux
 	const user = useSelector(selectUser);
 	const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const tradeportal = (props) => {
 	);
 };
 
-export default withAuth(tradeportal);
+export default withAuth(Tradeportal);
 
 // Get trade bikes from woocommerce API
 export async function getStaticProps() {
