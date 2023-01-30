@@ -11,12 +11,11 @@ import { auth, db } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 // Auth redux
 import { useSelector, useDispatch } from "react-redux";
-import { authSlice } from "../store/authSlice";
+import { selectUser, logout } from "../store/authSlice";
 
 const tradeportal = (props) => {
-	// const [user, setUser] = useState({});
 	// redux
-	const authUser = useSelector((state) => state.auth.user);
+	const user = useSelector(selectUser);
 	const dispatch = useDispatch();
 	const { products } = props;
 
@@ -31,7 +30,8 @@ const tradeportal = (props) => {
 			.then(() => {
 				// Sign-out successful.
 				console.log("Sign out successfull.");
-				dispatch(authSlice(user));
+				const userInfo = JSON.stringify(user);
+				dispatch(logout());
 			})
 			.catch((error) => {
 				console.log(error);
@@ -45,7 +45,7 @@ const tradeportal = (props) => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{authUser ? (
+			{user ? (
 				<div className={Styles.authContainer}>
 					<main className={Styles.container}>
 						<div className={Styles.bikesContainer}>
@@ -54,7 +54,7 @@ const tradeportal = (props) => {
 							))}
 						</div>
 						<p className={Styles.signOutText}>
-							You are signed in as {authUser.email}
+							You are signed in as {user.email}
 						</p>
 						<button onClick={logOut}>Sign out</button>
 					</main>

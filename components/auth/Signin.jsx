@@ -7,22 +7,23 @@ import {
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
-import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../../store/authSlice";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/authSlice";
 
 const Signin = () => {
+	const router = useRouter();
+	// Toggle login tab between signin and register
 	const [loginState, setLoginState] = useState(true);
+	// Form
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const [company, setCompany] = useState("");
-	const router = useRouter();
-
 	// redux
-	const authUser = useSelector((state) => state.auth.user);
 	const dispatch = useDispatch();
 
-	const register = async () => {
+	const register = async (e) => {
+		e.preventDefault();
 		try {
 			const account = await createUserWithEmailAndPassword(
 				auth,
@@ -38,17 +39,19 @@ const Signin = () => {
 			};
 			await setDoc(doc(db, "users", account.user.uid), data);
 		} catch (error) {
-			console.log("Something went wrong with added user to firestore: ", error);
+			console.log("Something went wrong with added user to database: ", error);
 		}
 	};
 
-	const signIn = () => {
+	const signIn = (e) => {
+		e.preventDefault();
+
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
-				dispatch(setUser(user));
-				// TODO: redirect once signed in, user is not getting set
+				const userInfo = JSON.stringify(user);
+				dispatch(login(userInfo));
 				console.log(user);
 				router.push("/tradeportal");
 			})
@@ -75,7 +78,7 @@ const Signin = () => {
 					Create Account
 				</button>
 			</div>
-			<div action="" className={Styles.login__form}>
+			<form action="" className={Styles.login__form}>
 				{loginState ? (
 					<>
 						<label htmlFor="email">Email</label>
@@ -125,7 +128,7 @@ const Signin = () => {
 						/>
 						<label htmlFor="password">Password</label>
 						<input
-							type="text"
+							type="password"
 							name="password"
 							placeholder="Password"
 							onChange={(e) => setPassword(e.target.value)}
@@ -133,7 +136,7 @@ const Signin = () => {
 						/>
 						<label htmlFor="confirmPassword">Confirm Password</label>
 						<input
-							type="text"
+							type="password"
 							name="confirmPassword"
 							placeholder="Confirm Password"
 							// TODO: create a function to check if passwords match
@@ -144,7 +147,7 @@ const Signin = () => {
 						</button>
 					</>
 				)}
-			</div>
+			</form>
 		</div>
 	);
 };
