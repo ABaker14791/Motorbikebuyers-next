@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Head from "next/head";
 import BikeCard from "../components/BikeCard";
 import Styles from "../styles/Tradeportal.module.css";
@@ -30,7 +29,6 @@ const Tradeportal = (props) => {
 			.then(() => {
 				// Sign-out successful.
 				console.log("Sign out successfull.");
-				const userInfo = JSON.stringify(user);
 				dispatch(logout());
 			})
 			.catch((error) => {
