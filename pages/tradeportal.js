@@ -54,7 +54,9 @@ const Tradeportal = (props) => {
 						<p className={Styles.signOutText}>
 							You are signed in as {user.email}
 						</p>
-						<button onClick={logOut}>Sign out</button>
+						<button onClick={logOut} className={Styles.signOutButton}>
+							Sign out
+						</button>
 					</main>
 				</div>
 			) : (

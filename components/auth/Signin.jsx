@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Styles from "../../styles/Login.module.css";
 import {
 	createUserWithEmailAndPassword,
@@ -31,6 +32,7 @@ const Signin = () => {
 				password
 			);
 			console.log(account.user.uid);
+			// TODO: router push to successfully registered page and then send email for activation
 			const data = {
 				Company: company,
 				Name: name,
@@ -64,6 +66,12 @@ const Signin = () => {
 
 	return (
 		<div className={Styles.container}>
+			<Head>
+				<title>Motorbike Buyers Sign In</title>
+				<meta name="description" content="Motorbike Buyers Sign In" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 			<div className={Styles.loginTabs}>
 				<button
 					className={loginState ? Styles.tabActive : Styles.tab}
