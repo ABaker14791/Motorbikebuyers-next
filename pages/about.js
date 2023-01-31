@@ -5,7 +5,6 @@ import Image from "next/image";
 import HowWeWork from "../components/HowWeWork";
 import RegForm from "../components/RegForm";
 import RidingPhoto from "../assets/images/ridingphoto1.png";
-import ReturnBar from "../components/ReturnBar";
 
 const about = () => {
 	return (
@@ -30,19 +29,22 @@ const about = () => {
 					alt="motorcycle on track"
 				/>
 				<div className={Styles.AboutText}>
-					The Motorbike Buyers are here to help you sell your motorbike fast. We
-					are focused on keeping things simple, if the bike is as described it
-					is as we valued it, no haggling. We are committed to ensuring you deal
-					with knowledgeable people straight away, not call centres or teams of
-					people that don&apos;t live and breathe bikes! <br />
+					<p>
+						The Motorbike Buyers are here to help you sell your motorbike fast.
+						We are focused on keeping things simple, if the bike is as described
+						it is as we valued it, no haggling. We are committed to ensuring you
+						deal with knowledgeable people straight away, not call centres or
+						teams of people that don&apos;t live and breathe bikes!
+					</p>
 					<br />
-					The Motorbike Buyers is managed by enthusiasts including Craig
-					&apos;AKA&apos; Atkinson heading up the buying team. Craig brings a
-					wealth of knowledge and a history of racing to the team including some
-					fantastic accolades, take a look below!
+					<p>
+						The Motorbike Buyers is managed by enthusiasts including Craig
+						&apos;AKA&apos; Atkinson heading up the buying team. Craig brings a
+						wealth of knowledge and a history of racing to the team including
+						some fantastic accolades, take a look below!
+					</p>
 					<br />
-					<br />
-					<ul>
+					<ul className={Styles.AboutList}>
 						<li>
 							Manx GP Double Race Winner 2006 (Genuine in the week double)
 						</li>
@@ -57,9 +59,11 @@ const about = () => {
 						<li>American 3hr Endurance Podium Finisher with Milky Quayle</li>
 					</ul>
 					<br />
-					Use our What&apos;s App quick value or enter your details now to get
-					your value and sell you motobike fast and free today. We want your
-					motorbike and we will buy any bike get in touch now.
+					<p>
+						Use our What&apos;s App quick value or enter your details now to get
+						your value and sell you motobike fast and free today. We want your
+						motorbike and we will buy any bike get in touch now.
+					</p>
 				</div>
 			</div>
 			<HowWeWork />

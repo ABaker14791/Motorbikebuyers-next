@@ -15,20 +15,8 @@ body {
 
 p {
 	font-size: 1.2rem;
+	line-height: 1.6em;
 }
-
-.amplify-button[data-variation="primary"] {
-	background: #0171bd !important;
-}
-
-.amplify-tabs-item[data-state="active"] {
-	color: #0171bd !important;
-	border-color: #0171bd !important;
-}
-
-/* .amplify-tabs {
-  display: none !important;
-} */
 
 a {
 	color: inherit;

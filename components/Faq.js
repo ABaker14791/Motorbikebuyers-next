@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FaqData } from "./FaqData.js";
+import Head from "next/head";
 import Link from "next/link";
 import Styles from "../styles/Faq.module.css";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import RegForm from "./RegForm.jsx";
 
 const Faq = (index) => {
 	const [clicked, setClicked] = useState(false);
@@ -15,6 +17,21 @@ const Faq = (index) => {
 	};
 	return (
 		<div className={Styles.container}>
+			<Head>
+				<title>Motorbike Buyers FAQs</title>
+				<meta
+					name="description"
+					content="Sell your motorbike online - frequently asked questions"
+				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<link rel="icon" href="/favicon.ico" />
+				<link
+					rel="stylesheet preload prefetch"
+					href="/fonts/UKNumberPlate.ttf"
+					as="style"
+					crossOrigin
+				/>
+			</Head>
 			<h1>Frequestly Asked Questions</h1>
 			<p className={Styles.faqText}>
 				Here you will find our most frequently asked questions
@@ -45,6 +62,7 @@ const Faq = (index) => {
 					);
 				})}
 			</div>
+			<RegForm />
 		</div>
 	);
 };
