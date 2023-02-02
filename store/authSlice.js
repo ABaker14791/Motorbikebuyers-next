@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	loading: false,
 	user: null, // for user object
-	userToken: null, // for storing the JWT or ID?
+	displayName: null,
+	uid: null, // for storing the JWT or ID?
 	error: null,
 	success: false, // for monitoring the registration process.
 };

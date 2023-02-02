@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 import BikeCard from "../components/BikeCard";
 import Styles from "../styles/Tradeportal.module.css";
 import Signin from "../components/auth/Signin";
@@ -7,6 +8,7 @@ import withAuth from "../utils/withAuth";
 import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 // Firebase
 import { auth, db } from "../utils/firebase";
+import { getDoc, doc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 // Auth redux
 import { useSelector, useDispatch } from "react-redux";
@@ -15,10 +17,26 @@ import { selectUser, logout } from "../store/authSlice";
 const Tradeportal = (props) => {
 	// redux
 	const user = useSelector(selectUser);
+	const [company, setCompany] = useState("");
 	const dispatch = useDispatch();
 	const { products } = props;
 
 	// TODO: Get firestore doc somehow?
+	const fetchUserName = async () => {
+		const docRef = doc(db, "users", user.uid);
+		const docSnap = await getDoc(docRef);
+
+		if (docSnap.exists()) {
+			setCompany(docSnap.data().Company);
+			console.log("Document data:", docSnap.data());
+		} else {
+			console.log("No such document!");
+		}
+	};
+
+	useEffect(() => {
+		fetchUserName();
+	}, [company, user]);
 
 	const userIsTradeMember = () => {
 		// TODO: if user is a member we set state to allow access to trade portal.
@@ -52,7 +70,7 @@ const Tradeportal = (props) => {
 							))}
 						</div>
 						<p className={Styles.signOutText}>
-							You are signed in as {user.email}
+							You are signed in as {user.displayName} at {company}.
 						</p>
 						<button onClick={logOut} className={Styles.signOutButton}>
 							Sign out
