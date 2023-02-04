@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
+import { getDoc, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout, selectUser } from "../store/authSlice";
@@ -10,9 +11,12 @@ const withAuth = (WrappedComponent) => {
 		const user = useSelector(selectUser);
 		const dispatch = useDispatch();
 		const router = useRouter();
+		const [name, setName] = useState("");
+		const [company, setCompany] = useState("");
+		const [tradeMember, setTradeMember] = useState(false);
 
 		useEffect(() => {
-			onAuthStateChanged(auth, (userAuth) => {
+			onAuthStateChanged(auth, async (userAuth) => {
 				if (userAuth) {
 					// user is logged in
 					dispatch(
@@ -22,6 +26,19 @@ const withAuth = (WrappedComponent) => {
 							displayName: userAuth.displayName,
 						})
 					);
+					// Check user permissions
+					const docRef = doc(db, "users", userAuth.uid);
+					const docSnap = await getDoc(docRef);
+
+					if (docSnap.exists()) {
+						setCompany(docSnap.data().Company);
+						setTradeMember(docSnap.data().Trade_Member);
+						setName(docSnap.data().Name);
+						console.log("Document data:", docSnap.data());
+						console.log(tradeMember);
+					} else {
+						console.log("No such document!");
+					}
 				} else {
 					dispatch(logout());
 					router.push("/login");
@@ -34,7 +51,15 @@ const withAuth = (WrappedComponent) => {
 			return <div>Loading...</div>;
 		}
 
-		return <WrappedComponent {...props} authUser={user} />;
+		return (
+			<WrappedComponent
+				{...props}
+				authUser={user}
+				company={company}
+				tradeMember={tradeMember}
+				name={name}
+			/>
+		);
 	};
 	return WithAuth;
 };

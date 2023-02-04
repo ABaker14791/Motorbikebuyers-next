@@ -14,41 +14,37 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, logout } from "../store/authSlice";
 
-const Tradeportal = (props) => {
+const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
 	// redux
-	const user = useSelector(selectUser);
-	const [company, setCompany] = useState("");
-	const [tradeMember, setTradeMember] = useState(false);
+	// const user = useSelector(selectUser);
+	// const [company, setCompany] = useState("AKA Automotive");
+	// const [tradeMember, setTradeMember] = useState(false);
 	const dispatch = useDispatch();
-	const { products } = props;
+	const products = tradeProducts;
 
-	useEffect(() => {
-		const fetchUserData = async () => {
-			onAuthStateChanged(auth, async (userAuth) => {
-				// the state changes and this runs again but returns null, we need it to not try run on log out
-				if (userAuth) {
-					const docRef = doc(db, "users", userAuth.uid);
-					const docSnap = await getDoc(docRef);
+	// useEffect(() => {
+	// 	const fetchUserData = async () => {
+	// 		onAuthStateChanged(auth, async (userAuth) => {
+	// 			// the state changes and this runs again but returns null, we need it to not try run on log out
+	// 			if (userAuth) {
+	// 				const docRef = doc(db, "users", userAuth.uid);
+	// 				const docSnap = await getDoc(docRef);
 
-					if (docSnap.exists()) {
-						setCompany(docSnap.data().Company);
-						setTradeMember(docSnap.data().Trade_Member);
-						console.log("Document data:", docSnap.data());
-						console.log(tradeMember);
-					} else {
-						console.log("No such document!");
-					}
-				} else {
-					console.log("No user found");
-				}
-			});
-		};
-		fetchUserData();
-	}, [company]);
-
-	const userIsTradeMember = () => {
-		// TODO: if user is a member we set state to allow access to trade portal.
-	};
+	// 				if (docSnap.exists()) {
+	// 					setCompany(docSnap.data().Company);
+	// 					setTradeMember(docSnap.data().Trade_Member);
+	// 					console.log("Document data:", docSnap.data());
+	// 					console.log(tradeMember);
+	// 				} else {
+	// 					console.log("No such document!");
+	// 				}
+	// 			} else {
+	// 				console.log("No user found");
+	// 			}
+	// 		});
+	// 	};
+	// 	fetchUserData();
+	// }, [company]);
 
 	const logOut = () => {
 		signOut(auth)
@@ -69,24 +65,31 @@ const Tradeportal = (props) => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{user ? (
-				<div className={Styles.authContainer}>
-					<main className={Styles.container}>
-						<div className={Styles.bikesContainer}>
-							{products.map((tradeBike) => (
-								<BikeCard key={tradeBike.id} tradeBike={tradeBike} />
-							))}
-						</div>
-						<p className={Styles.signOutText}>
-							You are signed in as {user.displayName} at {company}.
-						</p>
-						<button onClick={logOut} className={Styles.signOutButton}>
-							Sign out
-						</button>
-					</main>
-				</div>
+			{tradeMember ? (
+				<main className={Styles.container}>
+					<div className={Styles.bikesContainer}>
+						{products.map((tradeBike) => (
+							<BikeCard key={tradeBike.id} tradeBike={tradeBike} />
+						))}
+					</div>
+					<p className={Styles.signOutText}>
+						You are signed in as {name}
+						{company ? <span> at {company}</span> : null}.
+					</p>
+					<button onClick={logOut} className={Styles.signOutButton}>
+						Sign out
+					</button>
+				</main>
 			) : (
-				<Signin />
+				<main className={Styles.container}>
+					<h1 className={Styles.processingHeading}>
+						We are currently processing your account, thank you for your
+						patience.
+					</h1>
+					<button onClick={logOut} className={Styles.signOutButton}>
+						Sign out
+					</button>
+				</main>
 			)}
 		</div>
 	);
@@ -108,7 +111,7 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			products: wooCommerceProducts.data,
+			tradeProducts: wooCommerceProducts.data,
 		},
 		// revalidate: 60 // regenerate page with new data fetch after 60 seconds
 	};

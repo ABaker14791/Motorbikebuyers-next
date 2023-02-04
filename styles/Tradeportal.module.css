@@ -1,14 +1,11 @@
-.authContainer {
-	min-height: calc(100vh - 320px) !important;
-	padding: 5rem 0 3rem 0;
-}
-
 .pageBG {
 	background-color: #f1f2f2;
 	box-sizing: border-box;
 }
 
 .container {
+	min-height: calc(100vh - 320px) !important;
+	padding: 5rem 0 3rem 0;
 	width: 90%;
 	max-width: 1200px;
 	margin: 0px auto;
@@ -33,6 +30,11 @@
 	background-color: #0171bd;
 	color: #fff;
 	border: 1px solid #0171bd;
+}
+
+.processingHeading {
+	color: rgb(50, 50, 50);
+	font-size: 1.6em;
 }
 
 @media (max-width: 1000px) {
