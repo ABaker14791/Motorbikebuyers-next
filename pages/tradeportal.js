@@ -51,7 +51,6 @@ const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
 				</main>
 			) : (
 				<main className={Styles.container}>
-					// Todo: make this a component so it can be used on id route
 					<h1 className={Styles.processingHeading}>
 						We are currently processing your account, thank you for your
 						patience.
