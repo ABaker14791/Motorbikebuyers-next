@@ -9,7 +9,7 @@ import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 // Firebase
 import { auth, db } from "../utils/firebase";
 import { getDoc, doc } from "firebase/firestore";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 // Auth redux
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, logout } from "../store/authSlice";
@@ -18,25 +18,33 @@ const Tradeportal = (props) => {
 	// redux
 	const user = useSelector(selectUser);
 	const [company, setCompany] = useState("");
+	const [tradeMember, setTradeMember] = useState(false);
 	const dispatch = useDispatch();
 	const { products } = props;
 
-	// TODO: Get firestore doc somehow?
-	const fetchUserName = async () => {
-		const docRef = doc(db, "users", user.uid);
-		const docSnap = await getDoc(docRef);
-
-		if (docSnap.exists()) {
-			setCompany(docSnap.data().Company);
-			console.log("Document data:", docSnap.data());
-		} else {
-			console.log("No such document!");
-		}
-	};
-
 	useEffect(() => {
-		fetchUserName();
-	}, [company, user]);
+		const fetchUserData = async () => {
+			onAuthStateChanged(auth, async (userAuth) => {
+				// the state changes and this runs again but returns null, we need it to not try run on log out
+				if (userAuth) {
+					const docRef = doc(db, "users", userAuth.uid);
+					const docSnap = await getDoc(docRef);
+
+					if (docSnap.exists()) {
+						setCompany(docSnap.data().Company);
+						setTradeMember(docSnap.data().Trade_Member);
+						console.log("Document data:", docSnap.data());
+						console.log(tradeMember);
+					} else {
+						console.log("No such document!");
+					}
+				} else {
+					console.log("No user found");
+				}
+			});
+		};
+		fetchUserData();
+	}, [company]);
 
 	const userIsTradeMember = () => {
 		// TODO: if user is a member we set state to allow access to trade portal.
