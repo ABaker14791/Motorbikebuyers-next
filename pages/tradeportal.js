@@ -1,50 +1,19 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
 import BikeCard from "../components/BikeCard";
 import Styles from "../styles/Tradeportal.module.css";
-import Signin from "../components/auth/Signin";
 import withAuth from "../utils/withAuth";
 // Woocommerce data
 import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 // Firebase
-import { auth, db } from "../utils/firebase";
-import { getDoc, doc } from "firebase/firestore";
-import { signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { signOut } from "firebase/auth";
 // Auth redux
-import { useSelector, useDispatch } from "react-redux";
-import { selectUser, logout } from "../store/authSlice";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/authSlice";
 
 const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
-	// redux
-	// const user = useSelector(selectUser);
-	// const [company, setCompany] = useState("AKA Automotive");
-	// const [tradeMember, setTradeMember] = useState(false);
 	const dispatch = useDispatch();
 	const products = tradeProducts;
-
-	// useEffect(() => {
-	// 	const fetchUserData = async () => {
-	// 		onAuthStateChanged(auth, async (userAuth) => {
-	// 			// the state changes and this runs again but returns null, we need it to not try run on log out
-	// 			if (userAuth) {
-	// 				const docRef = doc(db, "users", userAuth.uid);
-	// 				const docSnap = await getDoc(docRef);
-
-	// 				if (docSnap.exists()) {
-	// 					setCompany(docSnap.data().Company);
-	// 					setTradeMember(docSnap.data().Trade_Member);
-	// 					console.log("Document data:", docSnap.data());
-	// 					console.log(tradeMember);
-	// 				} else {
-	// 					console.log("No such document!");
-	// 				}
-	// 			} else {
-	// 				console.log("No user found");
-	// 			}
-	// 		});
-	// 	};
-	// 	fetchUserData();
-	// }, [company]);
 
 	const logOut = () => {
 		signOut(auth)
@@ -82,6 +51,7 @@ const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
 				</main>
 			) : (
 				<main className={Styles.container}>
+					// Todo: make this a component so it can be used on id route
 					<h1 className={Styles.processingHeading}>
 						We are currently processing your account, thank you for your
 						patience.
