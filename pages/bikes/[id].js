@@ -33,7 +33,7 @@ export const getServerSideProps = async (context) => {
 	};
 };
 
-const BikeDetails = ({ bike, tradeMember }) => {
+const BikeDetails = ({ bike, tradeMember, name, company }) => {
 	const galleryImages = bike.images;
 	console.log(bike);
 
@@ -148,7 +148,12 @@ const BikeDetails = ({ bike, tradeMember }) => {
 						))}
 					</div>
 					{formOpen ? (
-						<EnquiryForm formOpen={formOpen} setFormOpen={setFormOpen} />
+						<EnquiryForm
+							formOpen={formOpen}
+							setFormOpen={setFormOpen}
+							company={company}
+							name={name}
+						/>
 					) : null}
 				</div>
 			) : (

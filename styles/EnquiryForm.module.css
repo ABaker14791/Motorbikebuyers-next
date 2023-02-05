@@ -1,38 +1,75 @@
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.496);
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.496);
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .form {
-  width: 60vw;
-  margin: auto;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 2em 2em;
-  position: relative;
+	width: 40vw;
+	max-width: 800px;
+	margin: auto;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 2em 2em;
+	position: relative;
 }
 
 .form textarea {
-  width: 100%;
+	width: 100%;
+	padding: 1em;
+	font-family: sans-serif;
+	font-size: 1em;
 }
 
 .enquiryMessage {
-  color: #000;
+	color: #000;
+}
+
+.enquirySubheading {
+	color: rgb(44, 44, 44);
+}
+
+.submitButton {
+	background-color: #fff;
+	border: 1px #000 solid;
+	border-radius: 4px;
+	padding: 10px 14px;
+	margin-right: 1em;
+	cursor: pointer;
+}
+
+.submitButton:hover {
+	background-color: #0171bd;
+	color: #fff;
+	border: 1px solid #0171bd;
+}
+
+.formFooter {
+	display: flex;
+	align-items: center;
+	/* max-height: 50px; */
+	color: rgb(44, 44, 44);
+}
+
+.footerName {
+	margin-right: 1em;
+}
+
+.footerCompany {
 }
 
 .closeButton {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: #fff;
-  border: none;
-  cursor: pointer;
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	background-color: #fff;
+	border: none;
+	cursor: pointer;
 }
