@@ -2,8 +2,13 @@ import React from "react";
 import Styles from "../styles/EnquiryForm.module.css";
 
 const EnquiryForm = ({ formOpen, setFormOpen, company, name }) => {
+	const closeModal = () => {
+		setFormOpen(false);
+	};
+
 	return (
-		<div className={Styles.overlay}>
+		<div className={Styles.container}>
+			<div className={Styles.overlay} onClick={closeModal}></div>
 			<form className={Styles.form}>
 				<button
 					className={Styles.closeButton}

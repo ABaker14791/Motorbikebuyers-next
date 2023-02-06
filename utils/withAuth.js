@@ -5,6 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout, selectUser } from "../store/authSlice";
+import Loading from "../components/Loading";
 
 const withAuth = (WrappedComponent) => {
 	const WithAuth = (props) => {
@@ -13,7 +14,7 @@ const withAuth = (WrappedComponent) => {
 		const router = useRouter();
 		const [name, setName] = useState("");
 		const [company, setCompany] = useState("");
-		const [tradeMember, setTradeMember] = useState(false);
+		const [tradeMember, setTradeMember] = useState(null);
 
 		useEffect(() => {
 			onAuthStateChanged(auth, async (userAuth) => {
@@ -48,7 +49,11 @@ const withAuth = (WrappedComponent) => {
 		}, []);
 
 		if (!user) {
-			return <div>Loading...</div>;
+			return <Loading />;
+		}
+
+		if (!tradeMember) {
+			return <Loading />;
 		}
 
 		return (

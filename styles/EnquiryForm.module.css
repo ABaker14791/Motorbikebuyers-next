@@ -1,3 +1,14 @@
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .overlay {
 	position: absolute;
 	top: 0;
@@ -5,15 +16,19 @@
 	right: 0;
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.496);
-	z-index: 100;
+	z-index: 9;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .form {
-	width: 40vw;
+	position: relative;
+	top: 0;
+	left: 0;
+	/* width: 40vw; */
 	max-width: 800px;
+	z-index: 10;
 	margin: auto;
 	background-color: #fff;
 	border-radius: 5px;
@@ -26,6 +41,7 @@
 	padding: 1em;
 	font-family: sans-serif;
 	font-size: 1em;
+	resize: none;
 }
 
 .enquiryMessage {

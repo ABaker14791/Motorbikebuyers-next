@@ -20,6 +20,7 @@ import { logout } from "../../store/authSlice";
 // Components
 import ReturnBar from "../../components/ReturnBar";
 import EnquiryForm from "../../components/EnquiryForm";
+import AuthProcessing from "../../components/auth/AuthProcessing";
 
 export const getServerSideProps = async (context) => {
 	const { id } = context.params;
@@ -157,15 +158,7 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 					) : null}
 				</div>
 			) : (
-				<main className={Styles.container}>
-					<h1 className={Styles.processingHeading}>
-						We are currently processing your account, thank you for your
-						patience.
-					</h1>
-					<button onClick={logOut} className={Styles.signOutButton}>
-						Sign out
-					</button>
-				</main>
+				<AuthProcessing />
 			)}
 		</div>
 	);

@@ -10,6 +10,7 @@ import { signOut } from "firebase/auth";
 // Auth redux
 import { useDispatch } from "react-redux";
 import { logout } from "../store/authSlice";
+import AuthProcessing from "../components/auth/AuthProcessing";
 
 const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
 	const dispatch = useDispatch();
@@ -50,15 +51,7 @@ const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
 					</button>
 				</main>
 			) : (
-				<main className={Styles.container}>
-					<h1 className={Styles.processingHeading}>
-						We are currently processing your account, thank you for your
-						patience.
-					</h1>
-					<button onClick={logOut} className={Styles.signOutButton}>
-						Sign out
-					</button>
-				</main>
+				<AuthProcessing />
 			)}
 		</div>
 	);
