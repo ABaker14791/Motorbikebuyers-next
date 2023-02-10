@@ -52,10 +52,6 @@ const withAuth = (WrappedComponent) => {
 			return <Loading />;
 		}
 
-		if (!tradeMember) {
-			return <Loading />;
-		}
-
 		return (
 			<WrappedComponent
 				{...props}
