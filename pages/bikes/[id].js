@@ -21,6 +21,7 @@ import { logout } from "../../store/authSlice";
 import ReturnBar from "../../components/ReturnBar";
 import EnquiryForm from "../../components/EnquiryForm";
 import AuthProcessing from "../../components/auth/AuthProcessing";
+import Loading from "../../components/Loading";
 
 export const getServerSideProps = async (context) => {
 	const { id } = context.params;
@@ -158,7 +159,7 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 					) : null}
 				</div>
 			) : (
-				<AuthProcessing />
+				<Loading />
 			)}
 		</div>
 	);

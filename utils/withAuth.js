@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout, selectUser } from "../store/authSlice";
 import Loading from "../components/Loading";
+import AuthProcessing from "../components/auth/AuthProcessing";
 
 const withAuth = (WrappedComponent) => {
 	const WithAuth = (props) => {
@@ -50,6 +51,10 @@ const withAuth = (WrappedComponent) => {
 
 		if (!user) {
 			return <Loading />;
+		}
+
+		if (tradeMember === false) {
+			return <AuthProcessing />;
 		}
 
 		return (

@@ -11,6 +11,7 @@ import { signOut } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/authSlice";
 import AuthProcessing from "../components/auth/AuthProcessing";
+import Loading from "../components/Loading";
 
 const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
 	const dispatch = useDispatch();
@@ -51,7 +52,8 @@ const Tradeportal = ({ tradeProducts, company, tradeMember, name }) => {
 					</button>
 				</main>
 			) : (
-				<AuthProcessing />
+				// <AuthProcessing />
+				<Loading />
 			)}
 		</div>
 	);
