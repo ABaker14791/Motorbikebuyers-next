@@ -20,7 +20,6 @@ import { logout } from "../../store/authSlice";
 // Components
 import ReturnBar from "../../components/ReturnBar";
 import EnquiryForm from "../../components/EnquiryForm";
-import AuthProcessing from "../../components/auth/AuthProcessing";
 import Loading from "../../components/Loading";
 
 export const getServerSideProps = async (context) => {
@@ -41,8 +40,6 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 
 	const [formOpen, setFormOpen] = useState(false);
 	const [featureImage, setFeatureImage] = useState(bike.images[0].src);
-	const [galleryScroll, setGalleryScroll] = useState(); // maintain the scroll position when user clicks a gallery image && maybe center the scroll to the active image
-	const [activeImage, setActiveImage] = useState(); // set a border around the active image (could this be done with a class on click?)
 	const gallery = useRef(null);
 
 	const logOut = () => {
@@ -84,12 +81,12 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 								<span>
 									<FaCalendarAlt />
 									&nbsp;
-									{bike.attributes[1].options}
+									{bike.attributes.options}
 								</span>
 								<span>
 									<FaTachometerAlt />
 									&nbsp;
-									{bike.attributes[0].options} miles
+									{bike.attributes.options} miles
 								</span>
 							</div>
 							<div className={Styles.description}>
@@ -98,21 +95,11 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 							<div className={Styles.actions}>
 								<div className={Styles.actions}>
 									<div className={Styles.secondaryContacts}>
-										<button
-											// onClick={() => {
-											// 	setFormOpen(!formOpen);
-											// }}
-											className={Styles.whatsAppButton}
-										>
+										<button className={Styles.whatsAppButton}>
 											<FaWhatsapp />
 											<span>WhatsApp</span>
 										</button>
-										<button
-											// onClick={() => {
-											// 	setFormOpen(!formOpen);
-											// }}
-											className={Styles.phoneButton}
-										>
+										<button className={Styles.phoneButton}>
 											<FaPhone />
 											<span>01274 583903</span>
 										</button>
@@ -129,11 +116,7 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 							</div>
 						</div>
 					</div>
-					<div
-						className={Styles.gallery}
-						ref={gallery}
-						// onScroll={setScrollPosition}
-					>
+					<div className={Styles.gallery} ref={gallery}>
 						{galleryImages.map((galleryImg) => (
 							<Image
 								src={galleryImg.src}
@@ -143,7 +126,6 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 								key={galleryImg.id}
 								onClick={() => {
 									setFeatureImage(galleryImg.src);
-									setGalleryScroll(gallery.current?.scrollLeft);
 									gallery.scrollLeft += 1200;
 								}}
 							/>

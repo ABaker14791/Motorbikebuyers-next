@@ -27,10 +27,10 @@ const BikeCard = ({ tradeBike }) => {
 					</div>
 					<div className={Styles.actions}>
 						<div className={Styles.year}>
-							<span>{attributes[1].options}</span>
+							<span>{attributes.options}</span>
 						</div>
 						<div className={Styles.mileage}>
-							<span>{attributes[0].options} miles</span>
+							<span>{attributes.options} miles</span>
 						</div>
 					</div>
 

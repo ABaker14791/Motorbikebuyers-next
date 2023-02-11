@@ -46,6 +46,7 @@ async function addEmailContact(data) {
 		body: JSON.stringify(data),
 	});
 	const contactEmailConfirmation = await response.json();
+	console.log(contactEmailConfirmation);
 }
 
 const DetailsForm = ({ bikeData }) => {
@@ -72,8 +73,8 @@ const DetailsForm = ({ bikeData }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// insertBikeData(data);
-		// sendConfirmationEmail(data);
+		insertBikeData(data);
+		sendConfirmationEmail(data);
 		sendDetailsEmail(data);
 		addEmailContact(data);
 		setSubmitted(true);

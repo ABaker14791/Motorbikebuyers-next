@@ -42,11 +42,13 @@ export default async function bikeDetails(req, res) {
 		apiInstance.sendTransacEmail(sendSmtpEmail).then(
 			function (data) {
 				console.log("API called successfully. Returned data: " + data);
+				res.status(200).json({ success: "APi Called Successfully" });
 			},
 			function (error) {
 				console.error(error);
 			}
 		);
+		res.status(200).json({ error: "failed to send email" });
 	} catch (err) {
 		res.status(500).json({ error: "failed to send email" });
 	}

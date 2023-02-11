@@ -27,8 +27,8 @@ const AuthProcessing = () => {
 				We are currently processing your account.
 			</h1>
 			<h2 className={Styles.subHeading}>
-				You will gain access to the trade portal once your account information
-				has been verified, thank you for your patience.
+				The trade portal will be available once your account information has
+				been verified, thank you for your patience.
 			</h2>
 			<button onClick={logOut} className={Styles.signOutButton}>
 				Sign out
