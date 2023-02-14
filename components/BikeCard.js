@@ -26,12 +26,20 @@ const BikeCard = ({ tradeBike }) => {
 						<p>£{price}</p>
 					</div>
 					<div className={Styles.actions}>
-						<div className={Styles.year}>
-							<span>{attributes.options}</span>
-						</div>
-						<div className={Styles.mileage}>
-							<span>{attributes.options} miles</span>
-						</div>
+						{attributes ? (
+							<>
+								{attributes.map((attribute, id) => (
+									<div className={Styles.year} key={id}>
+										<span>
+											{attribute.options[0]}
+											{attribute.name === "Mileage" ? (
+												<span> miles</span>
+											) : null}
+										</span>
+									</div>
+								))}
+							</>
+						) : null}
 					</div>
 
 					<div className={Styles.sellerInfo}>

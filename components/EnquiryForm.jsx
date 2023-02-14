@@ -6,10 +6,15 @@ const EnquiryForm = ({ formOpen, setFormOpen, company, name }) => {
 		setFormOpen(false);
 	};
 
+	function submitEnquiry(event) {
+		event.preventDefault();
+		console.log("i want this bike");
+	}
+
 	return (
 		<div className={Styles.container}>
 			<div className={Styles.overlay} onClick={closeModal}></div>
-			<form className={Styles.form}>
+			<form className={Styles.form} onSubmit={submitEnquiry}>
 				<button
 					className={Styles.closeButton}
 					onClick={() => {
@@ -27,7 +32,9 @@ const EnquiryForm = ({ formOpen, setFormOpen, company, name }) => {
 				</h4>
 				<textarea name="message" id="messageBox" cols="30" rows="10"></textarea>
 				<div className={Styles.formFooter}>
-					<button className={Styles.submitButton}>Submit Enquiry</button>
+					<button className={Styles.submitButton} type="submit">
+						Submit Enquiry
+					</button>
 					<p className={Styles.footerName}>{name}</p>
 					{/* <p className={Styles.footerCompany}>{company}</p> */}
 				</div>
