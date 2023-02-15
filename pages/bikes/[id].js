@@ -37,6 +37,7 @@ export const getServerSideProps = async (context) => {
 const BikeDetails = ({ bike, tradeMember, name, company }) => {
 	const galleryImages = bike.images;
 	console.log(bike);
+	const attributes = bike.attributes;
 
 	const [formOpen, setFormOpen] = useState(false);
 	const [featureImage, setFeatureImage] = useState(bike.images[0].src);
@@ -78,16 +79,26 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 							<h2 className={Styles.title}>{bike.name}</h2>
 							<div className={Styles.price}>£{bike.price}</div>
 							<div className={Styles.year}>
-								<span>
-									<FaCalendarAlt />
-									&nbsp;
-									{bike.attributes.options}
-								</span>
-								<span>
-									<FaTachometerAlt />
-									&nbsp;
-									{bike.attributes.options} miles
-								</span>
+								{attributes ? (
+									<>
+										{attributes.map((attribute, id) => (
+											<span className={Styles.year} key={id}>
+												{attribute.name === "Mileage" ? (
+													<span>
+														<FaTachometerAlt />
+														&nbsp;{attribute.options[0]} miles
+													</span>
+												) : null}
+												{attribute.name === "Year" ? (
+													<span>
+														<FaCalendarAlt />
+														&nbsp;{attribute.options[0]}
+													</span>
+												) : null}
+											</span>
+										))}
+									</>
+								) : null}
 							</div>
 							<div className={Styles.description}>
 								{bike.description.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, "")}
