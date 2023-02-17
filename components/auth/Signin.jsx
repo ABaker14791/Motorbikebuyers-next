@@ -6,6 +6,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	updateProfile,
+	sendEmailVerification,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
@@ -39,6 +40,9 @@ const Signin = () => {
 			});
 			console.log(account.user.uid);
 			// TODO: send email for activation
+			const emailVerification = await sendEmailVerification(auth.currentUser);
+			console.log(emailVerification);
+
 			const data = {
 				uid: account.user.uid,
 				Company: company,
@@ -54,7 +58,7 @@ const Signin = () => {
 					displayName: account.user.displayName,
 				})
 			);
-			router.push("/tradeportal");
+			router.push("/tradeportal"); // cant route to trade portal as user is not yet verified.
 		} catch (error) {
 			console.log("Something went wrong with added user to database: ", error);
 		}
