@@ -28,7 +28,6 @@ const Signin = () => {
 
 	const register = async (e) => {
 		e.preventDefault();
-		// TODO: wait.. do the passwords both match? no? try again, yes? continue
 		try {
 			const account = await createUserWithEmailAndPassword(
 				auth,
@@ -38,11 +37,7 @@ const Signin = () => {
 			await updateProfile(account.user, {
 				displayName: name,
 			});
-			console.log(account.user.uid);
-			// TODO: send email for activation
 			const emailVerification = await sendEmailVerification(auth.currentUser);
-			console.log(emailVerification);
-
 			const data = {
 				uid: account.user.uid,
 				Company: company,
@@ -58,7 +53,7 @@ const Signin = () => {
 					displayName: account.user.displayName,
 				})
 			);
-			router.push("/tradeportal"); // cant route to trade portal as user is not yet verified.
+			router.push("/emailpending"); // cant route to trade portal as user is not yet verified.
 		} catch (error) {
 			console.log("Something went wrong with added user to database: ", error);
 		}
