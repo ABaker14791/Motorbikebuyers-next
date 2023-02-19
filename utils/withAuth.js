@@ -57,6 +57,10 @@ const withAuth = (WrappedComponent) => {
 			return <AuthProcessing />;
 		}
 
+		if (!user.emailVerified) {
+			router.push("/emailpending");
+		}
+
 		return (
 			<WrappedComponent
 				{...props}

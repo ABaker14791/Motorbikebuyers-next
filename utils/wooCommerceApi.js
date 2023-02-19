@@ -15,6 +15,7 @@ export async function fetchWooCommerceProducts() {
 		return response;
 	} catch (error) {
 		throw new Error(error);
+		// Todo: route to 404 page
 	}
 }
 
