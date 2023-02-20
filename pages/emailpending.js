@@ -7,7 +7,7 @@ import { logout } from "../store/authSlice";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 
-const emailpending = () => {
+const Emailpending = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 
@@ -35,4 +35,4 @@ const emailpending = () => {
 	);
 };
 
-export default emailpending;
+export default Emailpending;
