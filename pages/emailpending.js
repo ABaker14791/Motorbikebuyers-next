@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "../styles/Emailpending.module.css";
+import Styles from "../styles/emailpending.module.css";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/authSlice";
