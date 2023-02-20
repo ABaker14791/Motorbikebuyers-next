@@ -25,7 +25,7 @@ const Emailpending = () => {
 	};
 	return (
 		<div className={Styles.container}>
-			<div className={Styles.headingText}>
+			<div>
 				<h1>Please verify your Email address to visit the trade portal.</h1>
 			</div>
 			<button onClick={logOut} className={Styles.signOutButton}>
