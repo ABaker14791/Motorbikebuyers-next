@@ -37,7 +37,7 @@ const Signin = () => {
 			await updateProfile(account.user, {
 				displayName: name,
 			});
-			const emailVerification = await sendEmailVerification(auth.currentUser);
+			// const emailVerification = await sendEmailVerification(auth.currentUser);
 			const data = {
 				uid: account.user.uid,
 				Company: company,

@@ -41,6 +41,10 @@ const withAuth = (WrappedComponent) => {
 					} else {
 						console.log("No such document!");
 					}
+					// Check if user email is verified
+					// if (!userAuth.emailVerified) {
+					// 	router.push("/emailpending");
+					// }
 				} else {
 					dispatch(logout());
 					router.push("/login");
@@ -55,10 +59,6 @@ const withAuth = (WrappedComponent) => {
 
 		if (tradeMember === false) {
 			return <AuthProcessing />;
-		}
-
-		if (!user.emailVerified) {
-			router.push("/emailpending");
 		}
 
 		return (

@@ -11,6 +11,8 @@ const Emailpending = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 
+	// Todo: route back to trade portal if the email is verified
+
 	const logOut = () => {
 		signOut(auth)
 			.then(() => {
