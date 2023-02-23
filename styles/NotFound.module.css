@@ -1,0 +1,23 @@
+.container {
+	/* display: flex;
+	flex-direction: column; */
+	min-height: calc(100vh - 320px) !important;
+	padding: 5rem 0 3rem 0;
+	width: 90%;
+	max-width: 1200px;
+	margin: 0px auto;
+}
+
+.homeLink {
+	color: #0171bd;
+	display: flex;
+	align-items: center;
+}
+
+.homeLink:hover {
+	color: #015f9e;
+}
+
+.homeLink svg {
+	margin-right: 0.4em;
+}

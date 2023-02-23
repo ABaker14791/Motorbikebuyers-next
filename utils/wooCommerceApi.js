@@ -15,7 +15,6 @@ export async function fetchWooCommerceProducts() {
 		return response;
 	} catch (error) {
 		throw new Error(error);
-		// Todo: route to 404 page
 	}
 }
 
@@ -25,6 +24,8 @@ export async function fetchWooCommerceSingle(id) {
 		const response = await api.get(`products/${id}`);
 		return response;
 	} catch (error) {
-		throw new Error(error);
+		return {
+			notFound: true,
+		};
 	}
 }

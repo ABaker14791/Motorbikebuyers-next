@@ -27,11 +27,17 @@ export const getServerSideProps = async (context) => {
 	const items = await fetchWooCommerceSingle(`${id}`);
 	const data = await items.data;
 
-	return {
-		props: {
-			bike: data,
-		},
-	};
+	if (!data) {
+		return {
+			notFound: true,
+		};
+	} else {
+		return {
+			props: {
+				bike: data,
+			},
+		};
+	}
 };
 
 const BikeDetails = ({ bike, tradeMember, name, company }) => {
