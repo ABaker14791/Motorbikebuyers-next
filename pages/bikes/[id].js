@@ -40,7 +40,7 @@ export const getServerSideProps = async (context) => {
 	}
 };
 
-const BikeDetails = ({ bike, tradeMember, name, company }) => {
+const BikeDetails = ({ bike, tradeMember, email, name, company }) => {
 	const galleryImages = bike.images;
 	console.log(bike);
 	const attributes = bike.attributes;
@@ -118,7 +118,7 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 										</button>
 										<button className={Styles.phoneButton}>
 											<FaPhone />
-											<span>01274 583903</span>
+											<a href={"tel:+44 7770 444569"}>01274 583903</a>
 										</button>
 									</div>
 									<button
@@ -154,6 +154,8 @@ const BikeDetails = ({ bike, tradeMember, name, company }) => {
 							setFormOpen={setFormOpen}
 							company={company}
 							name={name}
+							email={email}
+							bikeName={bike.name}
 						/>
 					) : null}
 				</div>

@@ -14,6 +14,7 @@ const withAuth = (WrappedComponent) => {
 		const dispatch = useDispatch();
 		const router = useRouter();
 		const [name, setName] = useState("");
+		const [email, setEmail] = useState("");
 		const [company, setCompany] = useState("");
 		const [tradeMember, setTradeMember] = useState(null);
 
@@ -36,15 +37,12 @@ const withAuth = (WrappedComponent) => {
 						setCompany(docSnap.data().Company);
 						setTradeMember(docSnap.data().Trade_Member);
 						setName(docSnap.data().Name);
+						setEmail(docSnap.data().Email);
 						console.log("Document data:", docSnap.data());
 						console.log(tradeMember);
 					} else {
 						console.log("No such document!");
 					}
-					// Check if user email is verified
-					// if (!userAuth.emailVerified) {
-					// 	router.push("/emailpending");
-					// }
 				} else {
 					dispatch(logout());
 					router.push("/login");
@@ -66,6 +64,7 @@ const withAuth = (WrappedComponent) => {
 				{...props}
 				authUser={user}
 				company={company}
+				email={email}
 				tradeMember={tradeMember}
 				name={name}
 			/>

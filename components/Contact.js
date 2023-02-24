@@ -45,15 +45,13 @@ const Contact = () => {
 				</p>
 				<div className={Styles.contactLink}>
 					<FaPhone />
-					<Link href="#">
-						<a>+44 7770 444569</a>
-					</Link>
+					<a href={"tel: +44 7770 444569"}>+44 7770 444569</a>
 				</div>
 				<div className={Styles.contactLink}>
 					<FaEnvelope />
-					<Link href="#">
-						<a>sales@themotorbikebuyers.co.uk</a>
-					</Link>
+					<a href={"mailto: sales@themotorbikebuyers.co.uk"}>
+						sales@themotorbikebuyers.co.uk
+					</a>
 				</div>
 				<div className={Styles.contactLink}>
 					<FaExternalLinkAlt />
