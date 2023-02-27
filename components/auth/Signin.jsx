@@ -21,58 +21,62 @@ const Signin = () => {
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
+	// const [confirmPassword, setConfirmPassword] = useState("");
 	const [company, setCompany] = useState("");
 	// redux
 	const dispatch = useDispatch();
 
-	const register = async (e) => {
-		e.preventDefault();
-		try {
-			const account = await createUserWithEmailAndPassword(
-				auth,
-				email,
-				password
-			);
-			await updateProfile(account.user, {
-				displayName: name,
-			});
-			// const emailVerification = await sendEmailVerification(auth.currentUser);
-			const data = {
-				uid: account.user.uid,
-				Company: company,
-				Name: name,
-				Email: email,
-				Trade_Member: false,
-			};
-			await setDoc(doc(db, "users", account.user.uid), data);
-			dispatch(
-				login({
-					email: account.user.email,
-					uid: account.user.uid,
-					displayName: account.user.displayName,
-				})
-			);
-			router.push("/emailpending"); // cant route to trade portal as user is not yet verified.
-		} catch (error) {
-			console.log("Something went wrong with added user to database: ", error);
-		}
-	};
-
-	const passwordValidation = () => {
-		if (password != confirmPassword) {
-			confirmPassword.setCustomValidity("Passwords Don't Match.");
+	const passwordValidation = (e) => {
+		const confirmPass = e.target.value;
+		if (password !== confirmPass) {
+			e.target.setCustomValidity("Passwords do not match.");
 			return false;
 		} else {
-			confirmPassword.setCustomValidity("");
+			e.target.setCustomValidity("");
 			return true;
 		}
 	};
 
+	const register = async (e) => {
+		e.preventDefault();
+		if (passwordValidation) {
+			try {
+				const account = await createUserWithEmailAndPassword(
+					auth,
+					email,
+					password
+				);
+				await updateProfile(account.user, {
+					displayName: name,
+				});
+				// const emailVerification = await sendEmailVerification(auth.currentUser);
+				const data = {
+					uid: account.user.uid,
+					Company: company,
+					Name: name,
+					Email: email,
+					Trade_Member: false,
+				};
+				await setDoc(doc(db, "users", account.user.uid), data);
+				dispatch(
+					login({
+						email: account.user.email,
+						uid: account.user.uid,
+						displayName: account.user.displayName,
+					})
+				);
+				router.push("/emailpending"); // cant route to trade portal as user is not yet verified.
+			} catch (error) {
+				console.log(
+					"Something went wrong with added user to database: ",
+					error
+				);
+			}
+		} else console.log("passwords do not match");
+	};
+
 	const signIn = (e) => {
 		e.preventDefault();
-
-		//    const q = query(collection(db, "users"), where("uid", "==", user.uid));
 
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
@@ -173,7 +177,7 @@ const Signin = () => {
 						type="password"
 						name="confirmPassword"
 						placeholder="Confirm Password"
-						onChange={(e) => setConfirmPassword(e.target.value)}
+						onChange={(e) => passwordValidation(e)}
 						required
 					/>
 
