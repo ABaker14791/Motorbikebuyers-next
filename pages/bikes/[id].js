@@ -114,7 +114,7 @@ const BikeDetails = ({ bike, tradeMember, email, name, company }) => {
 									<div className={Styles.secondaryContacts}>
 										<button className={Styles.whatsAppButton}>
 											<FaWhatsapp />
-											<span>WhatsApp</span>
+											<a href={"#"}>WhatsApp</a>
 										</button>
 										<button className={Styles.phoneButton}>
 											<FaPhone />

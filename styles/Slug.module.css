@@ -64,7 +64,7 @@
 	color: #25d366;
 }
 
-.whatsAppButton span {
+.whatsAppButton a {
 	margin-left: 0.4em;
 }
 
@@ -76,7 +76,7 @@
 	border: none;
 }
 
-.phoneButton span {
+.phoneButton a {
 	margin-left: 0.4em;
 }
 
