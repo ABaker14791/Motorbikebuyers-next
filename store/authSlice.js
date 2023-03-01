@@ -5,6 +5,7 @@ const initialState = {
 	user: null, // for user object
 	displayName: null,
 	uid: null, // for storing the JWT or ID?
+	emailVerified: null,
 	error: null,
 	success: false, // for monitoring the registration process.
 };

@@ -21,34 +21,40 @@ const withAuth = (WrappedComponent) => {
 		useEffect(() => {
 			onAuthStateChanged(auth, async (userAuth) => {
 				if (userAuth) {
-					// user is logged in
-					dispatch(
-						login({
-							email: userAuth.email,
-							uid: userAuth.uid,
-							displayName: userAuth.displayName,
-						})
-					);
-					// Check user permissions
-					const docRef = doc(db, "users", userAuth.uid);
-					const docSnap = await getDoc(docRef);
+					if (userAuth.emailVerified) {
+						// user is logged in
+						dispatch(
+							login({
+								email: userAuth.email,
+								uid: userAuth.uid,
+								displayName: userAuth.displayName,
+								emailVerified: userAuth.emailVerified,
+							})
+						);
+						// Check user permissions
+						const docRef = doc(db, "users", userAuth.uid);
+						const docSnap = await getDoc(docRef);
 
-					if (docSnap.exists()) {
-						setCompany(docSnap.data().Company);
-						setTradeMember(docSnap.data().Trade_Member);
-						setName(docSnap.data().Name);
-						setEmail(docSnap.data().Email);
-						console.log("Document data:", docSnap.data());
-						console.log(tradeMember);
+						if (docSnap.exists()) {
+							setCompany(docSnap.data().Company);
+							setTradeMember(docSnap.data().Trade_Member);
+							setName(docSnap.data().Name);
+							setEmail(docSnap.data().Email);
+							console.log("Document data:", docSnap.data());
+							console.log(tradeMember);
+						} else {
+							console.log("No such document!");
+						}
 					} else {
-						console.log("No such document!");
+						console.log(userAuth.emailVerified);
+						console.log("email not verified");
+						router.push("/emailpending");
 					}
 				} else {
 					dispatch(logout());
 					router.push("/login");
 				}
 			});
-			console.log("page loaded");
 		}, []);
 
 		if (!user) {

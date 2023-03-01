@@ -1,17 +1,26 @@
-import React from "react";
+import { useEffect } from "react";
 import Styles from "../styles/emailpending.module.css";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/authSlice";
 // Firebase
 import { auth } from "../utils/firebase";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 
 const Emailpending = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 
-	// Todo: route back to trade portal if the email is verified
+	// Route back to trade portal if the email is verified
+	useEffect(() => {
+		onAuthStateChanged(auth, async (userAuth) => {
+			if (userAuth) {
+				if (userAuth.emailVerified) {
+					router.push("/tradeportal");
+				}
+			}
+		});
+	}, []);
 
 	const logOut = () => {
 		signOut(auth)

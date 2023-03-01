@@ -21,7 +21,6 @@ const Signin = () => {
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
-	// const [confirmPassword, setConfirmPassword] = useState("");
 	const [company, setCompany] = useState("");
 	// redux
 	const dispatch = useDispatch();
@@ -49,7 +48,7 @@ const Signin = () => {
 				await updateProfile(account.user, {
 					displayName: name,
 				});
-				// const emailVerification = await sendEmailVerification(auth.currentUser);
+				const emailVerification = await sendEmailVerification(auth.currentUser);
 				const data = {
 					uid: account.user.uid,
 					Company: company,
@@ -65,7 +64,7 @@ const Signin = () => {
 						displayName: account.user.displayName,
 					})
 				);
-				router.push("/emailpending"); // cant route to trade portal as user is not yet verified.
+				router.push("/emailpending");
 			} catch (error) {
 				console.log(
 					"Something went wrong with added user to database: ",
