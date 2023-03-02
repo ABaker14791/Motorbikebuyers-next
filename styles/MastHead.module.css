@@ -11,6 +11,20 @@
 	transform: translate(-50%, -80%);
 }
 
+@media (max-width: 1080px) {
+	.heading {
+		font-size: 2em;
+		width: 80%;
+	}
+}
+
+@media (max-width: 678px) {
+	.heading {
+		font-size: 1.8em;
+		width: 90%;
+	}
+}
+
 /* .fastText {
 	color: #0171bc;
 }
