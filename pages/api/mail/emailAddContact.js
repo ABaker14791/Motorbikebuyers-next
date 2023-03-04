@@ -9,11 +9,20 @@ export default async function emailAddContact(req, res) {
 	let apiInstance = new SibApiV3Sdk.ContactsApi();
 	let createContact = new SibApiV3Sdk.CreateContact();
 
-	createContact.email = contact.email;
-	createContact.listIds = [6];
-	createContact.attributes = {
-		FIRSTNAME: contact.firstName,
-		LASTNAME: contact.lastName,
+	// createContact.email = contact.email;
+	// createContact.listIds = [6];
+	// createContact.attributes = {
+	// 	FIRSTNAME: contact.firstName,
+	// 	LASTNAME: contact.lastName,
+	// };
+
+	createContact = {
+		email: contact.email,
+		listIds: [6],
+		attributes: {
+			FIRSTNAME: contact.firstName,
+			LASTNAME: contact.lastName,
+		},
 	};
 
 	if (req.method === "POST") {
