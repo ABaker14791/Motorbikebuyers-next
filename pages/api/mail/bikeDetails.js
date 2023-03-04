@@ -16,7 +16,7 @@ export default async function bikeDetails(req, res) {
 			{
 				// email: "sales@themotorbikebuyers.co.uk",
 				email: "adam_baker@live.co.uk",
-				name: "Charlie Hopkins",
+				name: "Charlie",
 			},
 		],
 		templateId: 6,
@@ -38,18 +38,23 @@ export default async function bikeDetails(req, res) {
 			phone: bike.phone,
 		},
 	};
-	try {
-		apiInstance.sendTransacEmail(sendSmtpEmail).then(
-			function (data) {
-				console.log("API called successfully. Returned data: " + data);
-				res.status(200).json({ success: "APi Called Successfully" });
-			},
-			function (error) {
-				console.error(error);
-			}
-		);
-		res.status(200).json({ message: "Email sent successfully" });
-	} catch (err) {
-		res.status(500).json({ error: "failed to send email" });
+	if (req.method === "POST") {
+		try {
+			apiInstance.sendTransacEmail(sendSmtpEmail).then(
+				function (data) {
+					console.log("API called successfully. Returned data: " + data);
+					return res
+						.status(200)
+						.json({ success: true, message: "Email sent successfully" });
+				},
+				function (error) {
+					console.error(error);
+				}
+			);
+		} catch (err) {
+			res.status(500).json({ error: "failed to send email" });
+		}
+	} else {
+		return res.status(500).json({ error: "failed to send email" });
 	}
 }

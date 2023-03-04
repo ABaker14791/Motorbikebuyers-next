@@ -40,7 +40,9 @@ export default async function contactForm(req, res) {
 				}
 			);
 		} catch (err) {
-			res.status(500).json({ error: "failed to send email" });
+			return res.status(500).json({ error: "failed to send email" });
 		}
+	} else {
+		return res.status(500).json({ error: "failed to send email" });
 	}
 }

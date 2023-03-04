@@ -61,7 +61,7 @@ const Contact = () => {
 				</div>
 			</div>
 			{submitted ? (
-				<div>Thank you.</div>
+				<div>Message sent, thank you.</div>
 			) : (
 				<form onSubmit={handleOnSubmit} className={Styles.contactForm}>
 					<label>Name</label>
