@@ -7,7 +7,7 @@ export default async function details(req, res) {
 		const response = await fetch(
 			"https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
 			{
-				method: "post",
+				method: "POST",
 				headers: {
 					"x-api-key": process.env.DVLA_ENQUIRY_KEY,
 					"Content-Type": "application/json",
@@ -17,8 +17,8 @@ export default async function details(req, res) {
 		);
 		const data = await response.json();
 
-		res.status(200).json(data);
+		return res.status(200).json(data);
 	} catch (err) {
-		res.status(500).json({ error: "failed to load data" });
+		return res.status(500).json({ error: "failed to load data" });
 	}
 }

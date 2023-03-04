@@ -16,14 +16,19 @@ export default async function emailAddContact(req, res) {
 		LASTNAME: contact.lastName,
 	};
 
-	apiInstance.createContact(createContact).then(
-		function (data) {
-			console.log(
-				"API called successfully. Returned data: " + JSON.stringify(data)
-			);
-		},
-		function (error) {
-			console.error(error);
-		}
-	);
+	if (req.method === "POST") {
+		apiInstance.createContact(createContact).then(
+			function (data) {
+				return res
+					.status(200)
+					.json({ success: true, message: "Contact added successfully" });
+			},
+			function (error) {
+				console.error(error);
+				return res.status(500).json({ error: "Failed to add contact." });
+			}
+		);
+	} else {
+		return res.status(500).json({ error: "Failed to add contact." });
+	}
 }

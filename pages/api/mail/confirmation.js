@@ -20,16 +20,24 @@ export default async function confirmation(req, res) {
 		],
 		templateId: 8,
 	};
-	try {
-		apiInstance.sendTransacEmail(sendSmtpEmail).then(
-			function (data) {
-				console.log("API called successfully. Returned data: " + data);
-			},
-			function (error) {
-				console.error(error);
-			}
-		);
-	} catch (err) {
-		res.status(500).json({ error: "failed to send email" });
+	if (req.method === "POST") {
+		try {
+			apiInstance.sendTransacEmail(sendSmtpEmail).then(
+				function (data) {
+					return res.status(200).json({
+						success: true,
+						message: "Confirmation Email sent successfully.",
+					});
+					console.log("API called successfully. Returned data: " + data);
+				},
+				function (error) {
+					console.error(error);
+				}
+			);
+		} catch (err) {
+			return res.status(500).json({ error: "Failed to send email." });
+		}
+	} else {
+		return res.status(500).json({ error: "Failed to send email." });
 	}
 }
