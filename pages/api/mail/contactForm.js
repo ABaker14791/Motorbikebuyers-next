@@ -14,7 +14,8 @@ export default async function contactForm(req, res) {
 	sendSmtpEmail = {
 		to: [
 			{
-				email: "sales@themotorbikebuyers.co.uk",
+				// email: "sales@themotorbikebuyers.co.uk",
+				email: "adam_baker@live.co.uk",
 				name: "Charlie",
 			},
 		],
@@ -25,16 +26,21 @@ export default async function contactForm(req, res) {
 			message: contactData.message,
 		},
 	};
-	try {
-		apiInstance.sendTransacEmail(sendSmtpEmail).then(
-			function (data) {
-				console.log("API called successfully. Returned data: " + data);
-			},
-			function (error) {
-				console.error(error);
-			}
-		);
-	} catch (err) {
-		res.status(500).json({ error: "failed to send email" });
+	if (req.method === "POST") {
+		try {
+			apiInstance.sendTransacEmail(sendSmtpEmail).then(
+				function (data) {
+					console.log("API called successfully. Returned data: " + data);
+					return res
+						.status(200)
+						.json({ success: true, message: "Email sent successfully" });
+				},
+				function (error) {
+					console.error(error);
+				}
+			);
+		} catch (err) {
+			res.status(500).json({ error: "failed to send email" });
+		}
 	}
 }

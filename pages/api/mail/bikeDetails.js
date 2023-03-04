@@ -48,7 +48,7 @@ export default async function bikeDetails(req, res) {
 				console.error(error);
 			}
 		);
-		res.status(200).json({ error: "failed to send email" });
+		res.status(200).json({ message: "Email sent successfully" });
 	} catch (err) {
 		res.status(500).json({ error: "failed to send email" });
 	}
