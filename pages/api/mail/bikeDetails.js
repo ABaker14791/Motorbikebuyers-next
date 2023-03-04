@@ -22,7 +22,7 @@ export default async function bikeDetails(req, res) {
 		templateId: 6,
 		params: {
 			// bike details params for dynamic content
-			registration: bike.registration,
+			registration: bike.regNumber,
 			Manufacturer: bike.manufacturer,
 			model: bike.model,
 			year: bike.year,

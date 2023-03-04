@@ -17,17 +17,21 @@ export default async function emailAddContact(req, res) {
 	};
 
 	if (req.method === "POST") {
-		apiInstance.createContact(createContact).then(
-			function (data) {
-				return res
-					.status(200)
-					.json({ success: true, message: "Contact added successfully" });
-			},
-			function (error) {
-				console.error(error);
-				return res.status(500).json({ error: "Failed to add contact." });
-			}
-		);
+		try {
+			apiInstance.createContact(createContact).then(
+				function (data) {
+					return res
+						.status(200)
+						.json({ success: true, message: "Contact added successfully" });
+				},
+				function (error) {
+					console.error(error);
+					return res.status(500).json({ error: "Failed to add contact." });
+				}
+			);
+		} catch (err) {
+			return res.status(500).json({ error: "Failed to add contact." });
+		}
 	} else {
 		return res.status(500).json({ error: "Failed to add contact." });
 	}
