@@ -24,13 +24,13 @@ export default async function emailAddContact(req, res) {
 		try {
 			apiInstance.createContact(createContact).then(
 				function (data) {
-					return res
-						.status(200)
-						.json({ success: true, message: "Contact added successfully" });
+					return res.status(200).json({
+						success: true,
+						message: "Contact added successfully",
+					});
 				},
 				function (error) {
 					console.error(error);
-					return res.status(500).json({ error1: "Failed to add contact." });
 				}
 			);
 		} catch (err) {
