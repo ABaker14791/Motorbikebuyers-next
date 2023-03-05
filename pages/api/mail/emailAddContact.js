@@ -30,15 +30,15 @@ export default async function emailAddContact(req, res) {
 				},
 				function (error) {
 					console.error(error);
-					return res.status(500).json({ error: "Failed to add contact." });
+					return res.status(500).json({ error1: "Failed to add contact." });
 				}
 			);
 		} catch (err) {
 			return res
 				.status(500)
-				.json({ error: "Failed to add contact.", errorMessage: err });
+				.json({ error2: "Failed to add contact.", errorMessage: err });
 		}
 	} else {
-		return res.status(500).json({ error: "Failed to add contact." });
+		return res.status(500).json({ error3: "Failed to add contact." });
 	}
 }
