@@ -28,7 +28,6 @@ export default async function confirmation(req, res) {
 						success: true,
 						message: "Confirmation Email sent successfully.",
 					});
-					console.log("API called successfully. Returned data: " + data);
 				},
 				function (error) {
 					console.error(error);
