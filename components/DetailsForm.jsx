@@ -73,9 +73,9 @@ const DetailsForm = ({ bikeData }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// insertBikeData(data);
-		// sendConfirmationEmail(data);
-		// sendDetailsEmail(data);
+		insertBikeData(data);
+		sendConfirmationEmail(data);
+		sendDetailsEmail(data);
 		addEmailContact(data);
 		setSubmitted(true);
 	};
