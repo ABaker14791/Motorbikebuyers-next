@@ -28,6 +28,7 @@ const Footer = () => {
 				</div>
 				<div className={Styles.centerWrap}>
 					<Image src={Logo} display="block" alt="Motorbike buyers" />
+
 					<div className={Styles.copyright}>
 						<p>© Copyright 2022, The Motorbike Buyers.</p>
 					</div>
@@ -47,6 +48,17 @@ const Footer = () => {
 						Motorcycle buying tips
 					</Link>
 				</div>
+			</div>
+			<div className={Styles.info}>
+				<p className={Styles.infoFCA}>
+					VAT No. 323785784FCA No. 976512 Vehicle Trade Specialists is
+					authorised and regulated by the Financial Conduct Authority, FRN:
+					976512. All finance is subject to status and income. Written Quotation
+					on request. We act as a credit broker not a lender. We work with a
+					number of carefully selected credit providers who may be able to offer
+					you finance for your purchase. We are only able to offer finance
+					products from these providers.
+				</p>
 			</div>
 		</div>
 	);
