@@ -13,11 +13,10 @@ export default async function emailAddContact(req, res) {
 	createContact = {
 		email: contact.email,
 		listIds: [6],
-		// attributes: {
-		// FIRSTNAME: contact.firstName,
-		// LASTNAME: contact.lastName,
-		// EMAIL: contact.email,
-		// },
+		attributes: {
+			FIRSTNAME: contact.firstName,
+			LASTNAME: contact.lastName,
+		},
 	};
 
 	if (req.method === "POST") {
