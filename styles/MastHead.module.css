@@ -25,10 +25,9 @@
 	}
 }
 
-/* .fastText {
-	color: #0171bc;
+@media (max-width: 427px) {
+	.heading {
+		font-size: 1.2em;
+		width: 95%;
+	}
 }
-
-.secureText {
-	color: #fe0000;
-} */
