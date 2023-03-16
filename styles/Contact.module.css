@@ -96,3 +96,10 @@
 .contactButton:hover {
 	background-color: #0188e2;
 }
+
+.successMessage {
+	color: #464646;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

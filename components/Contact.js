@@ -7,6 +7,7 @@ import * as Yup from "yup";
 
 const Contact = () => {
 	const [submitted, setSubmitted] = useState(false);
+	const [name, setName] = useState("");
 
 	const formik = useFormik({
 		initialValues: {
@@ -29,6 +30,7 @@ const Contact = () => {
 		// Submit form
 		onSubmit: (values) => {
 			sendContactEmail(values);
+			setName(values.name);
 			setSubmitted(true);
 			console.log(values);
 		},
@@ -71,7 +73,9 @@ const Contact = () => {
 				</div>
 			</div>
 			{submitted ? (
-				<div>Message sent, thank you.</div>
+				<h2 className={Styles.successMessage}>
+					Thank you for your message {name ? name : ""}.
+				</h2>
 			) : (
 				<form className={Styles.contactForm} onSubmit={formik.handleSubmit}>
 					<label
