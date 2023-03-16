@@ -2,20 +2,37 @@ import { useState } from "react";
 import Styles from "../styles/Contact.module.css";
 import Link from "next/link";
 import { FaPhone, FaEnvelope, FaExternalLinkAlt } from "react-icons/fa";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const Contact = () => {
 	const [submitted, setSubmitted] = useState(false);
-	const [data, setData] = useState({
-		name: "",
-		email: "",
-		message: "",
-	});
 
-	async function handleOnSubmit(e) {
-		e.preventDefault();
-		sendContactEmail(data);
-		setSubmitted(true);
-	}
+	const formik = useFormik({
+		initialValues: {
+			name: "",
+			email: "",
+			message: "",
+		},
+
+		// Validate form
+		validationSchema: Yup.object({
+			name: Yup.string()
+				.max(20, "Name must be 20 characters or less")
+				.required("Name is required"),
+			email: Yup.string()
+				.email("Invalid email address")
+				.required("Email is required"),
+			message: Yup.string().required("Message is required"),
+		}),
+
+		// Submit form
+		onSubmit: (values) => {
+			sendContactEmail(values);
+			setSubmitted(true);
+			console.log(values);
+		},
+	});
 
 	async function sendContactEmail(data) {
 		const response = await fetch("/api/mail/contactForm", {
@@ -26,14 +43,7 @@ const Contact = () => {
 			body: JSON.stringify(data),
 		});
 		const detailsEmailConfirmation = await response.json();
-		console.log(detailsEmailConfirmation);
 	}
-
-	const handleChange = (e) => {
-		const name = e.target.name;
-		const value = e.target.value;
-		setData((prevData) => ({ ...prevData, [name]: value }));
-	};
 
 	return (
 		<div className={Styles.container}>
@@ -63,14 +73,66 @@ const Contact = () => {
 			{submitted ? (
 				<div>Message sent, thank you.</div>
 			) : (
-				<form onSubmit={handleOnSubmit} className={Styles.contactForm}>
-					<label>Name</label>
-					<input placeholder="Name" name="name" onChange={handleChange} />
-					<label>Email</label>
-					<input placeholder="Email" name="email" onChange={handleChange} />
-					<label>Message</label>
-					<input placeholder="Message" name="message" onChange={handleChange} />
-					<button className={Styles.contactButton}>Send</button>
+				<form className={Styles.contactForm} onSubmit={formik.handleSubmit}>
+					<label
+						htmlFor="name"
+						className={
+							formik.touched.name && formik.errors.name ? Styles.labelError : ""
+						}
+					>
+						{formik.touched.name && formik.errors.name
+							? formik.errors.name
+							: "Name"}
+					</label>
+					<input
+						placeholder="Name"
+						name="name"
+						value={formik.values.name}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+					/>
+					<label
+						htmlFor="email"
+						className={
+							formik.touched.email && formik.errors.email
+								? Styles.labelError
+								: ""
+						}
+					>
+						{formik.touched.email && formik.errors.email
+							? formik.errors.email
+							: "Email"}
+					</label>
+					<input
+						placeholder="Email"
+						name="email"
+						value={formik.values.email}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+					/>
+					<label
+						htmlFor="message"
+						className={
+							formik.touched.message && formik.errors.message
+								? Styles.labelError
+								: ""
+						}
+					>
+						{formik.touched.message && formik.errors.message
+							? formik.errors.message
+							: "Message"}
+					</label>
+					<textarea
+						rows="4"
+						placeholder="Message"
+						name="message"
+						value={formik.values.message}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+					/>
+					<button className={Styles.contactButton} type="submit">
+						Send
+					</button>
 				</form>
 			)}
 		</div>
