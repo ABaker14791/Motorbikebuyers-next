@@ -1,10 +1,11 @@
 .container {
 	min-height: calc(100vh - 320px) !important;
-	padding: 5rem 0 3rem 0;
+	/* padding: 5rem 0 3rem 0; */
 	width: 90%;
 	max-width: 1200px;
 	margin: 0px auto;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
