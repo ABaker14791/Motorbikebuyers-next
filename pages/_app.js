@@ -19,7 +19,8 @@ export default function App({ Component, pageProps }) {
 					__html: `window.dataLayer = window.dataLayer || [];
 					gtag('js', new Date());
 					gtag('config', '${process.env.GOOGLE_TRACKING_TAG}', {
-					page_path: window.location.pathname`,
+					page_path: window.location.pathname,});
+					`,
 				}}
 			/>
 			<Layout>
