@@ -75,6 +75,6 @@ export async function getStaticProps() {
 		props: {
 			tradeProducts: wooCommerceProducts.data,
 		},
-		// revalidate: 60 // regenerate page with new data fetch after 60 seconds
+		revalidate: 60, // regenerate page with new data fetch after 60 seconds
 	};
 }
