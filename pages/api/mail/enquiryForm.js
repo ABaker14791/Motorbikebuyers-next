@@ -14,8 +14,7 @@ export default async function enquiryForm(req, res) {
 	sendSmtpEmail = {
 		to: [
 			{
-				email: "adam_baker@live.co.uk",
-				// email: "sales@akaautomotive.co.uk",
+				email: "sales@akaautomotive.co.uk",
 				name: "Charlie",
 			},
 		],

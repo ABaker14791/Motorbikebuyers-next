@@ -14,8 +14,7 @@ export default async function contactForm(req, res) {
 	sendSmtpEmail = {
 		to: [
 			{
-				// email: "sales@themotorbikebuyers.co.uk",
-				email: "adam_baker@live.co.uk",
+				email: "sales@themotorbikebuyers.co.uk",
 				name: "Charlie",
 			},
 		],
