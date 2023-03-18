@@ -8,35 +8,17 @@ import { Provider } from "react-redux";
 export default function App({ Component, pageProps }) {
 	return (
 		<>
-			{/* <Script
-				strategy="afterInteractive"
-				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_TRACKING_TAG}`}
-			/>
 			<Script
-				id="google-analytics"
-				strategy="afterInteractive"
-				dangerouslySetInnerHTML={{
-					__html: `
-					window.dataLayer = window.dataLayer || [];
-					gtag('js', new Date());
-					gtag('config', '${process.env.GOOGLE_TRACKING_TAG}', {
-						page_path: window.location.pathname,
-				});
-					`,
-				}}
-			/> */}
-			<Script
-				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_TRACKING_TAG}`}
+				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TRACKING_TAG}`}
 				strategy="afterInteractive"
 			/>
 			<Script id="google-analytics" strategy="afterInteractive">
 				{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${process.env.GOOGLE_TRACKING_TAG}');
-        `}
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){window.dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_TRACKING_TAG}');
+				`}
 			</Script>
 
 			<Layout>
