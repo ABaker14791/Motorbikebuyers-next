@@ -23,11 +23,16 @@ const about = () => {
 			</Head>
 			<div className={Styles.Title}>About Us</div>
 			<div className={Styles.Content}>
-				<Image
-					src={RidingPhoto}
-					className={Styles.AboutImg}
-					alt="motorcycle on track"
-				/>
+				<div className={Styles.imageContainer}>
+					<Image
+						src={RidingPhoto}
+						className={Styles.AboutImg}
+						alt="motorcycle on track"
+						width={766}
+						height={750}
+						priority
+					/>
+				</div>
 				<div className={Styles.AboutText}>
 					<p>
 						The Motorbike Buyers are here to help you sell your motorbike fast.
