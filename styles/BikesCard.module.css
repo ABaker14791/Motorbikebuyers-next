@@ -42,14 +42,14 @@
 
 .info h4 {
 	margin: 4px 0;
-	color: rgb(38, 38, 38);
+	color: #295782;
 	font-weight: 500;
 	text-transform: uppercase;
 }
 
 .info p {
 	margin: 0;
-	color: #77a464;
+	color: #000000de;
 	font-size: 1.3em;
 }
 
@@ -78,10 +78,11 @@
 }
 .location {
 	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .location svg {
-	transform: translateY(20%);
 	color: rgb(145, 145, 145);
 }
 
