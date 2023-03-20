@@ -67,8 +67,8 @@ const Contact = () => {
 				</div>
 				<div className={Styles.contactLink}>
 					<FaExternalLinkAlt />
-					<Link href="#">
-						<a>Follow and contact us directly on facebook</a>
+					<Link href="https://www.facebook.com/profile.php?id=100064273624689">
+						<a target="_blank">Follow and contact us directly on facebook</a>
 					</Link>
 				</div>
 			</div>
