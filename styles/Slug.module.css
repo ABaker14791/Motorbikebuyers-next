@@ -4,7 +4,6 @@
 	margin: 60px auto 0px auto;
 	display: flex;
 	flex-direction: column;
-	/* min-width: 100vh; */
 	min-height: calc(100vh - 202px) !important;
 }
 
@@ -91,10 +90,6 @@
 	cursor: pointer;
 }
 
-.actions button svg {
-	transform: translateY(20%);
-}
-
 @media (max-width: 768px) {
 	.container {
 		flex-direction: column;
@@ -113,7 +108,6 @@
 
 	.image {
 		width: 100%;
-		/* min-width: 200px; */
 		height: auto;
 	}
 }
@@ -127,7 +121,7 @@
 .price {
 	font-size: 1.2rem;
 	margin-bottom: 15px;
-	color: #77a464;
+	color: #000000dd;
 }
 
 .gallery {
