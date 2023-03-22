@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Styles from "../../../styles/Article.module.css";
+// import Styles from "../../../styles/Article.module.css";
 
 const [article] = () => {
 	return (
@@ -11,9 +11,9 @@ const [article] = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<section className={Styles.container}>
+			<section>
 				<h1>Motorcycle maintenance guide</h1>
-				<p className={Styles.text}>
+				<p>
 					Maintaining your motorcycle is essential for safe and enjoyable
 					riding, but did you know that it can also affect the value of your
 					motorbike? Whether you&apos;re buying a motorbike or wondering how
