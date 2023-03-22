@@ -1,4 +1,6 @@
 import React from "react";
+import Head from "next/head";
+import Styles from "../../../styles/Article.module.css";
 
 const [article] = () => {
 	return (
