@@ -1,8 +1,6 @@
 import React from "react";
-import Head from "next/head";
-import Styles from "../styles/Article.module.css";
 
-const article = () => {
+const [article] = () => {
 	return (
 		<div>
 			<Head>
@@ -51,4 +49,4 @@ const article = () => {
 	);
 };
 
-export default article;
+export default [article];

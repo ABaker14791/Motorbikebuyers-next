@@ -1,0 +1,15 @@
+.container {
+	width: 90%;
+	max-width: 800px;
+	margin: auto;
+}
+
+.container h1 {
+	margin-top: 2em;
+}
+
+.text {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 4em;
+}
