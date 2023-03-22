@@ -3,6 +3,7 @@ import Styles from "../styles/emailpending.module.css";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/authSlice";
+import { usePush } from "../utils/usePush";
 // Firebase
 import { auth } from "../utils/firebase";
 import { signOut, onAuthStateChanged } from "firebase/auth";
@@ -10,13 +11,14 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 const Emailpending = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const push = usePush();
 
 	// Route back to trade portal if the email is verified
 	useEffect(() => {
 		onAuthStateChanged(auth, async (userAuth) => {
 			if (userAuth) {
 				if (userAuth.emailVerified) {
-					router.push("/tradeportal");
+					push("/tradeportal");
 				}
 			}
 		});
