@@ -22,7 +22,7 @@ const Emailpending = () => {
 				}
 			}
 		});
-	}, []);
+	}, [push]);
 
 	const logOut = () => {
 		signOut(auth)
