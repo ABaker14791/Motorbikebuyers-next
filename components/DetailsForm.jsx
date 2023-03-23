@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Styles from "../styles/VehicleForm.module.css";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 // MongoDB insert motorcycle data
 async function insertBikeData(bikeData) {
@@ -52,46 +54,55 @@ async function addEmailContact(data) {
 const DetailsForm = ({ bikeData }) => {
 	// Hide form & show success message once submitted.
 	const [submitted, setSubmitted] = useState(false);
-	// Form State
-	const [data, setData] = useState({
-		regNumber: bikeData.registrationNumber || "",
-		manufacturer: bikeData.make || "",
-		model: "",
-		year: bikeData.yearOfManufacture || "",
-		mileage: "",
-		serviceHistory: "Select sevice history",
-		keeper: "Yes",
-		finance: "No",
-		stolen: "No",
-		condition: "",
-		firstName: "",
-		lastName: "",
-		email: "",
-		phone: "",
-		dateSubmitted: new Date(),
-	});
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		insertBikeData(data);
-		sendConfirmationEmail(data);
-		sendDetailsEmail(data);
-		addEmailContact(data);
-		setSubmitted(true);
-	};
+	const formik = useFormik({
+		initialValues: {
+			regNumber: bikeData.registrationNumber || "",
+			manufacturer: bikeData.make || "",
+			model: "",
+			year: bikeData.yearOfManufacture || "",
+			mileage: "",
+			serviceHistory: "Select sevice history",
+			keeper: "Yes",
+			finance: "No",
+			stolen: "No",
+			condition: "",
+			firstName: "",
+			lastName: "",
+			email: "",
+			phone: "",
+			dateSubmitted: new Date(),
+		},
+
+		// Validate form
+		validationSchema: Yup.object({
+			regNumber: Yup.string()
+				.max(8, "Registration must be 8 characters or less")
+				.required("Registration is required"),
+			email: Yup.string()
+				.email("Invalid email address")
+				.required("Email is required"),
+			manufacturer: Yup.string().required("Manufacturer is required"),
+			model: Yup.string().required("Model is required"),
+			phone: Yup.string().required("Phone number is required"),
+		}),
+
+		// Submit form
+		onSubmit: (values) => {
+			insertBikeData(values);
+			sendConfirmationEmail(values);
+			sendDetailsEmail(values);
+			addEmailContact(values);
+			setSubmitted(true);
+			console.log(values);
+		},
+	});
 
 	// After form submit scroll up to center the success message
 	const ref = useRef(null);
 	useEffect(() => {
 		ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
 	}, [submitted]);
-
-	const handleChange = (e) => {
-		const type = e.target.type;
-		const name = e.target.name;
-		const value = type === "radio" ? e.target.checked : e.target.value;
-		setData((prevData) => ({ ...prevData, [name]: value }));
-	};
 
 	return (
 		<>
@@ -106,51 +117,138 @@ const DetailsForm = ({ bikeData }) => {
 						Submit your motorcycle details and your contact information below to
 						get your free online valuation.
 					</p>
-					<form className={Styles.form} onSubmit={handleSubmit}>
+					<form className={Styles.form} onSubmit={formik.handleSubmit}>
+						<label
+							htmlFor="regNumber"
+							className={
+								formik.touched.regNumber && formik.errors.regNumber
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.regNumber && formik.errors.regNumber
+								? formik.errors.regNumber
+								: "Registration *"}
+						</label>
 						<input
 							className={Styles.textBox}
-							value={bikeData.registrationNumber}
-							onChange={handleChange}
+							value={formik.values.regNumber}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Reg"
 							name="regNumber"
 							type="text"
 						/>
+
+						<label
+							htmlFor="manufacturer"
+							className={
+								formik.touched.manufacturer && formik.errors.manufacturer
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.manufacturer && formik.errors.manufacturer
+								? formik.errors.manufacturer
+								: "Manufacturer *"}
+						</label>
 						<input
 							className={Styles.textBox}
-							value={bikeData.make}
-							onChange={handleChange}
+							value={formik.values.manufacturer}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Manufacturer"
 							name="manufacturer"
 							type="text"
 						/>
+
+						<label
+							htmlFor="model"
+							className={
+								formik.touched.model && formik.errors.model
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.model && formik.errors.model
+								? formik.errors.model
+								: "Model *"}
+						</label>
+
 						<input
 							className={Styles.textBox}
-							onChange={handleChange}
+							value={formik.values.model}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Model"
 							name="model"
 							type="text"
 						/>
+
+						<label
+							htmlFor="year"
+							className={
+								formik.touched.year && formik.errors.year
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.year && formik.errors.year
+								? formik.errors.manufacturer
+								: "Year"}
+						</label>
 						<input
 							className={Styles.textBox}
-							value={bikeData.yearOfManufacture}
-							onChange={handleChange}
+							value={formik.values.year}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Year"
 							name="year"
 							type="text"
 						/>
+
+						<label
+							htmlFor="mileage"
+							className={
+								formik.touched.mileage && formik.errors.mileage
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.mileage && formik.errors.mileage
+								? formik.errors.mileage
+								: "Mileage *"}
+						</label>
+
 						<input
 							className={Styles.textBox}
-							onChange={handleChange}
+							value={formik.values.mileage}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Mileage"
 							name="mileage"
 							type="text"
 						/>
 
+						<label
+							htmlFor="serviceHistory"
+							className={
+								formik.touched.serviceHistory && formik.errors.serviceHistory
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.serviceHistory && formik.errors.serviceHistory
+								? formik.errors.serviceHistory
+								: "Service History *"}
+						</label>
+
 						<select
 							name="serviceHistory"
 							id="selector"
 							className={Styles.formControl}
-							onChange={handleChange}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							defaultValue={0}
 						>
 							<option disabled={true} value="0">
@@ -170,7 +268,8 @@ const DetailsForm = ({ bikeData }) => {
 							<input
 								type="radio"
 								className={Styles.selector}
-								onChange={handleChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 								id="selector"
 								value="Yes"
 								defaultChecked={true}
@@ -181,7 +280,8 @@ const DetailsForm = ({ bikeData }) => {
 							<input
 								type="radio"
 								className={Styles.selector}
-								onChange={handleChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 								id="selector"
 								value="No"
 								name="keeper"
@@ -197,7 +297,8 @@ const DetailsForm = ({ bikeData }) => {
 							<input
 								type="radio"
 								className={Styles.selector}
-								onChange={handleChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 								id="selector"
 								value="Yes"
 								name="finance"
@@ -207,7 +308,8 @@ const DetailsForm = ({ bikeData }) => {
 							<input
 								type="radio"
 								className={Styles.selector}
-								onChange={handleChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 								id="selector"
 								value="No"
 								defaultChecked={true}
@@ -224,7 +326,8 @@ const DetailsForm = ({ bikeData }) => {
 							<input
 								type="radio"
 								className={Styles.selector}
-								onChange={handleChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 								id="selector"
 								value="Yes"
 								name="stolen"
@@ -234,7 +337,8 @@ const DetailsForm = ({ bikeData }) => {
 							<input
 								type="radio"
 								className={Styles.selector}
-								onChange={handleChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 								id="selector"
 								value="No"
 								defaultChecked={true}
@@ -244,11 +348,24 @@ const DetailsForm = ({ bikeData }) => {
 							<br />
 						</div>
 
+						<label
+							htmlFor="condition"
+							className={
+								formik.touched.condition && formik.errors.condition
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.condition && formik.errors.condition
+								? formik.errors.condition
+								: "Condition *"}
+						</label>
 						<select
 							name="condition"
 							id="selector"
 							className={Styles.formControl}
-							onChange={handleChange}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							defaultValue={0}
 						>
 							<option disabled={true} value="0">
@@ -265,33 +382,94 @@ const DetailsForm = ({ bikeData }) => {
 							<option value="9">9</option>
 							<option value="10">10 - Very good</option>
 						</select>
+
+						<label
+							htmlFor="firstName"
+							className={
+								formik.touched.firstName && formik.errors.firstName
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.firstName && formik.errors.firstName
+								? formik.errors.firstName
+								: "First Name *"}
+						</label>
+
 						<input
 							className={Styles.textBox}
-							onChange={handleChange}
+							value={formik.values.firstName}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="First Name"
 							name="firstName"
 							type="text"
 							required
 						/>
+
+						<label
+							htmlFor="lastName"
+							className={
+								formik.touched.lastName && formik.errors.lastName
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.lastName && formik.errors.lastName
+								? formik.errors.lastName
+								: "Last Name *"}
+						</label>
 						<input
 							className={Styles.textBox}
-							onChange={handleChange}
+							value={formik.values.lastName}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Last Name"
 							name="lastName"
 							type="text"
 							required
 						/>
+
+						<label
+							htmlFor="email"
+							className={
+								formik.touched.email && formik.errors.email
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.email && formik.errors.email
+								? formik.errors.email
+								: "Email *"}
+						</label>
 						<input
 							className={Styles.textBox}
-							onChange={handleChange}
+							value={formik.values.email}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Email"
 							name="email"
 							type="text"
 							required
 						/>
+
+						<label
+							htmlFor="phone"
+							className={
+								formik.touched.phone && formik.errors.phone
+									? Styles.labelError
+									: ""
+							}
+						>
+							{formik.touched.phone && formik.errors.phone
+								? formik.errors.phone
+								: "Phone *"}
+						</label>
 						<input
 							className={Styles.textBox}
-							onChange={handleChange}
+							value={formik.values.phone}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 							placeholder="Phone number"
 							name="phone"
 							type="text"
