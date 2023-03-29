@@ -89,12 +89,12 @@ const DetailsForm = ({ bikeData }) => {
 
 		// Submit form
 		onSubmit: (values) => {
-			// insertBikeData(values);
-			// sendConfirmationEmail(values);
-			// sendDetailsEmail(values);
+			insertBikeData(values);
+			sendConfirmationEmail(values);
+			sendDetailsEmail(values);
 			addEmailContact(values);
 			setSubmitted(true);
-			// console.log(values);
+			console.log(values);
 		},
 	});
 
