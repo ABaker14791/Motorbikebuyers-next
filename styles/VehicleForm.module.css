@@ -70,6 +70,14 @@
 	border-radius: 4px;
 }
 
+.form select {
+	padding: 10px 12px;
+	appearance: none;
+	-webkit-appearance: none;
+	text-indent: 3px;
+	line-height: 16px;
+}
+
 .confirmationNotice {
 	font-size: 1.6em;
 	margin: 3em 0;
