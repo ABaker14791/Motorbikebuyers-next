@@ -76,6 +76,7 @@
 	-webkit-appearance: none;
 	text-indent: 3px;
 	line-height: 16px;
+	background-color: #fff;
 }
 
 .confirmationNotice {

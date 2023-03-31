@@ -74,3 +74,11 @@
 	color: #fff;
 	border: 1px solid #0171bd;
 }
+
+@media (max-width: 768px) {
+	.login__form {
+		padding: 1em 0 4em 0;
+		width: 90%;
+		max-width: 550px;
+	}
+}

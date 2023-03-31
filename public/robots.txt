@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /tradeportal
+Disallow: /login
+Disallow: /emailpending
