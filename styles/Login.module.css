@@ -18,6 +18,10 @@
 	color: rgb(81, 81, 81);
 }
 
+.login__form .labelError {
+	color: rgb(248, 108, 108);
+}
+
 .login__form input {
 	margin-bottom: 1em;
 	border-radius: 4px;

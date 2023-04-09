@@ -12,6 +12,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
+import RegisterForm from "./RegisterForm";
 
 const Signin = () => {
 	const router = useRouter();
@@ -49,6 +50,7 @@ const Signin = () => {
 					displayName: name,
 				});
 				const emailVerification = await sendEmailVerification(auth.currentUser);
+				// Data for firebase user
 				const data = {
 					uid: account.user.uid,
 					Company: company,
@@ -138,50 +140,7 @@ const Signin = () => {
 					<button className={Styles.loginButton}>Sign in</button>
 				</form>
 			) : (
-				<form onSubmit={register} className={Styles.login__form}>
-					<label htmlFor="email">Email</label>
-					<input
-						type="text"
-						name="email"
-						placeholder="Email"
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-					<label htmlFor="name">Name</label>
-					<input
-						type="text"
-						name="name"
-						placeholder="Name"
-						onChange={(e) => setName(e.target.value)}
-						required
-					/>
-					<label htmlFor="company">Company Name</label>
-					<input
-						type="text"
-						name="company"
-						placeholder="Company Name"
-						onChange={(e) => setCompany(e.target.value)}
-						required
-					/>
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						placeholder="Password"
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-					<label htmlFor="confirmPassword">Confirm Password</label>
-					<input
-						type="password"
-						name="confirmPassword"
-						placeholder="Confirm Password"
-						onChange={(e) => passwordValidation(e)}
-						required
-					/>
-
-					<button className={Styles.loginButton}>Create Account</button>
-				</form>
+				<RegisterForm />
 			)}
 		</div>
 	);
