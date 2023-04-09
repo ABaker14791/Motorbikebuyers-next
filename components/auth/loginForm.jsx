@@ -7,14 +7,32 @@ import { login } from "../../store/authSlice";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-const loginForm = () => {
+const LoginForm = () => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 
-	const signIn = (e) => {
-		e.preventDefault();
+	const formik = useFormik({
+		initialValues: {
+			email: "",
+			password: "",
+		},
 
-		signInWithEmailAndPassword(auth, email, password)
+		// Validate form
+		validationSchema: Yup.object({
+			email: Yup.string()
+				.email("Invalid email address")
+				.required("Email is required"),
+			password: Yup.string().required("Password is required"),
+		}),
+
+		// Submit form
+		onSubmit: (values) => {
+			signIn(values);
+		},
+	});
+
+	const signIn = (formValues) => {
+		signInWithEmailAndPassword(auth, formValues.email, formValues.password)
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
@@ -32,21 +50,45 @@ const loginForm = () => {
 	};
 
 	return (
-		<form onSubmit={signIn} className={Styles.login__form}>
-			<label htmlFor="email">Email</label>
+		<form onSubmit={formik.handleSubmit} className={Styles.login__form}>
+			<label
+				htmlFor="email"
+				className={
+					formik.touched.email && formik.errors.email ? Styles.labelError : ""
+				}
+			>
+				{formik.touched.email && formik.errors.email
+					? formik.errors.email
+					: "Email"}
+			</label>
 			<input
 				type="text"
 				name="email"
 				placeholder="Email"
-				onChange={(e) => setEmail(e.target.value)}
+				value={formik.values.email}
+				onChange={formik.handleChange}
+				onBlur={formik.handleBlur}
 				required
 			/>
-			<label htmlFor="password">Password</label>
+			<label
+				htmlFor="password"
+				className={
+					formik.touched.password && formik.errors.password
+						? Styles.labelError
+						: ""
+				}
+			>
+				{formik.touched.password && formik.errors.password
+					? formik.errors.password
+					: "Password"}
+			</label>
 			<input
 				type="password"
 				name="password"
 				placeholder="Password"
-				onChange={(e) => setPassword(e.target.value)}
+				value={formik.values.password}
+				onChange={formik.handleChange}
+				onBlur={formik.handleBlur}
 				required
 			/>
 
@@ -55,4 +97,4 @@ const loginForm = () => {
 	);
 };
 
-export default loginForm;
+export default LoginForm;

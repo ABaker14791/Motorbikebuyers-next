@@ -16,7 +16,6 @@ import * as Yup from "yup";
 const RegisterForm = () => {
 	const router = useRouter();
 	const dispatch = useDispatch();
-	// const [name, setName] = useState("");
 
 	const formik = useFormik({
 		initialValues: {
