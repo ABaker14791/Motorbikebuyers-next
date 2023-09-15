@@ -51,13 +51,14 @@ const Footer = () => {
 			</div>
 			<div className={Styles.info}>
 				<p className={Styles.infoFCA}>
-					VAT No. 323785784FCA No. 976512 Vehicle Trade Specialists is
-					authorised and regulated by the Financial Conduct Authority, FRN:
-					976512. All finance is subject to status and income. Written Quotation
-					on request. We act as a credit broker not a lender. We work with a
-					number of carefully selected credit providers who may be able to offer
-					you finance for your purchase. We are only able to offer finance
-					products from these providers.
+					VAT No. 386 5859 30 No. 958258 AKA Automotive Leeds LTD is authorised
+					and regulated by the Financial Conduct Authority, FRN: 958258. All
+					finance is subject to status and income. Written Quotation on request.
+					We act as a credit broker not a lender. We work with a number of
+					carefully selected credit providers who may be able to offer you
+					finance for your purchase. We are only able to offer finance products
+					from these providers. The Motorbike Buyers is a trading name of AKA
+					Automotive Leeds LTD.
 				</p>
 			</div>
 		</div>
